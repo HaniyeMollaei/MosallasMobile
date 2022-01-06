@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mosallas/pages/register/verification_code.dart';
+import 'package:mosallas/pages/register/get_number.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/utils/storage_utils.dart';
+import 'package:mosallas/widgets/large_logo.dart';
 import 'package:mosallas/widgets/login_register_bottom.dart';
 import 'package:mosallas/widgets/submit_button.dart';
 import 'package:mosallas/widgets/text_field.dart';
@@ -49,23 +50,7 @@ class LoginPageState extends State<LoginPage>{
                       ),
 
                       ///Logo --> 0.3
-                      SizedBox(
-                        height: MyStyle.mediaQueryHeight(context, 0.3),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset('assets/svg/logo.svg',
-                              height: MyStyle.mediaQueryHeight(context, 0.18) ),
-                            SizedBox(
-                              height: MyStyle.mediaQueryHeight(context, 0.03),
-                            ),
-                            const Text(" ${MyStyle.appName}   ", style: MyStyle.redHeaderStyle),
-                            SizedBox(
-                              height: MyStyle.mediaQueryHeight(context, 0.03),
-                            ),
-                          ],
-                        ),
-                      ),
+                      const LargeLogo(),
 
                       ///telephone number 0.08
                       MyTextField(
@@ -129,7 +114,8 @@ class LoginPageState extends State<LoginPage>{
 
                       ///Login Button 0.08
                       SubmitButton(text: "ورود",
-                        onPressed: (){print("Logiiiiiiiiin");},
+                        onPressed: (){print("Logiiiiiiiiin");
+                        },
                         isDisable: false,
                       ),
                     ],
@@ -140,7 +126,7 @@ class LoginPageState extends State<LoginPage>{
                     onPressed: () async {
                     await StorageUtil.setDataInSP("UserType", "normal");
                     await Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => VerificationPage()));
+                        context, MaterialPageRoute(builder: (context) => GetPhoneNumberPage()));
                     print("Go To Register");
                   },)
                 ]),

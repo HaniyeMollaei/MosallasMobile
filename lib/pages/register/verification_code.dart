@@ -2,10 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mosallas/pages/login/login.dart';
+import 'package:mosallas/state_management/timer_provider.dart';
 import 'package:mosallas/utils/my_style.dart';
+import 'package:mosallas/widgets/count_down_timer.dart';
+import 'package:mosallas/widgets/large_logo.dart';
 import 'package:mosallas/widgets/login_register_bottom.dart';
+import 'package:mosallas/widgets/snackbar.dart';
 import 'package:mosallas/widgets/submit_button.dart';
 import 'package:mosallas/widgets/text_field.dart';
+import 'package:provider/provider.dart';
 
 class VerificationPage extends StatefulWidget{
   const VerificationPage({Key key}) : super(key: key);
@@ -17,10 +23,26 @@ class VerificationPage extends StatefulWidget{
 
 class VerificationPageState extends State<VerificationPage>{
 
-  TextEditingController _txtMobileNumber = TextEditingController(text: '');
-  FocusNode _fndMobileNumber = new FocusNode();
-  TextEditingController _txtVerificationCode = TextEditingController(text: '');
-  FocusNode _fndVerificationCode = new FocusNode();
+  final TextEditingController _txtMobileNumber = TextEditingController(text: '');
+  final FocusNode _fndMobileNumber = FocusNode();
+  final TextEditingController _txtVerificationCode = TextEditingController(text: '');
+  final FocusNode _fndVerificationCode = FocusNode();
+
+
+  String _code = '';
+
+  String mobileNumber = "۰۹۳۷۱۵۴۴۱۵۹";
+
+  TimerProvider _timerProvider = new TimerProvider();
+
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      _timerProvider = Provider.of<TimerProvider>(context, listen: false);
+    });
+  }
 
 
   @override
@@ -47,29 +69,14 @@ class VerificationPageState extends State<VerificationPage>{
                       ),
 
                       ///Logo --> 0.3
-                      SizedBox(
-                        height: MyStyle.mediaQueryHeight(context, 0.3),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset('assets/svg/logo.svg',
-                              height: MyStyle.mediaQueryHeight(context, 0.18) ),
-                            SizedBox(
-                              height: MyStyle.mediaQueryHeight(context, 0.03),
-                            ),
-                            const Text(" ${MyStyle.appName}   ", style: MyStyle.redHeaderStyle),
-                            SizedBox(
-                              height: MyStyle.mediaQueryHeight(context, 0.03),
-                            ),
-                          ],
-                        ),
-                      ),
+                      const LargeLogo(),
 
                       ///telephone number 0.08
                       MyTextField(
                         controller: _txtMobileNumber,
                         focusNode: _fndMobileNumber,
-                        hint: "۰۹ _ _  _ _ _  _ _ _ _" ,
+                        hint: mobileNumber ,
+                        isEnable: false,
                         keyboardType: TextInputType.phone,
                         textAlign: TextAlign.center ,
                         inputFormatters:  <TextInputFormatter>[
@@ -88,13 +95,13 @@ class VerificationPageState extends State<VerificationPage>{
                       MyTextField(
                         controller: _txtVerificationCode,
                         focusNode: _fndVerificationCode,
-                        hint: "- - - - - -" ,
+                        hint: "_ _ _ _ _ _" ,
                         obscureText: true,
-                        keyboardType: TextInputType.text,
+                        keyboardType: TextInputType.number,
                         textAlign: TextAlign.center ,
                         inputFormatters:  <TextInputFormatter>[
                           LengthLimitingTextInputFormatter(
-                              8),
+                              6),
                         ],
                       ),
 
@@ -103,21 +110,60 @@ class VerificationPageState extends State<VerificationPage>{
                         height: MyStyle.mediaQueryHeight(context, 0.015),
                       ),
 
-                      ///Forget Password  0.035
-                       Padding(
-                         padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.09)),
-                         child: SizedBox(
-                           height: MyStyle.mediaQueryHeight(context, 0.035),
-                           child: Align(
-                             alignment: Alignment.centerRight,
-                             child: InkWell(
-                               onTap: (){
-                                 print("Forgot password");
-                               },
-                                 child: const Text("رمز عبور خود را فراموش کرده اید؟",
-                                     style: MyStyle.lightGrayTextStyle)),
-                           ),
-                         ),
+                      ///timer  0.035
+                       Consumer<TimerProvider>(
+                         builder: (_, __, ___) {
+                           return Padding(
+                             padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.09)),
+                             child: SizedBox(
+                               height: MyStyle.mediaQueryHeight(context, 0.035),
+                               child: Row(
+                                 mainAxisAlignment: MainAxisAlignment.center,
+                                 children: [
+                                   SvgPicture.asset('assets/svg/timer.svg'),
+                                   SizedBox(
+                                     width: MyStyle.mediaQueryWidth(context, 0.02),
+                                   ),
+                                   _timerProvider.hasTimerStopped
+                                       ? GestureDetector(
+                                     onTap: () async {
+                                       bool connectedToInternet = await MyStyle.checkConnection();
+                                       if (connectedToInternet) {
+                                         setState(() {
+                                           _timerProvider.setPassPressed(true);
+                                           _timerProvider.setHasTimerStopped(false);
+                                         });
+                                       } else {
+                                         setState(() {
+                                           _timerProvider.setPassPressed(false);
+                                           //hasTimerStopped = true;
+                                         });
+                                         ScaffoldMessenger.of(context).showSnackBar(CustomSnackbar.snackBar(
+                                             ".ارتباط شما با اینترنت قطع شده است",
+                                             0,
+                                             context));
+                                       }
+                                     },
+                                     child:  const Text("ارسال مجدد",
+                                         style: MyStyle.lightGrayTextStyle),
+                                   )
+                                       : CountDownTimer(
+                                     secondsRemaining:  _timerProvider.time,
+                                     whenTimeExpires: () {
+                                       setState(() {
+                                         _timerProvider.setPassPressed(false);
+                                         _timerProvider.setHasTimerStopped(true);
+                                         _code = "";
+                                       });
+                                     },
+                                     countDownTimerStyle:MyStyle.lightGrayTextStyle,
+                                   ),
+                                 ],
+                               ),
+                             ),
+                           );
+                         },
+
                        ),
 
                       ///0.04
@@ -126,17 +172,18 @@ class VerificationPageState extends State<VerificationPage>{
                       ),
 
                       ///Login Button 0.08
-                      SubmitButton(text: "ورود",
-                        onPressed: (){print("Logiiiiiiiiin");},
+                      SubmitButton(text: "ادامه",
+                        onPressed: (){print(_code);},
                         isDisable: false,
                       ),
                     ],
                   ),
 
                   ///1 - 0.79 = 0.21
-                  LoginRegisterBottom(text:"ساخت حساب کاربری",onPressed: (){
-                    print("Go To Register");
-                  },)
+                  LoginRegisterBottom(text:"ورود به حساب کاربری",onPressed: () async {
+                    await Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => LoginPage()));
+                    print("Go To Login");                  },)
                 ]),
           ),
         ))) ;

@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mosallas/pages/login/login.dart';
+import 'package:mosallas/pages/register/verification_code.dart';
 import 'package:mosallas/utils/my_style.dart';
+import 'package:mosallas/widgets/large_logo.dart';
 import 'package:mosallas/widgets/login_register_bottom.dart';
 import 'package:mosallas/widgets/submit_button.dart';
 import 'package:mosallas/widgets/text_field.dart';
@@ -44,25 +47,9 @@ class GetPhoneNumberPageState extends State<GetPhoneNumberPage>{
                       ),
 
                       ///Logo --> 0.3
-                      SizedBox(
-                        height: MyStyle.mediaQueryHeight(context, 0.3),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset('assets/svg/logo.svg',
-                              height: MyStyle.mediaQueryHeight(context, 0.18) ),
-                            SizedBox(
-                              height: MyStyle.mediaQueryHeight(context, 0.03),
-                            ),
-                            const Text(" ${MyStyle.appName}   ", style: MyStyle.redHeaderStyle),
-                            SizedBox(
-                              height: MyStyle.mediaQueryHeight(context, 0.03),
-                            ),
-                          ],
-                        ),
-                      ),
+                      const LargeLogo(),
 
-                      ///Forget Password  0.035
+                      ///enter mobile number text  0.035
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.09)),
                         child: SizedBox(
@@ -73,7 +60,7 @@ class GetPhoneNumberPageState extends State<GetPhoneNumberPage>{
                                 onTap: (){
                                   print("Forgot password");
                                 },
-                                child: const Text("رمز عبور خود را فراموش کرده اید؟",
+                                child: const Text(".شماره موبایل خود را وارد کنید",
                                     style: MyStyle.lightGrayTextStyle)),
                           ),
                         ),
@@ -81,7 +68,7 @@ class GetPhoneNumberPageState extends State<GetPhoneNumberPage>{
 
                       ///0.04
                       SizedBox(
-                        height: MyStyle.mediaQueryHeight(context, 0.04),
+                        height: MyStyle.mediaQueryHeight(context, 0.02),
                       ),
 
 
@@ -101,22 +88,27 @@ class GetPhoneNumberPageState extends State<GetPhoneNumberPage>{
 
                       ///0.01
                       SizedBox(
-                        height: MyStyle.mediaQueryHeight(context, 0.01),
+                        height: MyStyle.mediaQueryHeight(context, 0.04),
                       ),
 
 
 
                       ///Login Button 0.08
                       SubmitButton(text: "ارسال کد",
-                        onPressed: (){print("Logiiiiiiiiin");},
+                        onPressed: () async {
+                          await Navigator.push(
+                              context, MaterialPageRoute(builder: (context) => VerificationPage()));
+                          print("Logiiiiiiiiin");},
                         isDisable: false,
                       ),
                     ],
                   ),
 
                   ///1 - 0.79 = 0.21
-                  LoginRegisterBottom(text:"ورود به حساب کاربری",onPressed: (){
-                    print("Go To Register");
+                  LoginRegisterBottom(text:"ورود به حساب کاربری",onPressed: () async {
+                    await Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => LoginPage()));
+                    print("Go To Login");
                   },)
                 ]),
           ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mosallas/pages/login/splash.dart';
+import 'package:mosallas/state_management/timer_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,16 +13,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Mosallas',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<TimerProvider>(create: (_) => TimerProvider()),
+      ],
+      child: MaterialApp(
+        title: 'Mosallas',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: Splash(),
+        // routes: <String, WidgetBuilder>{
+        //   '/': (_) => Splash(),
+        //   '/splash': (_) => Splash(),
+        // },
       ),
-      home: Splash(),
-      // routes: <String, WidgetBuilder>{
-      //   '/': (_) => Splash(),
-      //   '/splash': (_) => Splash(),
-      // },
     );
   }
 }
