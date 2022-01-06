@@ -4,14 +4,18 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mosallas/pages/login/login.dart';
 import 'package:mosallas/state_management/timer_provider.dart';
+import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/count_down_timer.dart';
 import 'package:mosallas/widgets/large_logo.dart';
 import 'package:mosallas/widgets/login_register_bottom.dart';
+import 'package:mosallas/widgets/register_shops_and_buyers.dart';
 import 'package:mosallas/widgets/snackbar.dart';
 import 'package:mosallas/widgets/submit_button.dart';
 import 'package:mosallas/widgets/text_field.dart';
 import 'package:provider/provider.dart';
+
+import 'get_name.dart';
 
 class VerificationPage extends StatefulWidget{
   const VerificationPage({Key key}) : super(key: key);
@@ -27,7 +31,6 @@ class VerificationPageState extends State<VerificationPage>{
   final FocusNode _fndMobileNumber = FocusNode();
   final TextEditingController _txtVerificationCode = TextEditingController(text: '');
   final FocusNode _fndVerificationCode = FocusNode();
-
 
   String _code = '';
 
@@ -66,6 +69,10 @@ class VerificationPageState extends State<VerificationPage>{
                     children: [
                       SizedBox(
                         height: MyStyle.mediaQueryHeight(context, 0.15),
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: RegisterShopAndBuyers(type: AppConstants.USER_TYPE,),
+                        ),
                       ),
 
                       ///Logo --> 0.3
@@ -173,7 +180,10 @@ class VerificationPageState extends State<VerificationPage>{
 
                       ///Login Button 0.08
                       SubmitButton(text: "ادامه",
-                        onPressed: (){print(_code);},
+                        onPressed: () async {
+                          await Navigator.push(
+                              context, MaterialPageRoute(builder: (context) => const GetNamePage()));
+                        print(_code);},
                         isDisable: false,
                       ),
                     ],
@@ -182,7 +192,7 @@ class VerificationPageState extends State<VerificationPage>{
                   ///1 - 0.79 = 0.21
                   LoginRegisterBottom(text:"ورود به حساب کاربری",onPressed: () async {
                     await Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => LoginPage()));
+                        context, MaterialPageRoute(builder: (context) => const LoginPage()));
                     print("Go To Login");                  },)
                 ]),
           ),

@@ -4,9 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mosallas/pages/login/login.dart';
 import 'package:mosallas/pages/register/verification_code.dart';
+import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/large_logo.dart';
 import 'package:mosallas/widgets/login_register_bottom.dart';
+import 'package:mosallas/widgets/register_shops_and_buyers.dart';
 import 'package:mosallas/widgets/submit_button.dart';
 import 'package:mosallas/widgets/text_field.dart';
 
@@ -44,6 +46,10 @@ class GetPhoneNumberPageState extends State<GetPhoneNumberPage>{
                     children: [
                       SizedBox(
                         height: MyStyle.mediaQueryHeight(context, 0.15),
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: RegisterShopAndBuyers(type: AppConstants.USER_TYPE,),
+                        ),
                       ),
 
                       ///Logo --> 0.3

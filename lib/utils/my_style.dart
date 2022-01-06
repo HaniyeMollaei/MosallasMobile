@@ -58,8 +58,15 @@ class MyStyle {
       fontFamily: textMediumFont
   );
 
+  static const whiteLightTextStyle = TextStyle(
+      fontSize: S11,
+      color: white,
+      fontFamily: textLightFont,
+
+  );
 
   static const double appNameFontSize = 30;
+  static const double S11 = 11;
   static const double S13 = 13;
   static const double S15 = 15;
   static const double S16 = 16;

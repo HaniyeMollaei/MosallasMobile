@@ -6,8 +6,10 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_general_utils.dart';
 import 'package:mosallas/utils/my_style.dart';
+import 'package:mosallas/utils/storage_utils.dart';
 import 'package:mosallas/widgets/snackbar.dart';
 import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
@@ -43,11 +45,6 @@ class _SplashState extends State<Splash> {
     timer = Timer(Duration(seconds: 5), navigateToLoginPage);
   }
 
-  int daysBetween(DateTime from, DateTime to) {
-    from = DateTime(from.year, from.month, from.day);
-    to = DateTime(to.year, to.month, to.day);
-    return (to.difference(from).inHours / 24).round();
-  }
 
   @override
   void initState() {
@@ -57,6 +54,8 @@ class _SplashState extends State<Splash> {
   }
 
   Future<void> navigateToLoginPage() async {
+    AppConstants.USER_TYPE = await StorageUtil.getDataFromSP("UserType") ?? "normal";
+    print("User Type : ${AppConstants.USER_TYPE}");
     bool connectedToInternet = await MyStyle.checkConnection();
     if (connectedToInternet) {
       await Navigator.pushReplacement(
