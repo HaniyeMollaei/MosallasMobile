@@ -14,7 +14,7 @@ class _LargeLogoState extends State<LargeLogo> {
   @override
   Widget build(BuildContext context) {
    return SizedBox(
-     height: MyStyle.mediaQueryHeight(context, 0.3),
+     height: MyStyle.mediaQueryHeight(context, 0.28),
      child: Column(
        crossAxisAlignment: CrossAxisAlignment.center,
        children: [
@@ -25,7 +25,7 @@ class _LargeLogoState extends State<LargeLogo> {
          ),
          const Text(" ${MyStyle.appName}   ", style: MyStyle.redHeaderStyle),
          SizedBox(
-           height: MyStyle.mediaQueryHeight(context, 0.03),
+           height: MyStyle.mediaQueryHeight(context, 0.02),
          ),
        ],
      ),

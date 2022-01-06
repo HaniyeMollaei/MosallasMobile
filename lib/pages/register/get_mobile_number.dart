@@ -60,14 +60,10 @@ class GetPhoneNumberPageState extends State<GetPhoneNumberPage>{
                         padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.09)),
                         child: SizedBox(
                           height: MyStyle.mediaQueryHeight(context, 0.035),
-                          child: Align(
+                          child: const Align(
                             alignment: Alignment.centerRight,
-                            child: InkWell(
-                                onTap: (){
-                                  print("Forgot password");
-                                },
-                                child: const Text(".شماره موبایل خود را وارد کنید",
-                                    style: MyStyle.lightGrayTextStyle)),
+                            child: Text(".شماره موبایل خود را وارد کنید",
+                                style: MyStyle.lightGrayTextStyle),
                           ),
                         ),
                       ),

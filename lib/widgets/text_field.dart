@@ -66,7 +66,7 @@ class MyTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MyStyle.mediaQueryHeight(context, 0.08),
+      height: MyStyle.mediaQueryHeight(context, 0.075),
         width: MyStyle.mediaQueryWidth(context, 0.8),
         child: TextFormField(
             enabled: isEnable,

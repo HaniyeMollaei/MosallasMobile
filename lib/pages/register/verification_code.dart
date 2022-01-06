@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mosallas/pages/login/login.dart';
+import 'package:mosallas/pages/register/get_password.dart';
 import 'package:mosallas/state_management/timer_provider.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
@@ -182,8 +183,10 @@ class VerificationPageState extends State<VerificationPage>{
                       SubmitButton(text: "ادامه",
                         onPressed: () async {
                           await Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => const GetNamePage()));
-                        print(_code);},
+                              context, MaterialPageRoute(builder: (context) =>
+                          AppConstants.USER_TYPE=="normal"?
+                              const GetNamePage():const GetPasswordPage()));
+                        },
                         isDisable: false,
                       ),
                     ],

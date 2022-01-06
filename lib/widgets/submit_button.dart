@@ -22,7 +22,7 @@ class SubmitButton extends StatelessWidget {
 
     return SizedBox(
         width: width ==0 ? MyStyle.mediaQueryWidth(context, 0.8) : width,
-        height: height ==0  ? MyStyle.mediaQueryHeight(context, 0.08) : height ,
+        height: height ==0  ? MyStyle.mediaQueryHeight(context, 0.075) : height ,
         child:
         ElevatedButton(
           child: Text(

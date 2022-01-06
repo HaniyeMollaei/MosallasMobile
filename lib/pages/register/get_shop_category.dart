@@ -15,18 +15,18 @@ import 'package:mosallas/widgets/text_field.dart';
 
 import 'get_password.dart';
 
-class GetNamePage extends StatefulWidget{
-  const GetNamePage({Key key}) : super(key: key);
+class GetShopCategoryPage extends StatefulWidget{
+  const GetShopCategoryPage({Key key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => GetNamePageState();
+  State<StatefulWidget> createState() => GetShopCategoryPageState();
 
 }
 
-class GetNamePageState extends State<GetNamePage>{
+class GetShopCategoryPageState extends State<GetShopCategoryPage>{
 
-  final TextEditingController _txtMobileNumber = TextEditingController(text: '');
-  final FocusNode _fndMobileNumber = FocusNode();
+  final TextEditingController _txtShopName = TextEditingController(text: '');
+  final FocusNode _fndShopName = FocusNode();
 
   @override
   Widget build(BuildContext c) {
@@ -62,9 +62,9 @@ class GetNamePageState extends State<GetNamePage>{
 
                           ///telephone number 0.08
                           MyTextField(
-                            controller: _txtMobileNumber,
-                            focusNode: _fndMobileNumber,
-                            hint: "نام و نام خانوادگی" ,
+                            controller: _txtShopName,
+                            focusNode: _fndShopName,
+                            hint: "نام فروشگاه" ,
                             keyboardType: TextInputType.text,
                             textAlign: TextAlign.center ,
                             inputFormatters:  <TextInputFormatter>[
@@ -75,7 +75,7 @@ class GetNamePageState extends State<GetNamePage>{
 
                           ///0.01
                           SizedBox(
-                            height: MyStyle.mediaQueryHeight(context, 0.04),
+                            height: MyStyle.mediaQueryHeight(context, 0.02),
                           ),
 
                           ///enter city  0.035
@@ -83,14 +83,10 @@ class GetNamePageState extends State<GetNamePage>{
                             padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.09)),
                             child: SizedBox(
                               height: MyStyle.mediaQueryHeight(context, 0.035),
-                              child: Align(
+                              child: const Align(
                                 alignment: Alignment.centerRight,
-                                child: InkWell(
-                                    onTap: (){
-                                      print("Forgot password");
-                                    },
-                                    child: const Text(".شهرستان خود را انتخاب کنید",
-                                        style: MyStyle.lightGrayTextStyle)),
+                                child: Text(".شهرستان خود را انتخاب کنید",
+                                    style: MyStyle.lightGrayTextStyle),
                               ),
                             ),
                           ),
@@ -111,6 +107,35 @@ class GetNamePageState extends State<GetNamePage>{
                               ],
                             ),
                           ),
+                          ///0.01
+                          SizedBox(
+                            height: MyStyle.mediaQueryHeight(context, 0.02),
+                          ),
+
+                          ///enter category  0.035
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.09)),
+                            child: SizedBox(
+                              height: MyStyle.mediaQueryHeight(context, 0.035),
+                              child: const Align(
+                                alignment: Alignment.centerRight,
+                                child: Text(".دسته بندی محصولات خود را مشخص کنید",
+                                    style: MyStyle.lightGrayTextStyle),
+                              ),
+                            ),
+                          ),
+
+                          ///0.01
+                          SizedBox(
+                            height: MyStyle.mediaQueryHeight(context, 0.01),
+                          ),
+
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.09)),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                          child: MyDrawer(text: "دسته بندی",content: Text("پوشاک"),)),
+                          ),
 
 
                           ///0.04
@@ -119,11 +144,11 @@ class GetNamePageState extends State<GetNamePage>{
                           ),
 
                           ///Login Button 0.08
-                          SubmitButton(text:"ادامه",
+                          SubmitButton(text:"ثبت نام",
                             onPressed: () async {
                               await Navigator.push(
                                   context, MaterialPageRoute(builder: (context) => const GetPasswordPage()));
-                              print("Logiiiiiiiiin");},
+                              },
                             isDisable: false,
                           ),
                         ],
