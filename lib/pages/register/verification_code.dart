@@ -2,27 +2,25 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mosallas/pages/register/verification_code.dart';
 import 'package:mosallas/utils/my_style.dart';
-import 'package:mosallas/utils/storage_utils.dart';
 import 'package:mosallas/widgets/login_register_bottom.dart';
 import 'package:mosallas/widgets/submit_button.dart';
 import 'package:mosallas/widgets/text_field.dart';
 
-class LoginPage extends StatefulWidget{
-  const LoginPage({Key key}) : super(key: key);
+class VerificationPage extends StatefulWidget{
+  const VerificationPage({Key key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => LoginPageState();
+  State<StatefulWidget> createState() => VerificationPageState();
 
 }
 
-class LoginPageState extends State<LoginPage>{
+class VerificationPageState extends State<VerificationPage>{
 
   TextEditingController _txtMobileNumber = TextEditingController(text: '');
   FocusNode _fndMobileNumber = new FocusNode();
-  TextEditingController _txtPassword = TextEditingController(text: '');
-  FocusNode _fndPassword = new FocusNode();
+  TextEditingController _txtVerificationCode = TextEditingController(text: '');
+  FocusNode _fndVerificationCode = new FocusNode();
 
 
   @override
@@ -88,9 +86,9 @@ class LoginPageState extends State<LoginPage>{
 
                       ///Password 0.08
                       MyTextField(
-                        controller: _txtPassword,
-                        focusNode: _fndPassword,
-                        hint: "رمز عبور" ,
+                        controller: _txtVerificationCode,
+                        focusNode: _fndVerificationCode,
+                        hint: "- - - - - -" ,
                         obscureText: true,
                         keyboardType: TextInputType.text,
                         textAlign: TextAlign.center ,
@@ -136,11 +134,7 @@ class LoginPageState extends State<LoginPage>{
                   ),
 
                   ///1 - 0.79 = 0.21
-                  LoginRegisterBottom(text:"ساخت حساب کاربری",
-                    onPressed: () async {
-                    await StorageUtil.setDataInSP("UserType", "normal");
-                    await Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => VerificationPage()));
+                  LoginRegisterBottom(text:"ساخت حساب کاربری",onPressed: (){
                     print("Go To Register");
                   },)
                 ]),

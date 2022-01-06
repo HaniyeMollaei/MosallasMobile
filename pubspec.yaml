@@ -5,7 +5,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.11.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -15,12 +15,14 @@ dependencies:
   flutter_svg: 0.22.0
   http: 0.13.3
   package_info: 2.0.2
-  persian_number_utility: 0.3.4
+  mask_text_input_formatter: ^2.0.0
   provider: 5.0.0
   share: 2.0.1
   shared_preferences: 2.0.5
   connectivity: 3.0.6
   sliding_up_panel: ^2.0.0+1
+  persian_number_utility: 0.3.4
+
 
 dev_dependencies:
   flutter_test:
@@ -41,7 +43,7 @@ flutter:
         - asset: assets/font/Farnaz.ttf
     - family: Koodak
       fonts:
-        - asset: assets/font/Koodak.ttf
+        - asset: assets/font/Farnaz.ttf
     - family: DanaRegular
       fonts:
         - asset: assets/font/DanaRegular.ttf
@@ -54,6 +56,6 @@ flutter:
     - family: DanaMedium
       fonts:
         - asset: assets/font/DanaMedium.ttf
-    - family: DanaMedium
+    - family: DanaFaNumMedium
       fonts:
         - asset: assets/font/DanaFaNumMedium.ttf

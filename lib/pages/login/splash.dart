@@ -2,12 +2,17 @@
 /// Last Edited: 4/18/2021 11:04 AM
 
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mosallas/utils/my_general_utils.dart';
 import 'package:mosallas/utils/my_style.dart';
+import 'package:mosallas/widgets/snackbar.dart';
 import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
+
+import 'login.dart';
 
 class Splash extends StatefulWidget {
   @override
@@ -17,7 +22,7 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   String _version = "";
   static const String _CLASS_NAME = 'Splash';
-  late Timer timer;
+  Timer timer;
   bool connectionStatus = true;
   var appInfo = PackageInfo(
     appName: '',
@@ -35,7 +40,7 @@ class _SplashState extends State<Splash> {
   }
 
   Future startTime() async {
-    timer = Timer(Duration(seconds: 5), () {print("Tamaaaaam");});
+    timer = Timer(Duration(seconds: 5), navigateToLoginPage);
   }
 
   int daysBetween(DateTime from, DateTime to) {
@@ -50,6 +55,20 @@ class _SplashState extends State<Splash> {
     super.initState();
     getInfo();
   }
+
+  Future<void> navigateToLoginPage() async {
+    bool connectedToInternet = await MyStyle.checkConnection();
+    if (connectedToInternet) {
+      await Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => LoginPage()));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(CustomSnackbar.snackBar(
+          "شما به اینترنت نمی باشید.",
+          0,
+          context));
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +88,8 @@ class _SplashState extends State<Splash> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-              SvgPicture.asset('assets/svg/logo2.svg', width: MyStyle.mediaQueryWidth(context, 0.4),),
+              SvgPicture.asset('assets/svg/logo2.svg', width: MyStyle.mediaQueryWidth(context, 1) <=700 ?
+              MyStyle.mediaQueryHeight(context, 0.25) : 160,),
               SizedBox(
                 height: MyStyle.mediaQueryHeight(context, 0.04),
               ),
@@ -77,12 +97,12 @@ class _SplashState extends State<Splash> {
 
             ]),
           ),
-          Align(
+            if (!Utils.isTextEmpty(_version)) Align(
             alignment: Alignment.bottomCenter,
             child:  Padding(
               padding: EdgeInsets.only(bottom:  MyStyle.mediaQueryHeight(context, 0.03)),
                 child: Text("$_version  ورژن", style: MyStyle.lightTextStyle)),
-          )]
+          ) else Container()]
         ),
       ),
     );

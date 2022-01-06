@@ -2,28 +2,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mosallas/pages/register/verification_code.dart';
 import 'package:mosallas/utils/my_style.dart';
-import 'package:mosallas/utils/storage_utils.dart';
 import 'package:mosallas/widgets/login_register_bottom.dart';
 import 'package:mosallas/widgets/submit_button.dart';
 import 'package:mosallas/widgets/text_field.dart';
 
-class LoginPage extends StatefulWidget{
-  const LoginPage({Key key}) : super(key: key);
+class GetPhoneNumberPage extends StatefulWidget{
+  const GetPhoneNumberPage({Key key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => LoginPageState();
+  State<StatefulWidget> createState() => GetPhoneNumberPageState();
 
 }
 
-class LoginPageState extends State<LoginPage>{
+class GetPhoneNumberPageState extends State<GetPhoneNumberPage>{
 
   TextEditingController _txtMobileNumber = TextEditingController(text: '');
   FocusNode _fndMobileNumber = new FocusNode();
-  TextEditingController _txtPassword = TextEditingController(text: '');
-  FocusNode _fndPassword = new FocusNode();
-
 
   @override
   Widget build(BuildContext c) {
@@ -67,6 +62,29 @@ class LoginPageState extends State<LoginPage>{
                         ),
                       ),
 
+                      ///Forget Password  0.035
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.09)),
+                        child: SizedBox(
+                          height: MyStyle.mediaQueryHeight(context, 0.035),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: InkWell(
+                                onTap: (){
+                                  print("Forgot password");
+                                },
+                                child: const Text("رمز عبور خود را فراموش کرده اید؟",
+                                    style: MyStyle.lightGrayTextStyle)),
+                          ),
+                        ),
+                      ),
+
+                      ///0.04
+                      SizedBox(
+                        height: MyStyle.mediaQueryHeight(context, 0.04),
+                      ),
+
+
                       ///telephone number 0.08
                       MyTextField(
                         controller: _txtMobileNumber,
@@ -86,49 +104,10 @@ class LoginPageState extends State<LoginPage>{
                         height: MyStyle.mediaQueryHeight(context, 0.01),
                       ),
 
-                      ///Password 0.08
-                      MyTextField(
-                        controller: _txtPassword,
-                        focusNode: _fndPassword,
-                        hint: "رمز عبور" ,
-                        obscureText: true,
-                        keyboardType: TextInputType.text,
-                        textAlign: TextAlign.center ,
-                        inputFormatters:  <TextInputFormatter>[
-                          LengthLimitingTextInputFormatter(
-                              8),
-                        ],
-                      ),
 
-                      ///0.015
-                      SizedBox(
-                        height: MyStyle.mediaQueryHeight(context, 0.015),
-                      ),
-
-                      ///Forget Password  0.035
-                       Padding(
-                         padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.09)),
-                         child: SizedBox(
-                           height: MyStyle.mediaQueryHeight(context, 0.035),
-                           child: Align(
-                             alignment: Alignment.centerRight,
-                             child: InkWell(
-                               onTap: (){
-                                 print("Forgot password");
-                               },
-                                 child: const Text("رمز عبور خود را فراموش کرده اید؟",
-                                     style: MyStyle.lightGrayTextStyle)),
-                           ),
-                         ),
-                       ),
-
-                      ///0.04
-                      SizedBox(
-                        height: MyStyle.mediaQueryHeight(context, 0.04),
-                      ),
 
                       ///Login Button 0.08
-                      SubmitButton(text: "ورود",
+                      SubmitButton(text: "ارسال کد",
                         onPressed: (){print("Logiiiiiiiiin");},
                         isDisable: false,
                       ),
@@ -136,11 +115,7 @@ class LoginPageState extends State<LoginPage>{
                   ),
 
                   ///1 - 0.79 = 0.21
-                  LoginRegisterBottom(text:"ساخت حساب کاربری",
-                    onPressed: () async {
-                    await StorageUtil.setDataInSP("UserType", "normal");
-                    await Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => VerificationPage()));
+                  LoginRegisterBottom(text:"ورود به حساب کاربری",onPressed: (){
                     print("Go To Register");
                   },)
                 ]),
