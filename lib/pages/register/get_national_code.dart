@@ -84,9 +84,8 @@ class GetNationalCodePageState extends State<GetNationalCodePage>{
                             keyboardType: TextInputType.phone,
                             textAlign: TextAlign.center ,
                             inputFormatters:  <TextInputFormatter>[
-                              MyStyle.mobileNumberFormatter,
                               LengthLimitingTextInputFormatter(
-                                  13),
+                                  11),
                             ],
                           ),
 

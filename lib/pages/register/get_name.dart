@@ -105,13 +105,13 @@ class GetNamePageState extends State<GetNamePage>{
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                MyDrawer(text: "شهرستان",content: Text("زنجان"),),
-                                MyDrawer(text: "استان",content: Text("زنجان"),),
-
+                                MyDrawer(text: "شهرستان",attribute:"BUYER_CITY",
+                                  content: const ["زنجان" , "سلطانیه" ,  "ابهر" ,  "خرمدره" , " ماهنشان" , "ایجرود","قیدار" , " هیدج" , "صائین قلعه"],),
+                                MyDrawer(text: "استان",attribute:"BUYER_PROVINCE",
+                                  content: const ["زنجان" , "تهران" ,  "مشهد" ,  "قزوین" , " اردبیل" , "اصفهان"],),
                               ],
                             ),
                           ),
-
 
                           ///0.04
                           SizedBox(
@@ -123,7 +123,7 @@ class GetNamePageState extends State<GetNamePage>{
                             onPressed: () async {
                               await Navigator.push(
                                   context, MaterialPageRoute(builder: (context) => const GetPasswordPage()));
-                              print("Logiiiiiiiiin");},
+                              },
                             isDisable: false,
                           ),
                         ],
@@ -132,8 +132,7 @@ class GetNamePageState extends State<GetNamePage>{
                       ///1 - 0.79 = 0.21
                       LoginRegisterBottom(text:"ورود به حساب کاربری",onPressed: () async {
                         await Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => LoginPage()));
-                        print("Go To Login");
+                            context, MaterialPageRoute(builder: (context) => const LoginPage()));
                       },)
                     ]),
               ),

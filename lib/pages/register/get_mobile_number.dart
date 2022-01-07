@@ -6,6 +6,7 @@ import 'package:mosallas/pages/login/login.dart';
 import 'package:mosallas/pages/register/verification_code.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
+import 'package:mosallas/utils/storage_utils.dart';
 import 'package:mosallas/widgets/large_logo.dart';
 import 'package:mosallas/widgets/login_register_bottom.dart';
 import 'package:mosallas/widgets/register_shops_and_buyers.dart';
@@ -98,9 +99,12 @@ class GetPhoneNumberPageState extends State<GetPhoneNumberPage>{
                       ///Login Button 0.08
                       SubmitButton(text: "ارسال کد",
                         onPressed: () async {
+                          AppConstants.setConstant(attribute: "MOBILE_NUMBER", choosedValue: _txtMobileNumber.text.replaceAll(" ", ""));
+                          await StorageUtil.setDataInSP("MOBILE_NUMBER", _txtMobileNumber.text.replaceAll(" ", ""));
+                          AppConstants.getAllConstants();
                           await Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => VerificationPage()));
-                          print("Logiiiiiiiiin");},
+                              context, MaterialPageRoute(builder: (context) => const VerificationPage()));
+                        },
                         isDisable: false,
                       ),
                     ],
@@ -109,8 +113,7 @@ class GetPhoneNumberPageState extends State<GetPhoneNumberPage>{
                   ///1 - 0.79 = 0.21
                   LoginRegisterBottom(text:"ورود به حساب کاربری",onPressed: () async {
                     await Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => LoginPage()));
-                    print("Go To Login");
+                        context, MaterialPageRoute(builder: (context) => const LoginPage()));
                   },)
                 ]),
           ),

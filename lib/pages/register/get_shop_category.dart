@@ -101,8 +101,10 @@ class GetShopCategoryPageState extends State<GetShopCategoryPage>{
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                MyDrawer(text: "شهرستان",content: Text("زنجان"),),
-                                MyDrawer(text: "استان",content: Text("زنجان"),),
+                                MyDrawer(text: "شهرستان",attribute:"SHOP_CITY",
+                                  content: const ["زنجان" , "سلطانیه" ,  "ابهر" ,  "خرمدره" , " ماهنشان" , "ایجرود","قیدار" , " هیدج" , "صائین قلعه"],),
+                                MyDrawer(text: "استان",attribute:"SHOP_PROVINCE",
+                                  content: const ["زنجان" , "تهران" ,  "مشهد" ,  "قزوین" , " اردبیل" , "اصفهان"],),
 
                               ],
                             ),
@@ -134,7 +136,8 @@ class GetShopCategoryPageState extends State<GetShopCategoryPage>{
                             padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.09)),
                             child: Align(
                               alignment: Alignment.centerLeft,
-                          child: MyDrawer(text: "دسته بندی",content: Text("پوشاک"),)),
+                          child: MyDrawer(text: "دسته بندی",attribute: "SHOP_CATEGORY",
+                            content:const ["پوشاک","لوازم خانگی","خوار و بار","پارچه فروشی","قطعات خودرو",] , )),
                           ),
 
 

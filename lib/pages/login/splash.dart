@@ -54,15 +54,16 @@ class _SplashState extends State<Splash> {
   }
 
   Future<void> navigateToLoginPage() async {
+    await StorageUtil.clearAllSP();
     AppConstants.USER_TYPE = await StorageUtil.getDataFromSP("UserType") ?? "normal";
-    print("User Type : ${AppConstants.USER_TYPE}");
+    AppConstants.getAllConstants();
     bool connectedToInternet = await MyStyle.checkConnection();
     if (connectedToInternet) {
       await Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => LoginPage()));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(CustomSnackbar.snackBar(
-          "شما به اینترنت نمی باشید.",
+          ".شما به اینترنت وصل نمی باشید",
           0,
           context));
     }

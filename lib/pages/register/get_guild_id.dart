@@ -81,8 +81,7 @@ class GetGuildIdPageState extends State<GetGuildIdPage> {
                         keyboardType: TextInputType.phone,
                         textAlign: TextAlign.center,
                         inputFormatters: <TextInputFormatter>[
-                          MyStyle.mobileNumberFormatter,
-                          LengthLimitingTextInputFormatter(13),
+                          LengthLimitingTextInputFormatter(10),
                         ],
                       ),
 

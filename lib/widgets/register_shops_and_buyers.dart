@@ -22,7 +22,10 @@ class _RegisterShopAndBuyersState extends State<RegisterShopAndBuyers> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        AppConstants.USER_TYPE = widget.type =="normal"? "shop":"normal";
+       // final userType = await StorageUtil.getDataFromSP("USER_TYPE");
+        await StorageUtil.clearAllSP();
+        AppConstants.clearAllConstants();
+        AppConstants.setConstant(attribute: "USER_TYPE" ,choosedValue:  widget.type =="normal"? "shop":"normal" );
         await StorageUtil.setDataInSP("UserType", widget.type =="normal"? "shop":"normal");
         await Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => const GetPhoneNumberPage()));

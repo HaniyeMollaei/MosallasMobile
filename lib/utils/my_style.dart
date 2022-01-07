@@ -58,6 +58,12 @@ class MyStyle {
       fontFamily: textMediumFont
   );
 
+  static const lightPinkTextStyle = TextStyle(
+      fontSize: S13,
+      color: headerDarkPink,
+      fontFamily: textMediumFont
+  );
+
   static const whiteLightTextStyle = TextStyle(
       fontSize: S11,
       color: white,
