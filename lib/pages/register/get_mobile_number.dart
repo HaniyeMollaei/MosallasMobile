@@ -64,7 +64,7 @@ class GetPhoneNumberPageState extends State<GetPhoneNumberPage>{
                           child: const Align(
                             alignment: Alignment.centerRight,
                             child: Text(".شماره موبایل خود را وارد کنید",
-                                style: MyStyle.lightGrayTextStyle),
+                                style: MyStyle.lightGrayTextStyleS13),
                           ),
                         ),
                       ),

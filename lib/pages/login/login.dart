@@ -104,7 +104,7 @@ class LoginPageState extends State<LoginPage>{
                                  print("Forgot password");
                                },
                                  child: const Text("رمز عبور خود را فراموش کرده اید؟",
-                                     style: MyStyle.lightGrayTextStyle)),
+                                     style: MyStyle.lightGrayTextStyleS13)),
                            ),
                          ),
                        ),

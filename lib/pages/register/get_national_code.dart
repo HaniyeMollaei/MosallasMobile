@@ -65,7 +65,7 @@ class GetNationalCodePageState extends State<GetNationalCodePage>{
                               child: const Align(
                                 alignment: Alignment.centerRight,
                                 child: Text(".کد ملی خود را وارد کنید",
-                                    style: MyStyle.lightGrayTextStyle),
+                                    style: MyStyle.lightGrayTextStyleS13),
                               ),
                             ),
                           ),

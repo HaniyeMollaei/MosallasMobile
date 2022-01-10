@@ -34,7 +34,7 @@ class _BottomSheetListItemState extends State<BottomSheetListItem> {
                     height: 16) : Container(),
                 Padding(
                   padding:  const EdgeInsets.only(right: 8.0 , left:8.0),
-                  child: Text(widget.value.toString(), style: MyStyle.lightGrayTextStyle),
+                  child: Text(widget.value.toString(), style: MyStyle.lightGrayTextStyleS13),
                 ),
 
 

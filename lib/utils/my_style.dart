@@ -21,7 +21,6 @@ class MyStyle {
 
   static const String appName = "مثلث";
 
-
   static const Color disableButtonColor = Color(0xffFFB2B2);
   static const Color lightPink = Color(0xffF08D8D);
   static const Color headerDarkPink = Color(0xffE06C6C);
@@ -43,7 +42,6 @@ class MyStyle {
     color: white,
   );
 
-
   static const whiteWalletAmountStyle = TextStyle(
     fontFamily: headerFont,
     fontSize: S17,
@@ -61,6 +59,12 @@ class MyStyle {
     color: headerDarkPink,
   );
 
+  static const redSmallHeaderStyle = TextStyle(
+    fontFamily: headerFont,
+    fontSize: S17,
+    color: headerDarkPink,
+  );
+
   static const lightTextStyle = TextStyle(
       fontSize: S13,
       color: white,
@@ -73,8 +77,14 @@ class MyStyle {
       fontFamily: textRegularFont
   );
 
-  static const lightGrayTextStyle = TextStyle(
+  static const lightGrayTextStyleS13 = TextStyle(
       fontSize: S13,
+      color: lightGrayText,
+      fontFamily: textMediumFont
+  );
+
+  static const lightGrayTextStyleS11 = TextStyle(
+      fontSize: S11,
       color: lightGrayText,
       fontFamily: textMediumFont
   );

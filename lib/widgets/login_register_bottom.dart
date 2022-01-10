@@ -27,7 +27,7 @@ class _LoginRegisterBottomState extends State<LoginRegisterBottom> {
             child: GestureDetector(
                 onTap: widget.onPressed,
                 child:  Text(widget.text,
-                    style: MyStyle.lightGrayTextStyle)),
+                    style: MyStyle.lightGrayTextStyleS13)),
           ),
         ]
     );

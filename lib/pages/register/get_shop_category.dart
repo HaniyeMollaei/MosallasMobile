@@ -86,7 +86,7 @@ class GetShopCategoryPageState extends State<GetShopCategoryPage>{
                               child: const Align(
                                 alignment: Alignment.centerRight,
                                 child: Text(".شهرستان خود را انتخاب کنید",
-                                    style: MyStyle.lightGrayTextStyle),
+                                    style: MyStyle.lightGrayTextStyleS13),
                               ),
                             ),
                           ),
@@ -122,7 +122,7 @@ class GetShopCategoryPageState extends State<GetShopCategoryPage>{
                               child: const Align(
                                 alignment: Alignment.centerRight,
                                 child: Text(".دسته بندی محصولات خود را مشخص کنید",
-                                    style: MyStyle.lightGrayTextStyle),
+                                    style: MyStyle.lightGrayTextStyleS13),
                               ),
                             ),
                           ),

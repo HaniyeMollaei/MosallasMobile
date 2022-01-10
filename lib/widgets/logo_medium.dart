@@ -15,7 +15,7 @@ class MediumLogo extends StatefulWidget {
 class _MediumLogoState extends State<MediumLogo> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Container(//height = 0.15
       height: MyStyle.mediaQueryHeight(context, 0.06),
       width: MyStyle.mediaQueryWidth(context, 1),
       margin: EdgeInsets.only(

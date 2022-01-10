@@ -64,7 +64,7 @@ class GetGuildIdPageState extends State<GetGuildIdPage> {
                           height: MyStyle.mediaQueryHeight(context, 0.035),
                           child: const Align(
                             alignment: Alignment.centerRight,
-                            child: Text(".کد شناسه ی صنفی خود را وارد کنید", style: MyStyle.lightGrayTextStyle),
+                            child: Text(".کد شناسه ی صنفی خود را وارد کنید", style: MyStyle.lightGrayTextStyleS13),
                           ),
                         ),
                       ),
@@ -115,7 +115,7 @@ class GetGuildIdPageState extends State<GetGuildIdPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                const Text(".قوانین مطالعه و پذیرفته شد", style: MyStyle.lightGrayTextStyle),
+                                const Text(".قوانین مطالعه و پذیرفته شد", style: MyStyle.lightGrayTextStyleS13),
                                 InkWell(
                                   onTap: () {
                                     setState(() {

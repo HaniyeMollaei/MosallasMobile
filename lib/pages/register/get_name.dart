@@ -90,7 +90,7 @@ class GetNamePageState extends State<GetNamePage>{
                                       print("Forgot password");
                                     },
                                     child: const Text(".شهرستان خود را انتخاب کنید",
-                                        style: MyStyle.lightGrayTextStyle)),
+                                        style: MyStyle.lightGrayTextStyleS13)),
                               ),
                             ),
                           ),

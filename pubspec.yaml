@@ -22,6 +22,7 @@ dependencies:
   connectivity: 3.0.6
   sliding_up_panel: ^2.0.0+1
   persian_number_utility: 0.3.4
+  carousel_slider: ^4.0.0
 
 
 dev_dependencies:
@@ -36,6 +37,7 @@ flutter:
   assets:
     - assets/image/
     - assets/svg/
+    - assets/image/off50.jpg
 
   fonts:
     - family: Farnaz

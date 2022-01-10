@@ -76,7 +76,7 @@ class _MyDrawerState extends State<MyDrawer> {
           SvgPicture.asset(
             'assets/svg/bottom_arrow.svg',
           ),
-          Text(widget.text, textAlign: TextAlign.end, style: MyStyle.lightGrayTextStyle),
+          Text(widget.text, textAlign: TextAlign.end, style: MyStyle.lightGrayTextStyleS13),
         ]),
       ),
     );

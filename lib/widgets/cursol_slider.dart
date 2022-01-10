@@ -1,0 +1,113 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:mosallas/utils/my_style.dart';
+
+Widget carouselSlider(BuildContext c, {List<ImageSliderItem> items}) {
+  return CarouselSlider(
+    options: CarouselOptions(
+      height: MyStyle.mediaQueryHeight(c, 0.2),
+      autoPlay: true,
+      autoPlayInterval: Duration(seconds: 5),
+      enlargeCenterPage: true,
+      pageSnapping: true,
+      scrollDirection: Axis.horizontal,
+      aspectRatio: 2.0,
+    ),
+    items: items.map((i) {
+      print(i.path);
+      return Builder(
+        builder: (BuildContext context) {
+          return InkWell(
+            onTap: i.onTap,
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(MyStyle.borderRadius4),
+                child: Image.asset(
+                  i.path,
+                )),
+          );
+        },
+      );
+    }).toList(),
+  );
+}
+
+class ImageSliderItem {
+  Function onTap;
+  String path;
+  ImageSliderItem(this.path, this.onTap);
+}
+
+
+/// Used in home page
+class CarouselWithIndicatorDemo extends StatefulWidget {
+  final List<ImageSliderItem> items;
+
+  const CarouselWithIndicatorDemo({Key key, this.items}) : super(key: key);
+  @override
+  State<StatefulWidget> createState() {
+    return _CarouselWithIndicatorState();
+  }
+}
+
+class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
+  int _current = 0;
+  final CarouselController _controller = CarouselController();
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: MyStyle.mediaQueryHeight(context, 0.25),
+      child: Column(children: [
+          Expanded(
+            child: CarouselSlider(
+              items: widget.items.map((i) {
+                print(i.path);
+                return Builder(
+                  builder: (BuildContext context) {
+                    return InkWell(
+                      onTap: i.onTap,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(MyStyle.borderRadius2),
+                        child: Image.asset(
+                          i.path,
+                        ),
+                      ),
+                    );
+                  },
+                );
+              }).toList(),
+              carouselController: _controller,
+              options: CarouselOptions(
+                  autoPlay: true,
+                  enlargeCenterPage: true,
+                  aspectRatio: 2.0,
+                  height: MyStyle.mediaQueryHeight(context, 0.2),
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _current = index;
+                    });
+                  }),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: widget.items.asMap().entries.map((entry) {
+              return GestureDetector(
+                onTap: () => _controller.animateToPage(entry.key),
+                child: Container(
+                  width: 8.0,
+                  height: 8.0,
+                  margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: (Theme.of(context).brightness == Brightness.dark ? MyStyle.lightGrayText : MyStyle.disableButtonColor)
+                          .withOpacity(_current == entry.key ? 0.9 : 0.4)),
+                ),
+              );
+            }).toList(),
+          ),
+        ]),
+    );
+  }
+}

@@ -153,7 +153,7 @@ class VerificationPageState extends State<VerificationPage>{
                                        }
                                      },
                                      child:  const Text("ارسال مجدد",
-                                         style: MyStyle.lightGrayTextStyle),
+                                         style: MyStyle.lightGrayTextStyleS13),
                                    )
                                        : CountDownTimer(
                                      secondsRemaining:  _timerProvider.time,
@@ -164,7 +164,7 @@ class VerificationPageState extends State<VerificationPage>{
                                          _code = "";
                                        });
                                      },
-                                     countDownTimerStyle:MyStyle.lightGrayTextStyle,
+                                     countDownTimerStyle:MyStyle.lightGrayTextStyleS13,
                                    ),
                                  ],
                                ),

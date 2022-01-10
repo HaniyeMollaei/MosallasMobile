@@ -95,7 +95,7 @@ class _BuyerBottomNavBarState extends State<BuyerBottomNavBar> {
             SizedBox(
               height: MyStyle.mediaQueryHeight(context, 0.01),
             ),
-            Text(name , style: isEnable ?  MyStyle.lightPinkTextStyle : MyStyle.lightGrayTextStyle ,),
+            Text(name , style: isEnable ?  MyStyle.lightPinkTextStyle : MyStyle.lightGrayTextStyleS13 ,),
 
           ],
         ),
