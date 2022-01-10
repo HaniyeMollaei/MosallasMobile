@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mosallas/pages/buyers/home/home.dart';
 import 'package:mosallas/pages/register/get_mobile_number.dart';
+import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/utils/storage_utils.dart';
-import 'package:mosallas/widgets/large_logo.dart';
+import 'package:mosallas/widgets/logo_large.dart';
 import 'package:mosallas/widgets/login_register_bottom.dart';
 import 'package:mosallas/widgets/submit_button.dart';
 import 'package:mosallas/widgets/text_field.dart';
@@ -114,7 +116,15 @@ class LoginPageState extends State<LoginPage>{
 
                       ///Login Button 0.08
                       SubmitButton(text: "ورود",
-                        onPressed: (){print("Logiiiiiiiiin");
+                        onPressed: () async {
+                        AppConstants.USER_TYPE= "normal";
+                        AppConstants.BUYER_CITY ="سلطانیه";
+                        AppConstants.BUYER_PROVINCE= "زنجان";
+
+
+                        await Navigator.pushReplacement(
+                              context, MaterialPageRoute(builder: (context) => const BuyerHome()));
+
                         },
                         isDisable: false,
                       ),
@@ -126,8 +136,7 @@ class LoginPageState extends State<LoginPage>{
                     onPressed: () async {
                     await StorageUtil.setDataInSP("UserType", "normal");
                     await Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => GetPhoneNumberPage()));
-                    print("Go To Register");
+                        context, MaterialPageRoute(builder: (context) => const GetPhoneNumberPage()));
                   },)
                 ]),
           ),

@@ -6,8 +6,9 @@ import 'package:mosallas/pages/login/login.dart';
 import 'package:mosallas/pages/register/verification_code.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
-import 'package:mosallas/widgets/large_logo.dart';
+import 'package:mosallas/widgets/logo_large.dart';
 import 'package:mosallas/widgets/login_register_bottom.dart';
+import 'package:mosallas/widgets/radio_button.dart';
 import 'package:mosallas/widgets/register_shops_and_buyers.dart';
 import 'package:mosallas/widgets/submit_button.dart';
 import 'package:mosallas/widgets/text_field.dart';
@@ -121,27 +122,7 @@ class GetGuildIdPageState extends State<GetGuildIdPage> {
                                       accepted = !accepted;
                                     });
                                   },
-                                  child: Container(
-                                    height: 18,
-                                    width: 18,
-                                    decoration: BoxDecoration(
-                                        color: MyStyle.white,
-                                        borderRadius: const BorderRadius.all(Radius.circular(MyStyle.borderRadius5)),
-                                        border: Border.all(
-                                          color: MyStyle.headerDarkPink,
-                                          width: 2,
-                                        )),
-                                    child: Center(
-                                      child: Container(
-                                        height: 10,
-                                        width: 10,
-                                        decoration: BoxDecoration(
-                                          color: accepted ? MyStyle.headerDarkPink : MyStyle.white,
-                                          borderRadius: const BorderRadius.all(Radius.circular(MyStyle.borderRadius5)),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                  child: MyRadioButton(context, value: accepted),
                                 )
                               ],
                             ),

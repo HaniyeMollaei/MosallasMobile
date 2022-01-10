@@ -33,6 +33,8 @@ class MyStyle {
   static const Color lightGrayText = Color(0xff868686);
   static const Color backgroundColor = Color(0xffF6F4F4);
   static const Color white = Color(0xffFFFFFF);
+  static const Color darkText = Color(0xff363853);
+
 
 
   static const whiteHeaderStyle = TextStyle(
@@ -40,9 +42,22 @@ class MyStyle {
     fontSize: appNameFontSize,
     color: white,
   );
-  static const redHeaderStyle = TextStyle(
+
+
+  static const whiteWalletAmountStyle = TextStyle(
+    fontFamily: headerFont,
+    fontSize: S17,
+    color: white,
+  );
+  static const redLargeHeaderStyle = TextStyle(
     fontFamily: headerFont,
     fontSize: appNameFontSize,
+    color: headerDarkPink,
+  );
+
+  static const redMediumHeaderStyle = TextStyle(
+    fontFamily: headerFont,
+    fontSize: S22,
     color: headerDarkPink,
   );
 
@@ -50,6 +65,12 @@ class MyStyle {
       fontSize: S13,
       color: white,
     fontFamily: textLightFont
+  );
+
+  static const darkTextStyle = TextStyle(
+      fontSize: S13,
+      color: darkText,
+      fontFamily: textRegularFont
   );
 
   static const lightGrayTextStyle = TextStyle(
@@ -98,6 +119,7 @@ class MyStyle {
   static const String numberFont =      'Koodak';
 
   static final mobileNumberFormatter = new MaskTextInputFormatter(mask: '#### ### ####', filter: { "#": RegExp(r'[0-9]') });
+  static final cardNumberFormatter = new MaskTextInputFormatter(mask: '#### #### #### ####', filter: { "#": RegExp(r'[0-9]') });
 
 
   static Future<bool> checkConnection() async {

@@ -14,7 +14,7 @@ class SubmitButton extends StatelessWidget {
 
 
   SubmitButton(
-      {this.text ,  this.onPressed , this.width =0, this.height=0, this.textSize = 20,
+      {this.text ,  this.onPressed , this.width =0, this.height=0, this.textSize = MyStyle.S17,
         this.isDisable = false ,  this.buttonColor = MyStyle.headerDarkPink});
 
   @override
@@ -32,6 +32,7 @@ class SubmitButton extends StatelessWidget {
               fontFamily: MyStyle.textMediumFont,
               fontSize: textSize,
             ),
+            textAlign: TextAlign.center,
           ),
           style: ButtonStyle(
               elevation: MaterialStateProperty.all<double>(0),

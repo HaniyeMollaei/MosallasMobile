@@ -9,6 +9,7 @@ class AppConstants{
   static String MOBILE_NUMBER ;
   static String BUYER_PROVINCE ;
   static String BUYER_CITY ;
+  static int BALANCE = 0 ;
 
   static clearAllConstants(){
     USER_TYPE = null;
@@ -18,6 +19,7 @@ class AppConstants{
     BUYER_PROVINCE = null ;
     BUYER_CITY = null;
     MOBILE_NUMBER = null;
+    BALANCE = 0;
   }
 
   static getAllConstants(){
@@ -28,6 +30,7 @@ class AppConstants{
     print("BUYER_PROVINCE:  $BUYER_PROVINCE ");
     print("BUYER_CITY:      $BUYER_CITY ");
     print("MOBILE_NUMBER:   $MOBILE_NUMBER ");
+    print("BALANCE:         ${BALANCE.toString()} ");
   }
 
   static setConstant({String attribute , String choosedValue}){
@@ -52,6 +55,9 @@ class AppConstants{
         break;
       case "USER_TYPE":
         USER_TYPE = choosedValue;
+        break;
+      case "BALANCE":
+        BALANCE = int.parse(choosedValue);
         break;
       default:
         break;

@@ -23,7 +23,7 @@ class _LargeLogoState extends State<LargeLogo> {
          SizedBox(
            height: MyStyle.mediaQueryHeight(context, 0.03),
          ),
-         const Text(" ${MyStyle.appName}   ", style: MyStyle.redHeaderStyle),
+         const Text(" ${MyStyle.appName}   ", style: MyStyle.redLargeHeaderStyle),
          SizedBox(
            height: MyStyle.mediaQueryHeight(context, 0.02),
          ),

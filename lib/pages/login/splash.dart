@@ -56,6 +56,7 @@ class _SplashState extends State<Splash> {
   Future<void> navigateToLoginPage() async {
     await StorageUtil.clearAllSP();
     AppConstants.USER_TYPE = await StorageUtil.getDataFromSP("UserType") ?? "normal";
+    AppConstants.USER_TYPE = AppConstants.USER_TYPE ?? 0 ;
     AppConstants.getAllConstants();
     bool connectedToInternet = await MyStyle.checkConnection();
     if (connectedToInternet) {

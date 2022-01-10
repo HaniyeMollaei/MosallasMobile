@@ -8,7 +8,7 @@ import 'package:mosallas/state_management/timer_provider.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/count_down_timer.dart';
-import 'package:mosallas/widgets/large_logo.dart';
+import 'package:mosallas/widgets/logo_large.dart';
 import 'package:mosallas/widgets/login_register_bottom.dart';
 import 'package:mosallas/widgets/register_shops_and_buyers.dart';
 import 'package:mosallas/widgets/snackbar.dart';

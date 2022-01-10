@@ -7,7 +7,7 @@ import 'package:mosallas/pages/register/verification_code.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/utils/storage_utils.dart';
-import 'package:mosallas/widgets/large_logo.dart';
+import 'package:mosallas/widgets/logo_large.dart';
 import 'package:mosallas/widgets/login_register_bottom.dart';
 import 'package:mosallas/widgets/register_shops_and_buyers.dart';
 import 'package:mosallas/widgets/submit_button.dart';

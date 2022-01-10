@@ -1,13 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mosallas/state_management/bottom_sheet_listview_provider.dart';
-import 'package:mosallas/utils/my_app_constants.dart';
+import 'package:mosallas/pages/buyers/home/home.dart';
+import 'package:mosallas/pages/buyers/wallet/wallet_buyer.dart';
 import 'package:mosallas/utils/my_style.dart';
-import 'package:mosallas/utils/storage_utils.dart';
-import 'package:mosallas/widgets/bottom_sheet.dart';
-import 'package:mosallas/widgets/bottom_sheet_list_item.dart';
-import 'package:provider/provider.dart';
+
 
 class BuyerBottomNavBar extends StatefulWidget {
   int index;
@@ -27,7 +24,7 @@ class _BuyerBottomNavBarState extends State<BuyerBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric( horizontal: MyStyle.mediaQueryWidth(context, 0.04)),
+      padding: EdgeInsets.symmetric( horizontal: MyStyle.mediaQueryWidth(context, 0.06)),
       height: MyStyle.mediaQueryHeight(context, 0.1),
       decoration: const BoxDecoration(
         color: MyStyle.white,
@@ -35,9 +32,45 @@ class _BuyerBottomNavBarState extends State<BuyerBottomNavBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          navBarItem(isEnable: (widget.index == 0) ? true : false ,
+          navBarItem(
+              isEnable: (widget.index == 0) ? true : false ,
             name: "خانه",
-            svgName: ""
+            svgName: "home",
+            onPressed: () async {
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) => BuyerHome(),
+                  transitionDuration: Duration.zero,
+                ),
+              );
+            }
+          ),
+          navBarItem(
+              isEnable: (widget.index == 1) ? true : false ,
+              name: "کیف پول",
+              svgName: "wallet",
+              onPressed: () async {
+                Navigator.pushReplacement(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation1, animation2) => BuyerWallet(),
+                    transitionDuration: Duration.zero,
+                  ),
+                );
+              }
+          ),
+          navBarItem(
+              isEnable: (widget.index == 2) ? true : false ,
+              name: "فروشگاه ها",
+              svgName: "location",
+              onPressed: (){}
+          ),
+          navBarItem(
+              isEnable: (widget.index == 3) ? true : false ,
+              name: "پروفایل",
+              svgName: "profile",
+              onPressed: (){}
           )
         ],
       ),
@@ -48,15 +81,22 @@ class _BuyerBottomNavBarState extends State<BuyerBottomNavBar> {
     return InkWell(
       onTap: onPressed,
       child: SizedBox(
-        height: MyStyle.mediaQueryHeight(context, 0.08),
+        height: MyStyle.mediaQueryHeight(context, 0.09),
         child: Column(
           children: [
+            SizedBox(
+              height: MyStyle.mediaQueryHeight(context, 0.007),
+            ),
             SvgPicture.asset(
               'assets/svg/$svgName.svg',
               color : isEnable ? MyStyle.headerDarkPink : MyStyle.lightGrayText,
-              height: MyStyle.mediaQueryHeight(context, 0.05),
+              height: MyStyle.mediaQueryHeight(context, 0.035),
             ),
-            Text(name , style: isEnable ?  MyStyle.lightPinkTextStyle : MyStyle.lightGrayTextStyle ,)
+            SizedBox(
+              height: MyStyle.mediaQueryHeight(context, 0.01),
+            ),
+            Text(name , style: isEnable ?  MyStyle.lightPinkTextStyle : MyStyle.lightGrayTextStyle ,),
+
           ],
         ),
       ),
