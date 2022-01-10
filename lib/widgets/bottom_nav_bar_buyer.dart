@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mosallas/pages/buyers/home/home.dart';
+import 'package:mosallas/pages/buyers/profile/profile_buyer.dart';
+import 'package:mosallas/pages/buyers/shops/shops.dart';
 import 'package:mosallas/pages/buyers/wallet/wallet_buyer.dart';
 import 'package:mosallas/utils/my_style.dart';
 
@@ -40,7 +42,7 @@ class _BuyerBottomNavBarState extends State<BuyerBottomNavBar> {
               Navigator.pushReplacement(
                 context,
                 PageRouteBuilder(
-                  pageBuilder: (context, animation1, animation2) => BuyerHome(),
+                  pageBuilder: (context, animation1, animation2) => const BuyerHome(),
                   transitionDuration: Duration.zero,
                 ),
               );
@@ -54,7 +56,7 @@ class _BuyerBottomNavBarState extends State<BuyerBottomNavBar> {
                 Navigator.pushReplacement(
                   context,
                   PageRouteBuilder(
-                    pageBuilder: (context, animation1, animation2) => BuyerWallet(),
+                    pageBuilder: (context, animation1, animation2) => const BuyerWallet(),
                     transitionDuration: Duration.zero,
                   ),
                 );
@@ -64,13 +66,29 @@ class _BuyerBottomNavBarState extends State<BuyerBottomNavBar> {
               isEnable: (widget.index == 2) ? true : false ,
               name: "فروشگاه ها",
               svgName: "location",
-              onPressed: (){}
+              onPressed: (){
+                Navigator.pushReplacement(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation1, animation2) => const BuyerShops(),
+                    transitionDuration: Duration.zero,
+                  ),
+                );
+              }
           ),
           navBarItem(
               isEnable: (widget.index == 3) ? true : false ,
               name: "پروفایل",
               svgName: "profile",
-              onPressed: (){}
+              onPressed: (){
+                Navigator.pushReplacement(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation1, animation2) => const BuyerProfile(),
+                    transitionDuration: Duration.zero,
+                  ),
+                );
+              }
           )
         ],
       ),
