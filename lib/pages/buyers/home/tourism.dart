@@ -40,24 +40,27 @@ class TourismState extends State<Tourism> {
                       child: Column(
                         children: [
 
-                          TourismSiteLeftImage(
+                          const TourismSiteItem(
+                            index: 0,
+                            siteCode: "xvf431",
                             siteName: "بازار سنتی زنجان",
                             description: "بازار زنجان طولانی ترین بازار سرپوشیده ایران است.این بازار در دوران آغا محمد خان قاجار آغاز و در سال ۱۲۱۳ در زمان فتحعلی شاه قاجار خاتمه یافته و مساجد و سراها،  گرمابه‌ها در سال ۱۳۲۴ به آن اضافه شده‌است...",
-                            onTap: (){},
                             imagePath: 'assets/image/zanjan_bazar2.jpg',
                           ),
 
-                          TourismSiteRightImage(
+                          const TourismSiteItem(
+                            index: 1,
+                            siteCode: "xvf532",
                             siteName: "بازار سنتی زنجان",
                             description: "بازار زنجان طولانی ترین بازار سرپوشیده ایران است.این بازار در دوران آغا محمد خان قاجار آغاز و در سال ۱۲۱۳ در زمان فتحعلی شاه قاجار خاتمه یافته و مساجد و سراها،  گرمابه‌ها در سال ۱۳۲۴ به آن اضافه شده‌است...",
-                            onTap: (){},
                             imagePath: 'assets/image/zanjan_bazar2.jpg',
                           ),
 
-                          TourismSiteLeftImage(
+                          const TourismSiteItem(
+                            index: 2,
+                            siteCode: "xvf432",
                             siteName: "بازار سنتی زنجان",
                             description: "بازار زنجان طولانی ترین بازار سرپوشیده ایران است.این بازار در دوران آغا محمد خان قاجار آغاز و در سال ۱۲۱۳ در زمان فتحعلی شاه قاجار خاتمه یافته و مساجد و سراها،  گرمابه‌ها در سال ۱۳۲۴ به آن اضافه شده‌است...",
-                            onTap: (){},
                             imagePath: 'assets/image/zanjan_bazar2.jpg',
                           ),
 
