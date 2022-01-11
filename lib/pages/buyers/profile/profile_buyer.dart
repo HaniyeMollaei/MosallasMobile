@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
-import 'package:mosallas/widgets/logo_medium.dart';
+import 'package:mosallas/widgets/appbar_light.dart';
 import 'package:mosallas/widgets/product.dart';
 
 class BuyerProfile extends StatefulWidget {

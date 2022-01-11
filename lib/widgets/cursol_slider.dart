@@ -42,8 +42,9 @@ class ImageSliderItem {
 /// Used in home page
 class CarouselWithIndicatorDemo extends StatefulWidget {
   final List<ImageSliderItem> items;
+  final bool isCommercial;
 
-  const CarouselWithIndicatorDemo({Key key, this.items}) : super(key: key);
+  const CarouselWithIndicatorDemo({Key key, this.items, this.isCommercial = true}) : super(key: key);
   @override
   State<StatefulWidget> createState() {
     return _CarouselWithIndicatorState();
@@ -57,7 +58,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MyStyle.mediaQueryHeight(context, 0.25),
+      height: MyStyle.mediaQueryHeight(context, widget.isCommercial ? 0.25 : 0.35),
       child: Column(children: [
           Expanded(
             child: CarouselSlider(
@@ -71,9 +72,9 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
                         borderRadius: BorderRadius.circular(MyStyle.borderRadius2),
                         child: Image.asset(
                           i.path,
+                         ),
                         ),
-                      ),
-                    );
+                      );
                   },
                 );
               }).toList(),
@@ -82,7 +83,9 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
                   autoPlay: true,
                   enlargeCenterPage: true,
                   aspectRatio: 2.0,
-                  height: MyStyle.mediaQueryHeight(context, 0.2),
+                  autoPlayAnimationDuration: const Duration(seconds: 2),
+                  enableInfiniteScroll: true,
+                  height: MyStyle.mediaQueryHeight(context, widget.isCommercial? 0.2 : 0.3),
                   onPageChanged: (index, reason) {
                     setState(() {
                       _current = index;
