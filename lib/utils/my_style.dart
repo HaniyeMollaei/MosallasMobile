@@ -42,6 +42,12 @@ class MyStyle {
     color: white,
   );
 
+  static const whiteHeaderStyleSmall = TextStyle(
+    fontFamily: headerFont,
+    fontSize: S20,
+    color: white,
+  );
+
   static const whiteWalletAmountStyle = TextStyle(
     fontFamily: headerFont,
     fontSize: S17,

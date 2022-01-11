@@ -24,7 +24,7 @@ class _ProductWidgetState extends State<ProductWidget> {
       padding: EdgeInsets.symmetric(
           horizontal: MyStyle.mediaQueryWidth(context, 0.015)),
       child: SizedBox(
-        width: MyStyle.mediaQueryWidth(context, 0.3),
+        width: MyStyle.mediaQueryWidth(context, 0.29),
         //height: MyStyle.mediaQueryHeight(context, 0.2),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -32,6 +32,7 @@ class _ProductWidgetState extends State<ProductWidget> {
           children: [
             Container(
               height: MyStyle.mediaQueryHeight(context, 0.18),
+              width: MyStyle.mediaQueryWidth(context, 0.29),
               decoration: BoxDecoration(
                 color: MyStyle.white,
                 borderRadius: BorderRadius.circular(MyStyle.borderRadius2),
@@ -62,7 +63,8 @@ class _ProductWidgetState extends State<ProductWidget> {
               ),
             ),
             Container(
-              height: MyStyle.mediaQueryHeight(context, 0.14),
+              height: MyStyle.mediaQueryHeight(context, 0.12),
+              width: MyStyle.mediaQueryWidth(context, 0.29),
               decoration: BoxDecoration(
                 color: MyStyle.white,
                 borderRadius: BorderRadius.circular(MyStyle.borderRadius2),

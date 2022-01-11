@@ -2,11 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mosallas/pages/buyers/home/tourism.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
 import 'package:mosallas/widgets/cursol_slider.dart';
-import 'package:mosallas/widgets/logo_medium.dart';
+import 'package:mosallas/widgets/appbar_light.dart';
 import 'package:mosallas/widgets/product.dart';
 
 class BuyerHome extends StatefulWidget {
@@ -55,7 +56,10 @@ class BuyerHomeState extends State<BuyerHome> {
 
                           ///tourism
                           InkWell(
-                            onTap: (){},
+                            onTap: () async {
+                              await Navigator.push(
+                                  context, MaterialPageRoute(builder: (context) => const Tourism()));
+                            },
                             child: SizedBox(
                               width: MyStyle.mediaQueryWidth(context, 0.92),
                                 child: Stack(children: [
@@ -109,7 +113,7 @@ class BuyerHomeState extends State<BuyerHome> {
                           SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(
-                              children: [
+                              children: const [
                                 ProductWidget(name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
                                   cost: 123000,
@@ -141,7 +145,7 @@ class BuyerHomeState extends State<BuyerHome> {
                               children: [
                                 SvgPicture.asset('assets/svg/backward.svg',color: MyStyle.lightGrayText),
                                 SizedBox(width: MyStyle.mediaQueryWidth(context, 0.01),),
-                                const Text("مشاهده ی همه ی محصولات" , style: MyStyle.lightGrayTextStyleS11,),
+                                const Text("مشاهده ی همه ی محصولات" , style: MyStyle.lightGrayTextStyleS13,),
                               ],
                             ),
                           ),
