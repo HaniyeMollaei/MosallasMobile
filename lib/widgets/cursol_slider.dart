@@ -58,40 +58,39 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MyStyle.mediaQueryHeight(context, widget.isCommercial ? 0.25 : 0.35),
+      height: MyStyle.mediaQueryHeight(context, widget.isCommercial ? 0.25 : 0.32),
       child: Column(children: [
-          Expanded(
-            child: CarouselSlider(
-              items: widget.items.map((i) {
-                print(i.path);
-                return Builder(
-                  builder: (BuildContext context) {
-                    return InkWell(
-                      onTap: i.onTap,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(MyStyle.borderRadius2),
-                        child: Image.asset(
-                          i.path,
-                         ),
-                        ),
-                      );
-                  },
-                );
-              }).toList(),
-              carouselController: _controller,
-              options: CarouselOptions(
-                  autoPlay: true,
-                  enlargeCenterPage: true,
-                  aspectRatio: 2.0,
-                  autoPlayAnimationDuration: const Duration(seconds: 2),
-                  enableInfiniteScroll: true,
-                  height: MyStyle.mediaQueryHeight(context, widget.isCommercial? 0.2 : 0.3),
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      _current = index;
-                    });
-                  }),
-            ),
+          CarouselSlider(
+            items: widget.items.map((i) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return InkWell(
+                    onTap: i.onTap,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(MyStyle.borderRadius4),
+                      child: Image.asset(
+                        i.path,
+                        height: MyStyle.mediaQueryHeight(context, widget.isCommercial? 0.2 : 0.29),
+                      ),
+                      ),
+                    );
+                },
+              );
+            }).toList(),
+            carouselController: _controller,
+            options: CarouselOptions(
+                autoPlay: true,
+                enlargeCenterPage: true,
+                aspectRatio: 4.0,
+                autoPlayAnimationDuration: const Duration(seconds: 2),
+                enableInfiniteScroll: true,
+                reverse: true,
+                height: MyStyle.mediaQueryHeight(context, widget.isCommercial? 0.2 : 0.28),
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _current = index;
+                  });
+                }),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -101,7 +100,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
                 child: Container(
                   width: 8.0,
                   height: 8.0,
-                  margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                  margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: (Theme.of(context).brightness == Brightness.dark ? MyStyle.lightGrayText : MyStyle.disableButtonColor)

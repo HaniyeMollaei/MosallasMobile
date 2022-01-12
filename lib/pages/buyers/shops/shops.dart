@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
 import 'package:mosallas/widgets/appbar_light.dart';
+import 'package:mosallas/widgets/drawer.dart';
 import 'package:mosallas/widgets/product.dart';
 
 class BuyerShops extends StatefulWidget {
@@ -36,47 +37,23 @@ class BuyerShopsState extends State<BuyerShops> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
+                          ///category
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.06)),
                             child: Row(
-                              children: const [
-                                ProductWidget(name: "پیراهن آستین بلند مردانه",
-                                  code: "hgd65435hj" ,
-                                  cost: 123000,
-                                  imagePath: 'assets/image/men_shirt.jpg',
-                                  isRemovable:false,
-                                  star: 4.5,),
-                                ProductWidget(name: "پیراهن آستین بلند مردانه",
-                                  code: "hgd65435hj" ,
-                                  cost: 123000,
-                                  imagePath: 'assets/image/men_shirt.jpg',
-                                  isRemovable:false,
-                                  star: 4.5,),
-                                ProductWidget(name: "پیراهن آستین بلند مردانه",
-                                  code: "hgd65435hj" ,
-                                  cost: 123000,
-                                  imagePath: 'assets/image/men_shirt.jpg',
-                                  isRemovable:false,
-                                  star: 4.5,),
-
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: MyStyle.mediaQueryHeight(context, 0.03),),
-
-                          InkWell(
-                            onTap: (){},
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                SvgPicture.asset('assets/svg/backward.svg',color: MyStyle.lightGrayText),
-                                SizedBox(width: MyStyle.mediaQueryWidth(context, 0.01),),
-                                const Text("مشاهده ی همه ی محصولات" , style: MyStyle.lightGrayTextStyleS11,),
+                                MyDrawer(
+                                  text: "همه",
+                                  content:  const ["پوشاک" ,"لوازم خانگی","خوار و بار","پارچه فروشی","قطعات خودرو",],
+                                  attribute: "CATEGORY_SEARCH",
+                                ),
+                                const Text(":دسته بندی" , style:MyStyle.darkTextStyle , textAlign: TextAlign.end,),
                               ],
                             ),
                           ),
                           SizedBox(height: MyStyle.mediaQueryHeight(context, 0.03),),
+
 
                         ],
                       ),

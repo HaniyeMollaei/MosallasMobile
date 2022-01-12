@@ -23,8 +23,8 @@ class _GrayAppBarState extends State<GrayAppBar> {
       height: MyStyle.mediaQueryHeight(context, 0.09),
       width: MyStyle.mediaQueryWidth(context, 1),
       margin: EdgeInsets.only(
-        left: MyStyle.mediaQueryWidth(context, 0.06),
-        right: MyStyle.mediaQueryWidth(context, 0.06),
+        left: MyStyle.mediaQueryWidth(context, 0.04),
+        right: MyStyle.mediaQueryWidth(context, 0.04),
         top: MyStyle.mediaQueryHeight(context, 0.06),
         bottom: MyStyle.mediaQueryHeight(context, 0.03),
       ),
@@ -48,16 +48,7 @@ class _GrayAppBarState extends State<GrayAppBar> {
                  },
                ),
 
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    const Text(" ${MyStyle.appName}   ", style: MyStyle.whiteHeaderStyleSmall),
-                    SizedBox(
-                      width: MyStyle.mediaQueryWidth(context, 0.01),
-                    ),
-                    SvgPicture.asset('assets/svg/logo.svg', height: MyStyle.mediaQueryHeight(context, 0.04)),
-                  ],
-                ),
+                SvgPicture.asset('assets/svg/logo.svg', height: MyStyle.mediaQueryHeight(context, 0.06)),
               ],
             ),
           ),
