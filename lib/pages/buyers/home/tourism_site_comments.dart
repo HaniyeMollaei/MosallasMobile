@@ -4,13 +4,19 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
+import 'package:mosallas/widgets/appbar_light.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
 import 'package:mosallas/widgets/comment_page_item.dart';
 import 'package:mosallas/widgets/cursol_slider.dart';
-import 'package:mosallas/widgets/slider_manually.dart';
+import 'package:mosallas/widgets/comment_slider_manually.dart';
 
 class TourismSiteComments extends StatefulWidget {
-  const TourismSiteComments({Key key}) : super(key: key);
+
+  final Widget header;
+  final String type;
+  final String shopCode;
+
+  const TourismSiteComments({Key key, this.header, this.type, this.shopCode}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => TourismSiteCommentsState();
@@ -54,7 +60,7 @@ class TourismSiteCommentsState extends State<TourismSiteComments> {
               body: Column(
                 children: [
                   ///Logo --> 1.8
-                  GrayAppBar(
+                  (widget.type =="shop")? MediumLogo(finalType: "location",): GrayAppBar(
                     pageHeaderNameSmall: "نظرات در مورد",
                     pageHeaderNameLarge: siteName,
                   ),
@@ -64,13 +70,14 @@ class TourismSiteCommentsState extends State<TourismSiteComments> {
                       child: Column(
                         children: [
                           ///0.35
-                          CarouselWithIndicatorDemo(isCommercial: true, items: [
-                            ImageSliderItem('assets/image/zanjan_bazar.jpg', () {}),
-                            ImageSliderItem('assets/image/zanjan_bazar3.jpg', () {}),
-                            ImageSliderItem('assets/image/zanjan_bazar4.jpg', () {}),
-                            ImageSliderItem('assets/image/zanjan_bazar5.jpg', () {}),
-                          ]),
+                          // CarouselWithIndicatorDemo(isCommercial: true, items: [
+                          //   ImageSliderItem('assets/image/zanjan_bazar.jpg', () {}),
+                          //   ImageSliderItem('assets/image/zanjan_bazar3.jpg', () {}),
+                          //   ImageSliderItem('assets/image/zanjan_bazar4.jpg', () {}),
+                          //   ImageSliderItem('assets/image/zanjan_bazar5.jpg', () {}),
+                          // ]),
 
+                          widget.header,
                           ///0.72-0.37
                           ListView.builder(
                               padding: const EdgeInsets.only(top: 0, bottom: 0),
@@ -116,7 +123,7 @@ class TourismSiteCommentsState extends State<TourismSiteComments> {
                 ),
               ),
               bottomNavigationBar: BuyerBottomNavBar(
-                index: 0,
+                index:widget.type =="shop"? 2 : 0,
               ),
             )));
   }

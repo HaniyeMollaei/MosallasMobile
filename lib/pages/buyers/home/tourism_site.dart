@@ -5,8 +5,9 @@ import 'package:mosallas/pages/buyers/home/tourism_site_comments.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
+import 'package:mosallas/widgets/comment_pink_box.dart';
 import 'package:mosallas/widgets/cursol_slider.dart';
-import 'package:mosallas/widgets/slider_manually.dart';
+import 'package:mosallas/widgets/comment_slider_manually.dart';
 
 class TourismSite extends StatefulWidget {
   final String tourismSiteCode;
@@ -20,8 +21,41 @@ class TourismSiteState extends State<TourismSite> {
   String siteName = "بازار سنتی زنجان";
   String description =
       "بازار زنجان طولانی ترین بازار سرپوشیده ایران است.این بازار در دوران آغا محمد خان قاجار آغاز و در سال ۱۲۱۳ در زمان فتحعلی شاه قاجار خاتمه یافته و مساجد و سراها،  گرمابه‌ها در سال ۱۳۲۴ به آن اضافه شده‌است...";
+  List<CommentItem> cmList =  [
+    CommentItem(text: "خیلی بازار زنده و پر طراوتیه", author: "مینا صدوقی"),
+    CommentItem(
+        text: "در مرکز شهر واقع شده و از این لحاظ توی دسترسی خیلی برای مسافران راحته.",
+        author: "امیر شمس"),
+    CommentItem(
+        text:
+        "تعداد مغازه ها و فروشگاه های بازار خیلی زیاده و میتونید نصف روز تا یک روز وقتتون رو بگذرونید.",
+        author: "سارا نیکوکار"),
+    CommentItem(text: "به ما خیلی خوش گذشت اینجا ^^", author: "هما"),
+  ];
+
   @override
   Widget build(BuildContext c) {
+
+    Widget slider =CarouselWithIndicatorDemo(isCommercial: false, items: [
+      ImageSliderItem('assets/image/zanjan_bazar.jpg', () {
+        print("Image taaaaaaap 11111");
+      }),
+      ImageSliderItem('assets/image/zanjan_bazar3.jpg', () {
+        print("Image taaaaaaap 33333");
+      }),
+      ImageSliderItem('assets/image/zanjan_bazar4.jpg', () {
+        print("Image taaaaaaap 33333");
+      }),
+      ImageSliderItem('assets/image/zanjan_bazar5.jpg', () {
+        print("Image taaaaaaap 33333");
+      }),
+    ]);
+    Widget slider2= CarouselWithIndicatorDemo(isCommercial: true, items: [
+      ImageSliderItem('assets/image/zanjan_bazar.jpg', () {}),
+      ImageSliderItem('assets/image/zanjan_bazar3.jpg', () {}),
+      ImageSliderItem('assets/image/zanjan_bazar4.jpg', () {}),
+      ImageSliderItem('assets/image/zanjan_bazar5.jpg', () {}),
+    ]);
     return SafeArea(
         top: false,
         bottom: false,
@@ -42,20 +76,7 @@ class TourismSiteState extends State<TourismSite> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          CarouselWithIndicatorDemo(isCommercial: false, items: [
-                            ImageSliderItem('assets/image/zanjan_bazar.jpg', () {
-                              print("Image taaaaaaap 11111");
-                            }),
-                            ImageSliderItem('assets/image/zanjan_bazar3.jpg', () {
-                              print("Image taaaaaaap 33333");
-                            }),
-                            ImageSliderItem('assets/image/zanjan_bazar4.jpg', () {
-                              print("Image taaaaaaap 33333");
-                            }),
-                            ImageSliderItem('assets/image/zanjan_bazar5.jpg', () {
-                              print("Image taaaaaaap 33333");
-                            }),
-                          ]),
+                          slider,
                           SizedBox(
                             height: MyStyle.mediaQueryHeight(context, 0.02),
                           ),
@@ -77,68 +98,20 @@ class TourismSiteState extends State<TourismSite> {
                           SizedBox(
                             height: MyStyle.mediaQueryHeight(context, 0.03),
                           ),
-                          Container(
-                            width: MyStyle.mediaQueryWidth(context, 0.92),
-                            decoration: BoxDecoration(
-                              color: MyStyle.headerDarkPink,
-                              borderRadius: BorderRadius.circular(MyStyle.borderRadius2),
-                            ),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: MyStyle.mediaQueryWidth(context, 0.015),
-                                vertical: MyStyle.mediaQueryHeight(context, 0.015)),
-                            child: Column(
-                              children: [
-                                Align(
-                                  alignment: Alignment.topRight,
-                                  child: Padding(
-                                    padding: EdgeInsets.only(right: MyStyle.mediaQueryWidth(context, 0.02)),
-                                    child: const Text(
-                                      "آخرین نظرات در مورد این جاذبه  ",
-                                      style: MyStyle.whiteLightTextStyle,
-                                      textAlign: TextAlign.right,
-                                    ),
-                                  ),
+                          commentPinkBox(
+                            context: c,
+                            cmList: cmList,
+                            type: "tourism",
+                            hasSideWidget: false,
+                            routToCommentsPage:  () async {
+                              Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                  pageBuilder: (context, animation1, animation2) =>  TourismSiteComments(type: "tourism",header: slider,),
+                                  transitionDuration: Duration.zero,
                                 ),
-                                SizedBox(
-                                  height: MyStyle.mediaQueryHeight(context, 0.01),
-                                ),
-                                ManuallyControlledSlider(
-                                  items: [
-                                    CommentItem(text: "خیلی بازار زنده و پر طراوتیه", author: "مینا صدوقی"),
-                                    CommentItem(
-                                        text: "در مرکز شهر واقع شده و از این لحاظ توی دسترسی خیلی برای مسافران راحته.",
-                                        author: "امیر شمس"),
-                                    CommentItem(
-                                        text:
-                                            "تعداد مغازه ها و فروشگاه های بازار خیلی زیاده و میتونید نصف روز تا یک روز وقتتون رو بگذرونید.",
-                                        author: "سارا نیکوکار"),
-                                    CommentItem(text: "به ما خیلی خوش گذشت اینجا ^^", author: "هما"),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: MyStyle.mediaQueryHeight(context, 0.01),
-                                ),
-                                Align(
-                                  alignment: Alignment.bottomLeft,
-                                  child: InkWell(
-                                    onTap: () async {
-                                      Navigator.push(
-                                        context,
-                                        PageRouteBuilder(
-                                          pageBuilder: (context, animation1, animation2) => const TourismSiteComments(),
-                                          transitionDuration: Duration.zero,
-                                        ),
-                                      );
-                                     },
-                                    child: const Text(
-                                      "    همه ی نظرات",
-                                      style: MyStyle.whiteLightTextStyle,
-                                      textAlign: TextAlign.right,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                              );
+                            }
                           ),
                           SizedBox(
                             height: MyStyle.mediaQueryHeight(context, 0.03),

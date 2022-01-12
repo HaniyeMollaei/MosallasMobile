@@ -12,18 +12,19 @@ class CommentItem{
   CommentItem({this.text, this.author , this.date});
 }
 
-class ManuallyControlledSlider extends StatefulWidget {
+class ManuallyControlledCommentSlider extends StatefulWidget {
   final List<CommentItem> items;
+  final bool hasSideWidget;
 
-  const ManuallyControlledSlider({Key key, this.items}) : super(key: key);
+  const ManuallyControlledCommentSlider({Key key, this.items , this.hasSideWidget = false}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _ManuallyControlledSliderState();
+    return _ManuallyControlledCommentSliderState();
   }
 }
 
-class _ManuallyControlledSliderState extends State<ManuallyControlledSlider> {
+class _ManuallyControlledCommentSliderState extends State<ManuallyControlledCommentSlider> {
   final CarouselController _controller = CarouselController();
 
   @override
@@ -35,18 +36,22 @@ class _ManuallyControlledSliderState extends State<ManuallyControlledSlider> {
   Widget build(BuildContext context) {
     return SizedBox(
       //height: MyStyle.mediaQueryHeight(context, 0.18),
-      width: MyStyle.mediaQueryWidth(context, 0.92),
+      width: MyStyle.mediaQueryWidth(context,widget.hasSideWidget? 0.72: 0.92),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           InkWell(
             onTap: ()=>_controller.previousPage(),
-            child: SvgPicture.asset('assets/svg/backward.svg',color: MyStyle.white,
-              width: MyStyle.mediaQueryWidth(context, 0.02), fit: BoxFit.fitWidth,),
+            child: SizedBox(
+            width: MyStyle.mediaQueryWidth(context, 0.02),
+              height: MyStyle.mediaQueryHeight(context, 0.08),
+              child: SvgPicture.asset('assets/svg/backward.svg',color: MyStyle.white,
+                width: MyStyle.mediaQueryWidth(context, 0.02), fit: BoxFit.fitWidth,),
+            ),
           ),
           SizedBox(
             //height: MyStyle.mediaQueryHeight(context, 0.18),
-            width: MyStyle.mediaQueryWidth(context, 0.82),
+            width: MyStyle.mediaQueryWidth(context, widget.hasSideWidget? 0.64 : 0.82),
             child: CarouselSlider(
               items: widget.items.map((i) {
                 return Builder(
@@ -59,14 +64,15 @@ class _ManuallyControlledSliderState extends State<ManuallyControlledSlider> {
                           borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius3)),
                           color: MyStyle.white,
                         ),
-                        padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.02) ,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: MyStyle.mediaQueryWidth(context, 0.02) ,
                           vertical: MyStyle.mediaQueryHeight(context, 0.005)
                         ),
                         margin: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.02)),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text(": ${i.author}" , style: MyStyle.darkTextStyle,),
+                            //Text(": ${i.author}" , style: MyStyle.darkTextStyle,),
                             Text(i.text , style: MyStyle.lightGrayTextStyleS11,maxLines: 2,),
                           ],
                         ),
@@ -81,7 +87,7 @@ class _ManuallyControlledSliderState extends State<ManuallyControlledSlider> {
                 scrollDirection: Axis.horizontal,
                 reverse: true,
                 aspectRatio: 2,
-                height: MyStyle.mediaQueryHeight(context, 0.1),
+                height: MyStyle.mediaQueryHeight(context, 0.08),
                 autoPlay: true,
 
               ),
@@ -90,8 +96,12 @@ class _ManuallyControlledSliderState extends State<ManuallyControlledSlider> {
           ),
           InkWell(
             onTap:  ()=>_controller.nextPage(),
-            child: SvgPicture.asset('assets/svg/forward.svg',color: MyStyle.white,
-              width: MyStyle.mediaQueryWidth(context, 0.02), fit: BoxFit.fitWidth,),
+            child: SizedBox(
+              width: MyStyle.mediaQueryWidth(context, 0.02),
+              height: MyStyle.mediaQueryHeight(context, 0.08),
+              child: SvgPicture.asset('assets/svg/forward.svg',color: MyStyle.white,
+                width: MyStyle.mediaQueryWidth(context, 0.02), fit: BoxFit.fitWidth,),
+            ),
           ),
         ],
       ),

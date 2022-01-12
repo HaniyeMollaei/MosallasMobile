@@ -3,34 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mosallas/utils/my_style.dart';
 
-Widget carouselSlider(BuildContext c, {List<ImageSliderItem> items}) {
-  return CarouselSlider(
-    options: CarouselOptions(
-      height: MyStyle.mediaQueryHeight(c, 0.2),
-      autoPlay: true,
-      autoPlayInterval: Duration(seconds: 5),
-      enlargeCenterPage: true,
-      pageSnapping: true,
-      scrollDirection: Axis.horizontal,
-      aspectRatio: 2.0,
-    ),
-    items: items.map((i) {
-      print(i.path);
-      return Builder(
-        builder: (BuildContext context) {
-          return InkWell(
-            onTap: i.onTap,
-            child: ClipRRect(
-                borderRadius: BorderRadius.circular(MyStyle.borderRadius4),
-                child: Image.asset(
-                  i.path,
-                )),
-          );
-        },
-      );
-    }).toList(),
-  );
-}
 
 class ImageSliderItem {
   Function onTap;

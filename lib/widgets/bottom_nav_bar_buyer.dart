@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mosallas/pages/buyers/home/home.dart';
 import 'package:mosallas/pages/buyers/profile/profile_buyer.dart';
-import 'package:mosallas/pages/buyers/shops/shops.dart';
+import 'package:mosallas/pages/buyers/shops/city_shops.dart';
 import 'package:mosallas/pages/buyers/wallet/wallet_buyer.dart';
 import 'package:mosallas/utils/my_style.dart';
 
@@ -70,7 +70,7 @@ class _BuyerBottomNavBarState extends State<BuyerBottomNavBar> {
                 Navigator.pushReplacement(
                   context,
                   PageRouteBuilder(
-                    pageBuilder: (context, animation1, animation2) => const BuyerShops(),
+                    pageBuilder: (context, animation1, animation2) => const BuyerCityShops(),
                     transitionDuration: Duration.zero,
                   ),
                 );

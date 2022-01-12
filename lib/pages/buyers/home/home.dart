@@ -18,6 +18,19 @@ class BuyerHome extends StatefulWidget {
 }
 
 class BuyerHomeState extends State<BuyerHome> {
+  List<ImageSliderItem> imageList =  [
+    ImageSliderItem('assets/image/off50.jpg', () {
+      print("Image taaaaaaap 11111");
+    }),
+    ImageSliderItem('assets/image/man_off.jpg', () {
+      print("Image taaaaaaap 22222");
+    }),
+    ImageSliderItem('assets/image/off50.jpg', () {
+      print("Image taaaaaaap 33333");
+    }),
+  ];
+
+
   @override
   Widget build(BuildContext c) {
     return SafeArea(
@@ -34,24 +47,14 @@ class BuyerHomeState extends State<BuyerHome> {
                   const MediumLogo(
                     finalType: "location",
                   ),
-                  Container(
+                  SizedBox(
                     height: MyStyle.mediaQueryHeight(context, 0.75),
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
 
                           ///image slider - commercial
-                          CarouselWithIndicatorDemo( items: [
-                            ImageSliderItem('assets/image/off50.jpg', () {
-                              print("Image taaaaaaap 11111");
-                            }),
-                            ImageSliderItem('assets/image/man_off.jpg', () {
-                              print("Image taaaaaaap 22222");
-                            }),
-                            ImageSliderItem('assets/image/off50.jpg', () {
-                              print("Image taaaaaaap 33333");
-                            }),
-                          ]),
+                          CarouselWithIndicatorDemo( items: imageList),
                           SizedBox(height: MyStyle.mediaQueryHeight(context, 0.02),),
 
                           ///tourism
@@ -96,7 +99,7 @@ class BuyerHomeState extends State<BuyerHome> {
                           ),
                           SizedBox(height: MyStyle.mediaQueryHeight(context, 0.03),),
 
-                          ///header most selled
+                          ///header most sold
                           Padding(
                             padding: EdgeInsets.only( left: MyStyle.mediaQueryWidth(context, 0.04),
                               right: MyStyle.mediaQueryWidth(context, 0.04),),
