@@ -15,6 +15,8 @@ import 'package:mosallas/widgets/product.dart';
 import 'package:mosallas/widgets/shop_vitrine.dart';
 import 'package:mosallas/widgets/submit_button.dart';
 
+import 'all_products.dart';
+
 class BuyerShopVitrine extends StatefulWidget {
   final String shopCode;
   final Widget shopHeader;
@@ -159,25 +161,29 @@ class BuyerShopVitrineState extends State<BuyerShopVitrine> {
                           SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(
-                              children: const [
-                                ProductWidget(name: "پیراهن آستین بلند مردانه",
+                              children:  [
+                                ProductWidget(p: ProductItem(
+                                  name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
                                   cost: 123000,
                                   imagePath: 'assets/image/5.jpg',
                                   isRemovable:false,
-                                  star: 4.5,),
-                                ProductWidget(name: "پیراهن آستین بلند مردانه",
+                                  star: 4.5,
+                                ),),
+                                ProductWidget(p: ProductItem(name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
                                   cost: 123000,
                                   imagePath: 'assets/image/6.jpg',
                                   isRemovable:false,
-                                  star: 4.5,),
-                                ProductWidget(name: "پیراهن آستین بلند مردانه",
+                                  star: 4.5,),),
+                                ProductWidget(p: ProductItem(
+                                  name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
                                   cost: 123000,
                                   imagePath: 'assets/image/12.jpg',
                                   isRemovable:false,
-                                  star: 4.5,),
+                                  star: 4.5,
+                                ),),
 
                               ],
                             ),
@@ -187,7 +193,11 @@ class BuyerShopVitrineState extends State<BuyerShopVitrine> {
                           SubmitButton(
                            text: "مشاهده ی تمامی محصولات",
                             textSize: MyStyle.S17,
-                            onPressed: (){},
+                            onPressed: () async {
+                              await Navigator.push(
+                                  context, MaterialPageRoute(builder: (context) => BuyerAllProducts(shopCode: widget.shopCode,)));
+
+                            },
                           ),
                           SizedBox(height: MyStyle.mediaQueryHeight(context, 0.03),),
 

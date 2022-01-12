@@ -116,26 +116,29 @@ class BuyerHomeState extends State<BuyerHome> {
                           SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(
-                              children: const [
-                                ProductWidget(name: "پیراهن آستین بلند مردانه",
+                              children: [
+                                ProductWidget(p: ProductItem(
+                                  name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
                                   cost: 123000,
-                                  imagePath: 'assets/image/men_shirt.jpg',
+                                  imagePath: 'assets/image/5.jpg',
                                   isRemovable:false,
-                                  star: 4.5,),
-                                ProductWidget(name: "پیراهن آستین بلند مردانه",
+                                  star: 4.5,
+                                ),),
+                                ProductWidget(p: ProductItem(name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
                                   cost: 123000,
-                                  imagePath: 'assets/image/men_shirt.jpg',
+                                  imagePath: 'assets/image/6.jpg',
                                   isRemovable:false,
-                                  star: 4.5,),
-                                ProductWidget(name: "پیراهن آستین بلند مردانه",
+                                  star: 4.5,),),
+                                ProductWidget(p: ProductItem(
+                                  name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
                                   cost: 123000,
-                                  imagePath: 'assets/image/men_shirt.jpg',
+                                  imagePath: 'assets/image/12.jpg',
                                   isRemovable:false,
-                                  star: 4.5,),
-
+                                  star: 4.5,
+                                ),),
                               ],
                             ),
                           ),

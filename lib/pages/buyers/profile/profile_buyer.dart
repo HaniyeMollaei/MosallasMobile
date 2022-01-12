@@ -37,32 +37,6 @@ class BuyerProfileState extends State<BuyerProfile> {
                       child: Column(
                         children: [
 
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: const [
-                                ProductWidget(name: "پیراهن آستین بلند مردانه",
-                                  code: "hgd65435hj" ,
-                                  cost: 123000,
-                                  imagePath: 'assets/image/men_shirt.jpg',
-                                  isRemovable:false,
-                                  star: 4.5,),
-                                ProductWidget(name: "پیراهن آستین بلند مردانه",
-                                  code: "hgd65435hj" ,
-                                  cost: 123000,
-                                  imagePath: 'assets/image/men_shirt.jpg',
-                                  isRemovable:false,
-                                  star: 4.5,),
-                                ProductWidget(name: "پیراهن آستین بلند مردانه",
-                                  code: "hgd65435hj" ,
-                                  cost: 123000,
-                                  imagePath: 'assets/image/men_shirt.jpg',
-                                  isRemovable:false,
-                                  star: 4.5,),
-
-                              ],
-                            ),
-                          ),
                           SizedBox(height: MyStyle.mediaQueryHeight(context, 0.03),),
 
                           InkWell(

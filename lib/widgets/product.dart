@@ -2,17 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mosallas/utils/my_style.dart';
 
+
+class ProductItem{
+  String name;
+  String code;
+  int cost;
+  String imagePath;
+  double star;
+  bool isRemovable;
+  ProductItem({this.name , this.code , this.cost , this.imagePath , this.star , this.isRemovable});
+}
 class ProductWidget extends StatefulWidget {
-  const ProductWidget({Key key, this.name, this.code, this.cost, this.imagePath, this.star, this.isRemovable})
+  const ProductWidget({Key key, this.p, })
       : super(key: key);
-
-  final String name;
-  final String code;
-  final int cost;
-  final String imagePath;
-  final double star;
-  final bool isRemovable;
-
+  final ProductItem p;
   @override
   State<ProductWidget> createState() => _ProductWidgetState();
 }
@@ -46,7 +49,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                 children: [
                   SizedBox(height:MyStyle.mediaQueryHeight(context, 0.01),),
                   Image.asset(
-                    widget.imagePath,
+                    widget.p.imagePath,
                     height: MyStyle.mediaQueryHeight(context, 0.12),
                     fit: BoxFit.fitHeight,
                   ),
@@ -56,7 +59,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SvgPicture.asset('assets/svg/star.svg'),
-                      Text(" ${widget.star.toString()}" , style: MyStyle.lightPinkTextStyle, maxLines: 3,)
+                      Text(" ${widget.p.star.toString()}" , style: MyStyle.lightPinkTextStyle, maxLines: 3,)
                     ],
                   )
                 ],
@@ -74,9 +77,9 @@ class _ProductWidgetState extends State<ProductWidget> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(widget.name , style: MyStyle.lightGrayTextStyleS11, maxLines: 3,textAlign: TextAlign.center,),
+                  Text(widget.p.name , style: MyStyle.lightGrayTextStyleS11, maxLines: 3,textAlign: TextAlign.center,),
                   SizedBox(height: MyStyle.mediaQueryHeight(context, 0.01),),
-                  Text(widget.cost.toString() , style: MyStyle.darkTextStyle, maxLines: 2,textAlign: TextAlign.center,)
+                  Text(widget.p.cost.toString() , style: MyStyle.darkTextStyle, maxLines: 2,textAlign: TextAlign.center,)
                 ],
               ),
             )
