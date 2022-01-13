@@ -64,7 +64,7 @@ Future MyBottomSheet({
                                     },
                                 child: Text(
                                   cancelText,
-                                  style: MyStyle.lightPinkTextStyle,
+                                  style: MyStyle.lightPinkTextStyleS13,
                                 ))
                             : Container(),
                       ])),

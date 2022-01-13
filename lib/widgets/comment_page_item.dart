@@ -25,7 +25,7 @@ Widget commentPageItem(BuildContext context, CommentItem cm) {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("${cm.date}" , style: MyStyle.lightGrayTextStyleS11,),
-                Text(": ${cm.author}" , style: MyStyle.darkTextStyle,),
+                Text(": ${cm.author}" , style: MyStyle.darkTextStyleS13,),
               ],
             ),
             Text(cm.text , style: MyStyle.lightGrayTextStyleS11,maxLines: 2, textAlign: TextAlign.end,),

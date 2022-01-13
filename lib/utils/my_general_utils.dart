@@ -1,7 +1,5 @@
 class Utils{
   static bool isTextEmpty(String text){
-    print("your text is : $text");
-
     if(text == null || text.isEmpty ||text.trim() == '' || text.trim() == "")
       return true;
     else

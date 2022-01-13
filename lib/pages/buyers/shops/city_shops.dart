@@ -78,7 +78,7 @@ class BuyerCityShopsState extends State<BuyerCityShops> {
                           content:  const ["پوشاک" ,"لوازم خانگی","خوار و بار","پارچه فروشی","قطعات خودرو",],
                           attribute: "CATEGORY_SEARCH",
                         ),
-                        const Text(":دسته بندی" , style:MyStyle.darkTextStyle , textAlign: TextAlign.end,),
+                        const Text(":دسته بندی" , style:MyStyle.darkTextStyleS13 , textAlign: TextAlign.end,),
                       ],
                     ),
                   ),

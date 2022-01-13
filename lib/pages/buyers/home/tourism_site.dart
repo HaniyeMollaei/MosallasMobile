@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mosallas/pages/buyers/home/tourism_site_comments.dart';
+import 'package:mosallas/pages/comments.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
@@ -50,12 +50,7 @@ class TourismSiteState extends State<TourismSite> {
         print("Image taaaaaaap 33333");
       }),
     ]);
-    Widget slider2= CarouselWithIndicatorDemo(isCommercial: true, items: [
-      ImageSliderItem('assets/image/zanjan_bazar.jpg', () {}),
-      ImageSliderItem('assets/image/zanjan_bazar3.jpg', () {}),
-      ImageSliderItem('assets/image/zanjan_bazar4.jpg', () {}),
-      ImageSliderItem('assets/image/zanjan_bazar5.jpg', () {}),
-    ]);
+
     return SafeArea(
         top: false,
         bottom: false,

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mosallas/pages/buyers/home/tourism_site_comments.dart';
+import 'package:mosallas/pages/comments.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
 import 'package:mosallas/widgets/appbar_light.dart';
@@ -166,23 +166,27 @@ class BuyerShopVitrineState extends State<BuyerShopVitrine> {
                                   name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
                                   cost: 123000,
-                                  imagePath: 'assets/image/5.jpg',
+                                  imagePath: ['assets/image/5.jpg'],
                                   isRemovable:false,
                                   star: 4.5,
+                                  shopCode: widget.shopCode,
                                 ),),
                                 ProductWidget(p: ProductItem(name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
                                   cost: 123000,
-                                  imagePath: 'assets/image/6.jpg',
+                                  imagePath: ['assets/image/6.jpg'],
                                   isRemovable:false,
-                                  star: 4.5,),),
+                                  star: 4.5,
+                                  shopCode: widget.shopCode,
+                                ),),
                                 ProductWidget(p: ProductItem(
                                   name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
                                   cost: 123000,
-                                  imagePath: 'assets/image/12.jpg',
+                                  imagePath: ['assets/image/12.jpg'],
                                   isRemovable:false,
                                   star: 4.5,
+                                  shopCode: widget.shopCode,
                                 ),),
 
                               ],

@@ -43,7 +43,7 @@ class _MediumLogoState extends State<MediumLogo> {
                         width: MyStyle.mediaQueryWidth(context, 0.02),
                       ),
                       Text(AppConstants.USER_TYPE == "normal" ? AppConstants.BUYER_CITY : AppConstants.SHOP_CITY,
-                          style: MyStyle.lightPinkTextStyle)
+                          style: MyStyle.lightPinkTextStyleS13)
                     ],
                   ),
                 )

@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:mosallas/utils/my_style.dart';
 
 class MyTextField extends StatelessWidget {
+  final double height;
+  final double width;
   final bool obscureText;
   final bool isErrorName;
   final bool isEnable;
@@ -56,7 +58,7 @@ class MyTextField extends StatelessWidget {
         this.borderColor = Colors.transparent,
         this.maxLine = 1,
         this.minLine = 1,
-        this.hint});
+        this.hint, this.height, this.width});
 
 
   ///TODO
@@ -66,8 +68,8 @@ class MyTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MyStyle.mediaQueryHeight(context, 0.075),
-        width: MyStyle.mediaQueryWidth(context, 0.8),
+      height: height ?? MyStyle.mediaQueryHeight(context, 0.075),
+        width: width ?? MyStyle.mediaQueryWidth(context, 0.8),
         child: TextFormField(
             enabled: isEnable,
             autovalidateMode: AutovalidateMode.onUserInteraction,

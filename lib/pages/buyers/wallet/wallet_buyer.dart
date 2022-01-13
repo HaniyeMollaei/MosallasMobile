@@ -56,7 +56,7 @@ class BuyerWalletState extends State<BuyerWallet> {
                         padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.06)),
                         child: const Text(
                           ".نوع تراکنش را انتخاب کنید",
-                          style: MyStyle.darkTextStyle,
+                          style: MyStyle.darkTextStyleS13,
                         ),
                       ),
 
@@ -78,7 +78,7 @@ class BuyerWalletState extends State<BuyerWallet> {
                                   children: [
                                     const Text(
                                       "برداشت از کیف پول",
-                                      style: MyStyle.darkTextStyle,
+                                      style: MyStyle.darkTextStyleS13,
                                     ),
                                     SizedBox(width: MyStyle.mediaQueryWidth(context, 0.01)),
                                     InkWell(
@@ -99,7 +99,7 @@ class BuyerWalletState extends State<BuyerWallet> {
                                   children: [
                                     const Text(
                                       "شارژ کیف پول",
-                                      style: MyStyle.darkTextStyle,
+                                      style: MyStyle.darkTextStyleS13,
                                     ),
                                     SizedBox(width: MyStyle.mediaQueryWidth(context, 0.01)),
                                     InkWell(
@@ -127,7 +127,7 @@ class BuyerWalletState extends State<BuyerWallet> {
                         padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.06)),
                         child: const Text(
                           ".مبلغ مورد نظر را وارد کنید",
-                          style: MyStyle.darkTextStyle,
+                          style: MyStyle.darkTextStyleS13,
                         ),
                       ),
 
@@ -157,7 +157,7 @@ class BuyerWalletState extends State<BuyerWallet> {
                         padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.06)),
                         child: const Text(
                           ".شماره ی کارت را وارد کنید",
-                          style: MyStyle.darkTextStyle,
+                          style: MyStyle.darkTextStyleS13,
                         ),
                       ),
 

@@ -76,9 +76,20 @@ class MyStyle {
       color: white,
     fontFamily: textLightFont
   );
+  static const darkTextStyleS15 = TextStyle(
+      fontSize: S15,
+      color: darkText,
+      fontFamily: textRegularFont
+  );
 
-  static const darkTextStyle = TextStyle(
+  static const darkTextStyleS13 = TextStyle(
       fontSize: S13,
+      color: darkText,
+      fontFamily: textRegularFont
+  );
+
+  static const darkTextStyleS11 = TextStyle(
+      fontSize: S11,
       color: darkText,
       fontFamily: textRegularFont
   );
@@ -95,12 +106,16 @@ class MyStyle {
       fontFamily: textMediumFont
   );
 
-  static const lightPinkTextStyle = TextStyle(
+  static const lightPinkTextStyleS11 = TextStyle(
+      fontSize: S11,
+      color: headerDarkPink,
+      fontFamily: textMediumFont
+  );
+  static const lightPinkTextStyleS13 = TextStyle(
       fontSize: S13,
       color: headerDarkPink,
       fontFamily: textMediumFont
   );
-
   static const whiteLightTextStyle = TextStyle(
       fontSize: S11,
       color: white,

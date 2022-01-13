@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mosallas/utils/my_general_utils.dart';
 import 'package:mosallas/utils/my_style.dart';
 
 class GrayAppBar extends StatefulWidget {
@@ -57,11 +58,11 @@ class _GrayAppBarState extends State<GrayAppBar> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
+                !Utils.isTextEmpty(widget.pageHeaderNameSmall) ? Text(
                   widget.pageHeaderNameSmall,
                   style: MyStyle.whiteLightTextStyle,
                   textAlign: TextAlign.center,
-                ),
+                ):Container(),
                 SizedBox(height: MyStyle.mediaQueryHeight(context, 0.01),),
                 Text(
                   widget.pageHeaderNameLarge,

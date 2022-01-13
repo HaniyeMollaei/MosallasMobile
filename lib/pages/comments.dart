@@ -7,8 +7,9 @@ import 'package:mosallas/widgets/appbar_gray.dart';
 import 'package:mosallas/widgets/appbar_light.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
 import 'package:mosallas/widgets/comment_page_item.dart';
-import 'package:mosallas/widgets/cursol_slider.dart';
 import 'package:mosallas/widgets/comment_slider_manually.dart';
+import 'package:mosallas/widgets/dialoug.dart';
+import 'package:mosallas/widgets/text_field.dart';
 
 class TourismSiteComments extends StatefulWidget {
 
@@ -23,6 +24,11 @@ class TourismSiteComments extends StatefulWidget {
 }
 
 class TourismSiteCommentsState extends State<TourismSiteComments> {
+
+  TextEditingController _txtDescription = TextEditingController();
+  FocusNode _fndDescription = FocusNode();
+
+
   String siteName = "بازار سنتی زنجان";
   List<CommentItem> cmItems = [
     CommentItem(text: "خیلی بازار زنده و پر طراوتیه", author: "مینا صدوقی", date: "1400/03/05"),
@@ -69,14 +75,6 @@ class TourismSiteCommentsState extends State<TourismSiteComments> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          ///0.35
-                          // CarouselWithIndicatorDemo(isCommercial: true, items: [
-                          //   ImageSliderItem('assets/image/zanjan_bazar.jpg', () {}),
-                          //   ImageSliderItem('assets/image/zanjan_bazar3.jpg', () {}),
-                          //   ImageSliderItem('assets/image/zanjan_bazar4.jpg', () {}),
-                          //   ImageSliderItem('assets/image/zanjan_bazar5.jpg', () {}),
-                          // ]),
-
                           widget.header,
                           ///0.72-0.37
                           ListView.builder(
@@ -100,8 +98,36 @@ class TourismSiteCommentsState extends State<TourismSiteComments> {
               ),
               floatingActionButton: FloatingActionButton(
                 onPressed: () {
-                  print("Add Comment");
-                  ///TODO
+                  myDialog(
+                    width: MyStyle.mediaQueryWidth(context, 0.96),
+                    height: MyStyle.mediaQueryHeight(context, 0.6),
+                    hasCancel: true,
+                    hasButton: true,
+                    buttonText: "ثبت",
+                    hasHeader: true,
+                    headerText: "ثبت نظر",
+                    context: context,
+                    onButtonPressed: (){print("Comment saved");},
+                    content: MyTextField(
+                      width: MyStyle.mediaQueryWidth(context, 0.84),
+                      height: MyStyle.mediaQueryHeight(context, 0.35),
+                      textAlign: TextAlign.end,
+                      hint: "...",
+                      keyboardType: TextInputType.text,
+                      maxLine: 6,
+                      minLine: 6,
+                      inputFormatters: <TextInputFormatter>[
+                        LengthLimitingTextInputFormatter(80),
+                      ],
+                      onSubmit: (String v) {
+                        FocusScope.of(context).unfocus();
+                      },
+                      controller: _txtDescription,
+                      focusNode: _fndDescription,
+                    ),
+
+
+                  );
                 },
                 backgroundColor: Colors.transparent,
                 elevation: 0,
