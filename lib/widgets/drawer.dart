@@ -14,7 +14,7 @@ class MyDrawer extends StatefulWidget {
   String text;
   String attribute;
   bool isGray;
-  MyDrawer({Key key, this.content, this.text , this.attribute , this.isGray}) : super(key: key);
+  MyDrawer({Key key, this.content, this.text , this.attribute , this.isGray = false}) : super(key: key);
 
   @override
   State<MyDrawer> createState() => _MyDrawerState();

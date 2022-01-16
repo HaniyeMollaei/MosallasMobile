@@ -82,6 +82,7 @@ class BuyerCityShopsState extends State<BuyerCityShops> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         MyDrawer(
+                          isGray: false,
                           text: "همه",
                           content:  const ["پوشاک" ,"لوازم خانگی","خوار و بار","پارچه فروشی","قطعات خودرو",],
                           attribute: "CATEGORY_SEARCH",
