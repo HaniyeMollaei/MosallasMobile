@@ -2,12 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mosallas/pages/comments.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
+import 'package:mosallas/widgets/call_and_chat.dart';
+import 'package:mosallas/widgets/comment_pink_box.dart';
+import 'package:mosallas/widgets/comment_slider_manually.dart';
 import 'package:mosallas/widgets/cursol_slider.dart';
+import 'package:mosallas/widgets/favorite_vitrine.dart';
 import 'package:mosallas/widgets/image_slider_manually.dart';
 import 'package:mosallas/widgets/product.dart';
+import 'package:mosallas/widgets/shop_vitrine.dart';
 import 'package:mosallas/widgets/submit_button.dart';
 
 class BuyerProductPage extends StatefulWidget {
@@ -26,7 +32,27 @@ class BuyerProductPageState extends State<BuyerProductPage> {
 
   @override
   Widget build(BuildContext c) {
+    List<CommentItem> cmList =  [
+      CommentItem(text: "خیلی بازار زنده و پر طراوتیه", author: "مینا صدوقی"),
+      CommentItem(
+          text: "در مرکز شهر واقع شده و از این لحاظ توی دسترسی خیلی برای مسافران راحته.",
+          author: "امیر شمس"),
+      CommentItem(
+          text:
+          "تعداد مغازه ها و فروشگاه های بازار خیلی زیاده و میتونید نصف روز تا یک روز وقتتون رو بگذرونید.",
+          author: "سارا نیکوکار"),
+      CommentItem(text: "به ما خیلی خوش گذشت اینجا ^^", author: "هما"),
+    ];
 
+    ShopVitrineItem shop =  ShopVitrineItem(
+        shopName: "فروشگاه لباس مجلسی ایلگا",
+        address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
+        shopCode: "mnb876gi99",
+        star: 4.3,
+        phoneNumber: "09123456789",
+        shopImagePath: "assets/image/ilga.jpg",
+        productsImagePath: ["assets/image/6.jpg","assets/image/12.jpg"]
+    );
 
     Widget slider = ManuallyControlledImageSlider(isCommercial: false, items: [
       ImageSliderItem('assets/image/5.jpg', () {}),
@@ -52,11 +78,11 @@ class BuyerProductPageState extends State<BuyerProductPage> {
                     pageHeaderNameSmall:"",
                   ),
 
-                  SingleChildScrollView(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.04)),
-                      child: SizedBox(
-                        height: MyStyle.mediaQueryHeight(context, 0.72),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.04)),
+                    child: SizedBox(
+                      height: MyStyle.mediaQueryHeight(context, 0.72),
+                      child: SingleChildScrollView(
                         child: Column(
                           children: [
                             slider,
@@ -102,22 +128,80 @@ class BuyerProductPageState extends State<BuyerProductPage> {
                               ),
                             ),
 
-                            SizedBox(height: MyStyle.mediaQueryHeight(context, 0.02),),
+                            widget.product.hasOnlineSell ?
+                            SizedBox(height: MyStyle.mediaQueryHeight(context, 0.02),):Container(),
+
 
                             widget.product.hasOnlineSell ?
                             SubmitButton(
-                                text: "خرید آنلاین",
+                                text: "  خرید آنلاین  ",
                                 onPressed: (){print("Buy Online");},
                               width: MyStyle.mediaQueryWidth(context, 0.5),
                               height: MyStyle.mediaQueryHeight(context, 0.06),
-                              textSize: MyStyle.S15,
+                              textSize: MyStyle.S13,
                             ):Container(),
+
+                            SizedBox(height: MyStyle.mediaQueryHeight(context, 0.03),),
+
+                            ///description
+                            Container(
+                              width: MyStyle.mediaQueryWidth(context, 0.92),
+                              decoration: BoxDecoration(
+                                color: MyStyle.white,
+                                borderRadius: BorderRadius.circular(MyStyle.borderRadius2),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: MyStyle.mediaQueryWidth(context, 0.03),
+                                  vertical: MyStyle.mediaQueryHeight(context, 0.02)),
+                              child: Text(
+                                widget.product.description,
+                                style: MyStyle.lightGrayTextStyleS13,
+                                textAlign: TextAlign.right,
+                              ),
+                            ),
+
+                            SizedBox(height: MyStyle.mediaQueryHeight(context, 0.02),),
+
+
+                            ///comment - call - chat
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                callAndChat(
+                                  context: c,
+                                  shopCode: widget.product.shopCode,
+                                  phoneNumber: shop.phoneNumber,
+                                ),
+                                commentPinkBox(
+                                    context: c,
+                                    hasSideWidget: true,
+                                    cmList: cmList,
+                                    type: "shop",
+                                    routToCommentsPage: () async {
+                                      Navigator.push(
+                                        context,
+                                        PageRouteBuilder(
+                                          pageBuilder: (context, animation1, animation2) => Comments(
+                                            header: slider,
+                                            type: "product",
+                                            code: widget.product.code,
+                                          ),
+                                          transitionDuration: Duration.zero,
+                                        ),
+                                      );
+                                    }),
+                              ],
+                            ),
+
+                            SizedBox(
+                              height: MyStyle.mediaQueryHeight(context, 0.03),
+                            ),
 
 
 
                           ],
-                        )
-                      ),
+                        ),
+                      )
                     ),
                   ),
                 ],

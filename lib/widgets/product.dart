@@ -15,7 +15,9 @@ class ProductItem{
   bool isRemovable;
   bool hasOnlineSell;
   String category;
-  ProductItem({this.name , this.hasOnlineSell , this.category , this.code , this.cost , this.imagePath , this.star , this.isRemovable , this.shopCode});
+  String description;
+  ProductItem({this.name , this.hasOnlineSell , this.category , this.code , this.cost ,
+    this.imagePath , this.star , this.isRemovable , this.shopCode , this.description});
 }
 
 class ProductWidget extends StatefulWidget {

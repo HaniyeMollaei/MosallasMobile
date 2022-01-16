@@ -11,22 +11,22 @@ import 'package:mosallas/widgets/comment_slider_manually.dart';
 import 'package:mosallas/widgets/dialoug.dart';
 import 'package:mosallas/widgets/text_field.dart';
 
-class TourismSiteComments extends StatefulWidget {
+class Comments extends StatefulWidget {
 
   final Widget header;
   final String type;
-  final String shopCode;
+  final String code;
 
-  const TourismSiteComments({Key key, this.header, this.type, this.shopCode}) : super(key: key);
+  const Comments({Key key, this.header, this.type, this.code}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => TourismSiteCommentsState();
+  State<StatefulWidget> createState() => CommentsState();
 }
 
-class TourismSiteCommentsState extends State<TourismSiteComments> {
+class CommentsState extends State<Comments> {
 
-  TextEditingController _txtDescription = TextEditingController();
-  FocusNode _fndDescription = FocusNode();
+  final TextEditingController _txtDescription = TextEditingController();
+  final FocusNode _fndDescription = FocusNode();
 
 
   String siteName = "بازار سنتی زنجان";
@@ -100,7 +100,7 @@ class TourismSiteCommentsState extends State<TourismSiteComments> {
                 onPressed: () {
                   myDialog(
                     width: MyStyle.mediaQueryWidth(context, 0.96),
-                    height: MyStyle.mediaQueryHeight(context, 0.6),
+                    height: MyStyle.mediaQueryHeight(context, 0.51),
                     hasCancel: true,
                     hasButton: true,
                     buttonText: "ثبت",
@@ -110,14 +110,15 @@ class TourismSiteCommentsState extends State<TourismSiteComments> {
                     onButtonPressed: (){print("Comment saved");},
                     content: MyTextField(
                       width: MyStyle.mediaQueryWidth(context, 0.84),
-                      height: MyStyle.mediaQueryHeight(context, 0.35),
+                      height: MyStyle.mediaQueryHeight(context, 0.24),
                       textAlign: TextAlign.end,
                       hint: "...",
                       keyboardType: TextInputType.text,
                       maxLine: 6,
+                      fontSize: MyStyle.S11,
                       minLine: 6,
                       inputFormatters: <TextInputFormatter>[
-                        LengthLimitingTextInputFormatter(80),
+                        LengthLimitingTextInputFormatter(120),
                       ],
                       onSubmit: (String v) {
                         FocusScope.of(context).unfocus();

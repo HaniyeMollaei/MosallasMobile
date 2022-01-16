@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:mosallas/pages/comments.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
@@ -12,7 +11,6 @@ import 'package:mosallas/widgets/comment_slider_manually.dart';
 import 'package:mosallas/widgets/cursol_slider.dart';
 import 'package:mosallas/widgets/image_slider_manually.dart';
 import 'package:mosallas/widgets/product.dart';
-import 'package:mosallas/widgets/shop_vitrine.dart';
 import 'package:mosallas/widgets/submit_button.dart';
 
 import 'all_products.dart';
@@ -141,10 +139,10 @@ class BuyerShopVitrineState extends State<BuyerShopVitrine> {
                                       Navigator.push(
                                         context,
                                         PageRouteBuilder(
-                                          pageBuilder: (context, animation1, animation2) => TourismSiteComments(
+                                          pageBuilder: (context, animation1, animation2) => Comments(
                                             header: widget.shopHeader,
                                             type: "shop",
-                                            shopCode: widget.shopCode,
+                                            code: widget.shopCode,
                                           ),
                                           transitionDuration: Duration.zero,
                                         ),
@@ -168,24 +166,33 @@ class BuyerShopVitrineState extends State<BuyerShopVitrine> {
                                   cost: 123000,
                                   imagePath: ['assets/image/5.jpg'],
                                   isRemovable:false,
+                                  description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
                                   star: 4.5,
+                                  hasOnlineSell: false,
+                                  category: "پوشاک",
                                   shopCode: widget.shopCode,
                                 ),),
                                 ProductWidget(p: ProductItem(name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
                                   cost: 123000,
                                   imagePath: ['assets/image/6.jpg'],
+                                  description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
                                   isRemovable:false,
                                   star: 4.5,
+                                  hasOnlineSell: true,
+                                  category: "پوشاک",
                                   shopCode: widget.shopCode,
                                 ),),
                                 ProductWidget(p: ProductItem(
                                   name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
+                                  description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
                                   cost: 123000,
                                   imagePath: ['assets/image/12.jpg'],
                                   isRemovable:false,
                                   star: 4.5,
+                                  hasOnlineSell: true,
+                                  category: "پوشاک",
                                   shopCode: widget.shopCode,
                                 ),),
 

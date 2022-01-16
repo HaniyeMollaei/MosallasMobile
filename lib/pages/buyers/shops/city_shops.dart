@@ -20,13 +20,15 @@ class BuyerCityShopsState extends State<BuyerCityShops> {
       shopName: "فروشگاه لباس مجلسی ایلگا",
       address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
       shopCode: "mnb876gi99",
-      star: 4.3,
+        phoneNumber: "09123456789",
+        star: 4.3,
       shopImagePath: "assets/image/ilga.jpg",
       productsImagePath: ["assets/image/6.jpg","assets/image/12.jpg"]
     ),
     ShopVitrineItem(
         shopName: "فروشگاه لباس ورزشی یونیک",
         address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
+        phoneNumber: "09123456789",
         shopCode: "mnb876gi90",
         star: 3.8,
         shopImagePath: "assets/image/7.jpg",
@@ -36,6 +38,7 @@ class BuyerCityShopsState extends State<BuyerCityShops> {
         shopName: "فروشگاه لباس مجلسی ایلگا",
         address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
         shopCode: "mnb876gi99",
+        phoneNumber: "09123456789",
         star: 4.3,
         shopImagePath: "assets/image/ilga.jpg",
         productsImagePath: ["assets/image/5.jpg","assets/image/6.jpg","assets/image/12.jpg"]
@@ -43,6 +46,7 @@ class BuyerCityShopsState extends State<BuyerCityShops> {
     ShopVitrineItem(
         shopName: "فروشگاه لباس ورزشی یونیک",
         address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
+        phoneNumber: "09123456789",
         shopCode: "mnb876gi90",
         star: 3.8,
         shopImagePath: "assets/image/7.jpg",

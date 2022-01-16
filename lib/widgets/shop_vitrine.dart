@@ -7,12 +7,13 @@ import 'package:mosallas/utils/my_style.dart';
 class ShopVitrineItem {
   String shopName;
   String address;
+  String phoneNumber;
   double star;
   String shopImagePath;
   String shopCode;
   List<String> productsImagePath;
   ShopVitrineItem({this.shopName , this.address , this.star , this.shopCode ,
-    this.shopImagePath , this.productsImagePath});
+    this.shopImagePath , this.productsImagePath , this.phoneNumber});
 }
 
 Widget shopVitrine(

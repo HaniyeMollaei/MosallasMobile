@@ -3,17 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mosallas/pages/buyers/shops/buyer_shop_vitrine.dart';
 import 'package:mosallas/utils/my_style.dart';
+import 'package:mosallas/widgets/shop_vitrine.dart';
 
-class ShopVitrineItem {
-  String shopName;
-  String address;
-  double star;
-  String shopImagePath;
-  String shopCode;
-  List<String> productsImagePath;
-  ShopVitrineItem({this.shopName , this.address , this.star , this.shopCode ,
-    this.shopImagePath , this.productsImagePath});
-}
 
 Widget shopVitrine(
     {BuildContext context,

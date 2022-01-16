@@ -28,8 +28,16 @@ class _BuyerBottomNavBarState extends State<BuyerBottomNavBar> {
     return Container(
       padding: EdgeInsets.symmetric( horizontal: MyStyle.mediaQueryWidth(context, 0.06)),
       height: MyStyle.mediaQueryHeight(context, 0.1),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: MyStyle.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(1, 3), // changes position of shadow
+          ),
+        ],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

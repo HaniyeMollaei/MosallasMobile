@@ -102,7 +102,7 @@ class TourismSiteState extends State<TourismSite> {
                               Navigator.push(
                                 context,
                                 PageRouteBuilder(
-                                  pageBuilder: (context, animation1, animation2) =>  TourismSiteComments(type: "tourism",header: slider,),
+                                  pageBuilder: (context, animation1, animation2) =>  Comments(type: "tourism",header: slider,),
                                   transitionDuration: Duration.zero,
                                 ),
                               );
