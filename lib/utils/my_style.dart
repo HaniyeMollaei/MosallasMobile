@@ -123,6 +123,12 @@ class MyStyle {
 
   );
 
+  static const whiteMediumTextStyle = TextStyle(
+    fontSize: S13,
+    color: white,
+    fontFamily: textMediumFont,
+
+  );
   static const double appNameFontSize = 30;
   static const double S11 = 11;
   static const double S13 = 13;
