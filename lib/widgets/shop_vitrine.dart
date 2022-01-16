@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mosallas/pages/buyers/shops/buyer_shop_vitrine.dart';
+import 'package:mosallas/pages/buyers/shops/shop_vitrine.dart';
 import 'package:mosallas/utils/my_style.dart';
 
 class ShopVitrineItem {
@@ -9,11 +9,12 @@ class ShopVitrineItem {
   String address;
   String phoneNumber;
   double star;
+  int shippingCost;
   String shopImagePath;
   String shopCode;
   List<String> productsImagePath;
   ShopVitrineItem({this.shopName , this.address , this.star , this.shopCode ,
-    this.shopImagePath , this.productsImagePath , this.phoneNumber});
+    this.shopImagePath , this.productsImagePath , this.phoneNumber , this.shippingCost});
 }
 
 Widget shopVitrine(

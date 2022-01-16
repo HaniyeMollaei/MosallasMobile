@@ -88,7 +88,7 @@ class BuyerWalletState extends State<BuyerWallet> {
                                           isDeposit = !isDeposit;
                                         });
                                       },
-                                      child: MyRadioButton(context, value: isWithdrawal),
+                                      child: myRadioButton(context, value: isWithdrawal),
                                     )
                                   ],
                                 )),
@@ -109,7 +109,7 @@ class BuyerWalletState extends State<BuyerWallet> {
                                           isDeposit = !isDeposit;
                                         });
                                       },
-                                      child: MyRadioButton(context, value: isDeposit),
+                                      child: myRadioButton(context, value: isDeposit),
                                     )
                                   ],
                                 )),

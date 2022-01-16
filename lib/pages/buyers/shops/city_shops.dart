@@ -21,6 +21,7 @@ class BuyerCityShopsState extends State<BuyerCityShops> {
       address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
       shopCode: "mnb876gi99",
         phoneNumber: "09123456789",
+        shippingCost: 12000,
         star: 4.3,
       shopImagePath: "assets/image/ilga.jpg",
       productsImagePath: ["assets/image/6.jpg","assets/image/12.jpg"]
@@ -30,6 +31,7 @@ class BuyerCityShopsState extends State<BuyerCityShops> {
         address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
         phoneNumber: "09123456789",
         shopCode: "mnb876gi90",
+        shippingCost: 12000,
         star: 3.8,
         shopImagePath: "assets/image/7.jpg",
         productsImagePath: ["assets/image/8.jpg","assets/image/9.jpg","assets/image/10.png"]
@@ -39,6 +41,7 @@ class BuyerCityShopsState extends State<BuyerCityShops> {
         address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
         shopCode: "mnb876gi99",
         phoneNumber: "09123456789",
+        shippingCost: 12000,
         star: 4.3,
         shopImagePath: "assets/image/ilga.jpg",
         productsImagePath: ["assets/image/5.jpg","assets/image/6.jpg","assets/image/12.jpg"]
@@ -48,6 +51,7 @@ class BuyerCityShopsState extends State<BuyerCityShops> {
         address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
         phoneNumber: "09123456789",
         shopCode: "mnb876gi90",
+        shippingCost: 12000,
         star: 3.8,
         shopImagePath: "assets/image/7.jpg",
         productsImagePath: ["assets/image/9.jpg"]

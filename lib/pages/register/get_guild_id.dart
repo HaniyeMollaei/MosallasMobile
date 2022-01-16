@@ -122,7 +122,7 @@ class GetGuildIdPageState extends State<GetGuildIdPage> {
                                       accepted = !accepted;
                                     });
                                   },
-                                  child: MyRadioButton(context, value: accepted),
+                                  child: myRadioButton(context, value: accepted),
                                 )
                               ],
                             ),

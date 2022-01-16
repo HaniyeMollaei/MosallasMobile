@@ -10,6 +10,7 @@ class MyTextField extends StatelessWidget {
   final bool obscureText;
   final bool isErrorName;
   final bool isEnable;
+  final bool isGray;
   final TextEditingController controller;
   final FocusNode focusNode;
   final FormFieldValidator<String> validator;
@@ -58,7 +59,7 @@ class MyTextField extends StatelessWidget {
         this.borderColor = Colors.transparent,
         this.maxLine = 1,
         this.minLine = 1,
-        this.hint, this.height, this.width});
+        this.hint, this.height, this.width, this.isGray= false});
 
 
   ///TODO
@@ -83,7 +84,7 @@ class MyTextField extends StatelessWidget {
             minLines: minLine ?? 1,
             style: TextStyle(
               color: MyStyle.darkGrayText,
-              fontSize: fontSize ?? MyStyle.S20,
+              fontSize: fontSize ?? MyStyle.S17,
               letterSpacing: 1,
               fontFamily: MyStyle.textMediumFont ,
             ),
@@ -93,7 +94,7 @@ class MyTextField extends StatelessWidget {
             onChanged: onChange,
             onTap: onTap,
             onFieldSubmitted: onSubmit,
-            decoration: InputDecoration(
+            decoration: !isGray? InputDecoration(
                 suffixIcon: suffixIcon,
                 prefixIcon: prefixIcon,
                 hintText: hint ?? "",
@@ -132,6 +133,47 @@ class MyTextField extends StatelessWidget {
                   ),
                 ),
                 fillColor: bgColor,
+                filled: true):
+            InputDecoration(
+
+                suffixIcon: suffixIcon,
+                prefixIcon: prefixIcon,
+                hintText: hint ?? "",
+                hintStyle: TextStyle(fontSize: isGray?MyStyle.S13:MyStyle.S17, fontFamily:
+                MyStyle.textMediumFont, color: MyStyle.darkGrayText ,),
+                disabledBorder: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2)),
+                  borderSide: BorderSide(
+                      width: 1.5,
+                      style: BorderStyle.solid,
+                      color: MyStyle.backgroundColor
+                  ),
+                ),
+                enabledBorder: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2)),
+                  borderSide: BorderSide(
+                      width: 1.5,
+                      style: BorderStyle.solid,
+                      color: MyStyle.backgroundColor
+                  ),
+                ),
+                focusedBorder:  const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2)),
+                  borderSide: BorderSide(
+                      width: 1.5,
+                      style: BorderStyle.solid,
+                      color: MyStyle.backgroundColor
+                  ),
+                ),
+                border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2)),
+                  borderSide: BorderSide(
+                      width: 1.5,
+                      style: BorderStyle.solid,
+                      color: MyStyle.backgroundColor
+                  ),
+                ),
+                fillColor: isGray? MyStyle.backgroundColor : bgColor,
                 filled: true)));
   }
 }

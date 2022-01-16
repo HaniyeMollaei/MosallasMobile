@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mosallas/pages/buyers/shops/buyer_product_page.dart';
+import 'package:mosallas/pages/buyers/shops/product_page.dart';
 import 'package:mosallas/utils/my_style.dart';
 
 

@@ -13,7 +13,8 @@ class MyDrawer extends StatefulWidget {
   List content;
   String text;
   String attribute;
-  MyDrawer({Key key, this.content, this.text , this.attribute}) : super(key: key);
+  bool isGray;
+  MyDrawer({Key key, this.content, this.text , this.attribute , this.isGray}) : super(key: key);
 
   @override
   State<MyDrawer> createState() => _MyDrawerState();
@@ -67,10 +68,10 @@ class _MyDrawerState extends State<MyDrawer> {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.02)),
         height: MyStyle.mediaQueryHeight(context, 0.05),
-        width: MyStyle.mediaQueryWidth(context, 0.4),
-        decoration: const BoxDecoration(
-          color: MyStyle.white,
-          borderRadius: BorderRadius.all(Radius.circular(12)),
+        width: MyStyle.mediaQueryWidth(context, widget.isGray? 0.35:0.4),
+        decoration: BoxDecoration(
+          color: widget.isGray? MyStyle.backgroundColor:MyStyle.white,
+          borderRadius: BorderRadius.all(const Radius.circular(12)),
         ),
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           SvgPicture.asset(

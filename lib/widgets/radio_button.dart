@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mosallas/utils/my_style.dart';
 
-Widget MyRadioButton(BuildContext context, {bool value = false}) {
+Widget myRadioButton(BuildContext context, {bool value = false}) {
   return Container(
     height: 18,
     width: 18,

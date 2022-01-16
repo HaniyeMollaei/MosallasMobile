@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mosallas/pages/buyers/shops/online_shop.dart';
 import 'package:mosallas/pages/comments.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
@@ -49,6 +50,7 @@ class BuyerProductPageState extends State<BuyerProductPage> {
         address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
         shopCode: "mnb876gi99",
         star: 4.3,
+        shippingCost: 12000,
         phoneNumber: "09123456789",
         shopImagePath: "assets/image/ilga.jpg",
         productsImagePath: ["assets/image/6.jpg","assets/image/12.jpg"]
@@ -135,7 +137,16 @@ class BuyerProductPageState extends State<BuyerProductPage> {
                             widget.product.hasOnlineSell ?
                             SubmitButton(
                                 text: "  خرید آنلاین  ",
-                                onPressed: (){print("Buy Online");},
+                                onPressed: (){
+                                  Navigator.push(
+                                    context,
+                                    PageRouteBuilder(
+                                      pageBuilder: (context, animation1, animation2) => OnlineShopPage(
+                                       product: widget.product,
+                                      ),
+                                      transitionDuration: Duration.zero,
+                                    ),
+                                  );                                },
                               width: MyStyle.mediaQueryWidth(context, 0.5),
                               height: MyStyle.mediaQueryHeight(context, 0.06),
                               textSize: MyStyle.S13,
