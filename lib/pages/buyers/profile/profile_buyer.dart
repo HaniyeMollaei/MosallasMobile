@@ -27,6 +27,14 @@ class BuyerProfileState extends State<BuyerProfile> {
 
   List<ProductModel> favorites;
 
+  final TextEditingController _txtName = TextEditingController();
+  final FocusNode _fndName = FocusNode();
+
+  final TextEditingController _txtAddress = TextEditingController();
+  final FocusNode _fndAddress = FocusNode();
+
+  final TextEditingController _txtPostalCode = TextEditingController();
+  final FocusNode _fndPostalCode = FocusNode();
 
   Widget onExitDialog(){
     return myDialog(
@@ -55,7 +63,87 @@ class BuyerProfileState extends State<BuyerProfile> {
     );
   }
 
-  Widget onEditDialog(){}
+  Widget onEditDialog(){
+    _txtName.text = AppConstants.BUYER_NAME;
+    ///TODO
+    return myDialog(
+      width: MyStyle.mediaQueryWidth(context, 0.96),
+      height: MyStyle.mediaQueryHeight(context, 0.7),
+      hasCancel: true,
+      hasButton: true,
+      buttonText: "ویرایش",
+      hasHeader: true,
+      headerText: "ویرایش اطلاعات",
+      context: context,
+      onButtonPressed: (){print("Comment saved");},
+      content: Column(
+        children: [
+          MyTextField(
+            width: MyStyle.mediaQueryWidth(context, 0.84),
+            //height: MyStyle.mediaQueryHeight(context, 0.18),
+            textAlign: TextAlign.end,
+            hint: "نام و نام خانوادگی",
+            keyboardType: TextInputType.text,
+            maxLine: 1,
+            fontSize: MyStyle.S13,
+            minLine: 1,
+            inputFormatters: <TextInputFormatter>[
+              LengthLimitingTextInputFormatter(30),
+            ],
+            onSubmit: (String v) {
+              FocusScope.of(context).unfocus();
+            },
+            controller: _txtName,
+            focusNode: _fndName,
+          ),
+          SizedBox(
+            height: MyStyle.mediaQueryHeight(context, 0.02),
+          ),
+          MyTextField(
+            width: MyStyle.mediaQueryWidth(context, 0.84),
+            height: MyStyle.mediaQueryHeight(context, 0.18),
+            textAlign: TextAlign.end,
+            hint: "آدرس",
+            keyboardType: TextInputType.text,
+            maxLine: 4,
+            fontSize: MyStyle.S13,
+            minLine: 4,
+            inputFormatters: <TextInputFormatter>[
+              LengthLimitingTextInputFormatter(120),
+            ],
+            onSubmit: (String v) {
+              FocusScope.of(context).unfocus();
+            },
+            controller: _txtAddress,
+            focusNode: _fndAddress,
+          ),
+          SizedBox(
+            height: MyStyle.mediaQueryHeight(context, 0.02),
+          ),
+          MyTextField(
+            width: MyStyle.mediaQueryWidth(context, 0.84),
+            //height: MyStyle.mediaQueryHeight(context, 0.18),
+            textAlign: TextAlign.end,
+            hint: "کد پستی",
+            keyboardType: TextInputType.text,
+            maxLine: 1,
+            fontSize: MyStyle.S13,
+            minLine: 1,
+            inputFormatters: <TextInputFormatter>[
+              LengthLimitingTextInputFormatter(30),
+            ],
+            onSubmit: (String v) {
+              FocusScope.of(context).unfocus();
+            },
+            controller: _txtPostalCode,
+            focusNode: _fndPostalCode,
+          )
+        ],
+      ),
+
+
+    );
+  }
 
   @override
   Widget build(BuildContext c) {
