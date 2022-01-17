@@ -11,6 +11,8 @@ import 'package:mosallas/widgets/appbar_light.dart';
 import 'package:mosallas/widgets/favorite_vitrine.dart';
 import 'package:mosallas/widgets/order.dart';
 
+import 'all_buyer_orders.dart';
+
 class BuyerProfile extends StatefulWidget {
   const BuyerProfile({Key key}) : super(key: key);
 
@@ -202,8 +204,9 @@ class BuyerProfileState extends State<BuyerProfile> {
                                 SizedBox(height: MyStyle.mediaQueryHeight(context, 0.02),),
                                 ///All orders
                                 InkWell(
-                                  onTap: (){
-                                    ///TODO
+                                  onTap: () async {
+                                    await Navigator.push(
+                                        context, MaterialPageRoute(builder: (context) =>   const AllBuyerOrders()));
                                   },
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,

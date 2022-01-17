@@ -15,7 +15,7 @@ class GrayAppBar extends StatefulWidget {
   @override
   State<GrayAppBar> createState() => _GrayAppBarState();
 }
-
+///height = 1.8
 class _GrayAppBarState extends State<GrayAppBar> {
   @override
   Widget build(BuildContext context) {
