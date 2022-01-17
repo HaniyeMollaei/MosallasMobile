@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:mosallas/models/product_model.dart';
 import 'package:mosallas/models/shop_vitrine_model.dart';
+import 'package:mosallas/pages/buyers/profile/profile_buyer.dart';
+import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
@@ -34,6 +37,7 @@ class OnlineShopPageState extends State<OnlineShopPage> {
   String shopName = "فروشگاه لباس مجلسی ایلگا";
   bool hasDifferentReceiver = false ;
   bool hasDifferentAddress = false ;
+  int totalAmount = 0;
 
   @override
   Widget build(BuildContext c) {
@@ -48,6 +52,8 @@ class OnlineShopPageState extends State<OnlineShopPage> {
         shopImagePath: "assets/image/ilga.jpg",
         productsImagePath: ["assets/image/6.jpg","assets/image/12.jpg"]
     );
+
+    totalAmount = widget.product.cost+shop.shippingCost;
 
     return SafeArea(
         top: false,
@@ -67,10 +73,11 @@ class OnlineShopPageState extends State<OnlineShopPage> {
 
                   Stack(
                     children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.04)),
-                        child: SizedBox(
-                            height: MyStyle.mediaQueryHeight(context, 0.72),
+                      SizedBox(
+                        //color:MyStyle.green,
+                          height: MyStyle.mediaQueryHeight(context, 0.72),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.04)),
                             child: SingleChildScrollView(
                               child: Column(
                                 children: [
@@ -121,8 +128,6 @@ class OnlineShopPageState extends State<OnlineShopPage> {
                                   ],),
                                   SizedBox(height: MyStyle.mediaQueryHeight(context, 0.02),),
 
-
-
                                   Container(
                                     padding: EdgeInsets.all(MyStyle.mediaQueryWidth(context, 0.025)),
                                     decoration: BoxDecoration(
@@ -165,14 +170,13 @@ class OnlineShopPageState extends State<OnlineShopPage> {
                                             crossAxisAlignment: CrossAxisAlignment.end,
                                             children: [
                                               const Text("تومان " , style: MyStyle.darkTextStyleS13,),
-                                              Text((widget.product.cost+shop.shippingCost).toString() , style: MyStyle.darkTextStyleS13,),
+                                              Text(totalAmount.toString() , style: MyStyle.darkTextStyleS13,),
                                             ],
                                           ),
                                         ),
                                       ],
                                     ),
                                   ),
-
 
                                   SizedBox(height: MyStyle.mediaQueryHeight(context, 0.03),),
 
@@ -351,16 +355,80 @@ class OnlineShopPageState extends State<OnlineShopPage> {
                                     ),
                                   ),
 
-                                  SizedBox(height: MyStyle.mediaQueryHeight(context, 0.03),),
-
-
-
+                                  SizedBox(height: MyStyle.mediaQueryHeight(context, 0.1),),
 
                                 ],
                               ),
-                            )
-                        ),
+                            ),
+                          )
                       ),
+                      Positioned(
+                        bottom: 0,
+                        child: Container(
+                          alignment: Alignment.bottomCenter,
+                          height: MyStyle.mediaQueryHeight(context, 0.08),
+                          width: MyStyle.mediaQueryWidth(context, 1),
+                          decoration: const BoxDecoration(
+                            color: MyStyle.lightGrayText,
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(MyStyle.borderRadius4),
+                              topLeft: Radius.circular(MyStyle.borderRadius4),
+                            ),
+                          ),
+                          padding: EdgeInsets.only(
+                              top:MyStyle.mediaQueryHeight(context, 0.01),
+                              bottom: MyStyle.mediaQueryHeight(context, 0.01),
+                              left:MyStyle.mediaQueryWidth(context, 0.06),
+                              right: MyStyle.mediaQueryWidth(context, 0.06)
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              InkWell(
+                                onTap: AppConstants.BALANCE>=totalAmount ? (){
+                                  setState(() async {
+                                    AppConstants.BALANCE = AppConstants.BALANCE - totalAmount;
+                                    MyStyle.successfulSnackBar(".خرید شما با موفقیت انجام شد", context);
+                                    ///TODO
+                                    await Navigator.push(
+                                        context, MaterialPageRoute(builder: (context) => const BuyerProfile()));
+
+                                  });
+                                }:(){},
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height: MyStyle.mediaQueryHeight(context, 0.045),
+                                  width: MyStyle.mediaQueryWidth(context, 0.35),
+                                  decoration: const BoxDecoration(
+                                    color: MyStyle.headerDarkPink,
+                                    borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius4),),
+                                  ),
+                                  child: Text(AppConstants.BALANCE>=totalAmount ?
+                                  "خرید با کیف پول":"موجودی کافی نیست",
+                                  style: MyStyle.whiteLightTextStyle,),
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  const Text(
+                                    "تومان "  ,
+                                    style: MyStyle.whiteWalletAmountStyle,
+                                  ),
+                                  Text(
+                                    AppConstants.BALANCE.toString()  ,
+                                    style: MyStyle.whiteWalletAmountStyle,
+                                  ),
+                                  SizedBox(width: MyStyle.mediaQueryWidth(context, 0.03)),
+                                  SvgPicture.asset('assets/svg/wallet.svg',
+                                      height: MyStyle.mediaQueryHeight(context, 0.04), color: MyStyle.white),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ],
