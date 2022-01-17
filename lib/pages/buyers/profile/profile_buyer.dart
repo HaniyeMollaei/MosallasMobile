@@ -4,12 +4,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mosallas/models/order_model.dart';
 import 'package:mosallas/models/product_model.dart';
+import 'package:mosallas/pages/login/login.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
 import 'package:mosallas/widgets/appbar_light.dart';
+import 'package:mosallas/widgets/dialoug.dart';
 import 'package:mosallas/widgets/favorite_vitrine.dart';
 import 'package:mosallas/widgets/order.dart';
+import 'package:mosallas/widgets/text_field.dart';
 
 import 'all_buyer_orders.dart';
 
@@ -23,6 +26,36 @@ class BuyerProfile extends StatefulWidget {
 class BuyerProfileState extends State<BuyerProfile> {
 
   List<ProductModel> favorites;
+
+
+  Widget onExitDialog(){
+    return myDialog(
+      width: MyStyle.mediaQueryWidth(context, 0.96),
+      height: MyStyle.mediaQueryHeight(context, 0.4),
+      hasCancel: true,
+      hasButton: true,
+      buttonText: "بله مطمئنم",
+      hasHeader: false,
+      context: context,
+      onButtonPressed: () async {
+        await Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const LoginPage()));
+      },
+      content: const Align(
+        alignment: Alignment.center,
+        child: Text("آیا میخواهید از حساب کاربری خود خارج شوید؟" , textAlign:TextAlign.center,
+          style: TextStyle(
+            fontSize: MyStyle.S18,
+            color: MyStyle.lightGrayText,
+            fontFamily: MyStyle.textBoldFont
+        ),),
+      ),
+
+
+    );
+  }
+
+  Widget onEditDialog(){}
 
   @override
   Widget build(BuildContext c) {
@@ -84,6 +117,7 @@ class BuyerProfileState extends State<BuyerProfile> {
           star: 4.5,
           shopCode: "hfgds43"),
     ];
+
     return SafeArea(
         top: false,
         bottom: false,
@@ -121,9 +155,9 @@ class BuyerProfileState extends State<BuyerProfile> {
                                 children: [
                                   Row(mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    SvgPicture.asset("assets/svg/exit.svg"),
+                                    InkWell(onTap:onExitDialog, child: SvgPicture.asset("assets/svg/exit.svg")),
                                     SizedBox(width: MyStyle.mediaQueryWidth(context, 0.02),),
-                                    SvgPicture.asset("assets/svg/edit.svg")
+                                    InkWell(onTap:onEditDialog, child: SvgPicture.asset("assets/svg/edit.svg"))
                                   ],),
                                   Row(mainAxisAlignment: MainAxisAlignment.end,
                                     children: [

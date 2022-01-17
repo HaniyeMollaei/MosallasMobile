@@ -41,13 +41,13 @@ myDialog({
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            SizedBox(
+                            hasHeader? SizedBox(
                               height: MyStyle.mediaQueryHeight(context, 0.02),
-                            ),
-                            Text(
+                            ):Container(),
+                            hasHeader? Text(
                               headerText,
                               style: MyStyle.redMediumHeaderStyle,
-                            ),
+                            ):Container(),
                             SizedBox(
                               height: MyStyle.mediaQueryHeight(context, 0.02),
                             ),

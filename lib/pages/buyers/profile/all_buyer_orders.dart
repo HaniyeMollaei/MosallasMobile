@@ -87,7 +87,7 @@ class AllBuyerOrdersState extends State<AllBuyerOrders> {
                     pageHeaderNameSmall: "",
                     pageHeaderNameLarge: "سفارشات",
                   ),
-                  Container(
+                  SizedBox(
                     height: MyStyle.mediaQueryHeight(context, 0.8),
                     child: SingleChildScrollView(
                       child: Column(
