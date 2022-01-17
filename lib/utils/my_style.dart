@@ -42,6 +42,7 @@ class MyStyle {
     color: white,
   );
 
+
   static const whiteHeaderStyleSmall = TextStyle(
     fontFamily: headerFont,
     fontSize: S20,

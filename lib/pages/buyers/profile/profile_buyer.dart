@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mosallas/models/order_model.dart';
+import 'package:mosallas/models/product_model.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
 import 'package:mosallas/widgets/appbar_light.dart';
+import 'package:mosallas/widgets/favorite_vitrine.dart';
 import 'package:mosallas/widgets/order.dart';
-import 'package:mosallas/widgets/product.dart';
 
 class BuyerProfile extends StatefulWidget {
   const BuyerProfile({Key key}) : super(key: key);
@@ -18,8 +19,69 @@ class BuyerProfile extends StatefulWidget {
 }
 
 class BuyerProfileState extends State<BuyerProfile> {
+
+  List<ProductModel> favorites;
+
   @override
   Widget build(BuildContext c) {
+
+    favorites = [
+      ProductModel(
+          name: "پیراهن آستین بلند مردانه",
+          code: "hgd65435hj",
+          cost: 123000,
+          description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
+          imagePath: ['assets/image/5.jpg','assets/image/6.jpg','assets/image/12.jpg'],
+          isRemovable: true,
+          star: 4.5,
+          hasOnlineSell: true,
+          category: "پوشاک",
+          shopCode: "hfgds43"),
+      ProductModel(
+          name: "پیراهن آستین بلند مردانه",
+          code: "hgd65435hj",
+          cost: 123000,
+          description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
+          hasOnlineSell: false,
+          category: "پوشاک",
+          imagePath: ['assets/image/6.jpg','assets/image/12.jpg'],
+          isRemovable: true,
+          star: 4.5,
+          shopCode: "hfgds43"),
+      ProductModel(
+          name: "پیراهن آستین بلند مردانه",
+          code: "hgd65435hj",
+          cost: 123000,
+          imagePath: ['assets/image/12.jpg'],
+          isRemovable: true,
+          description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
+          hasOnlineSell: true,
+          category: "پوشاک",
+          star: 4.5,
+          shopCode: "hfgds43"),
+      ProductModel(
+          name: "پیراهن آستین بلند مردانه",
+          code: "hgd65435hj",
+          cost: 123000,
+          description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
+          imagePath: ['assets/image/5.jpg'],
+          isRemovable: true,
+          star: 4.5,
+          hasOnlineSell: true,
+          category: "پوشاک",
+          shopCode: "hfgds43"),
+      ProductModel(
+          name: "پیراهن آستین بلند مردانه",
+          code: "hgd65435hj",
+          cost: 123000,
+          hasOnlineSell: true,
+          category: "پوشاک",
+          imagePath: ['assets/image/6.jpg','assets/image/12.jpg'],
+          description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
+          isRemovable: true,
+          star: 4.5,
+          shopCode: "hfgds43"),
+    ];
     return SafeArea(
         top: false,
         bottom: false,
@@ -108,6 +170,14 @@ class BuyerProfileState extends State<BuyerProfile> {
                             decoration: BoxDecoration(
                               color: MyStyle.white,
                               borderRadius: BorderRadius.circular(MyStyle.borderRadius3),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 0.5,
+                                  blurRadius: 3,
+                                  offset: const Offset(0, 2), // changes position of shadow
+                                ),
+                              ],
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -130,6 +200,7 @@ class BuyerProfileState extends State<BuyerProfile> {
                                   )
                                 ),
                                 SizedBox(height: MyStyle.mediaQueryHeight(context, 0.02),),
+                                ///All orders
                                 InkWell(
                                   onTap: (){
                                     ///TODO
@@ -146,10 +217,19 @@ class BuyerProfileState extends State<BuyerProfile> {
                                     ],
                                   ),
                                 ),
-
                               ],
                             ),
-                          )
+                          ),
+
+                          SizedBox(height: MyStyle.mediaQueryHeight(context, 0.03),),
+
+                          ///Favorites
+                          favoriteVitrine(
+                            context: context,
+                            favorites: favorites
+                          ),
+
+                          SizedBox(height: MyStyle.mediaQueryHeight(context, 0.03),),
 
                         ],
                       ),
