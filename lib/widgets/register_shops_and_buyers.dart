@@ -9,8 +9,8 @@ import 'package:mosallas/utils/storage_utils.dart';
 class RegisterShopAndBuyers extends StatefulWidget {
 
 
-  String type;
-  RegisterShopAndBuyers({Key key,this.type}) : super(key: key);
+  final String type;
+  const RegisterShopAndBuyers({Key key,this.type}) : super(key: key);
 
   @override
   State<RegisterShopAndBuyers> createState() => _RegisterShopAndBuyersState();

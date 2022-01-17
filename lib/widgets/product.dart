@@ -1,29 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mosallas/models/product_model.dart';
 import 'package:mosallas/pages/buyers/shops/product_page.dart';
 import 'package:mosallas/utils/my_style.dart';
 
 
-class ProductItem{
-  String name;
-  String code;
-  String shopCode;
-  int cost;
-  List<String> imagePath;
-  double star;
-  bool isRemovable;
-  bool hasOnlineSell;
-  String category;
-  String description;
-  ProductItem({this.name , this.hasOnlineSell , this.category , this.code , this.cost ,
-    this.imagePath , this.star , this.isRemovable , this.shopCode , this.description});
-}
 
 class ProductWidget extends StatefulWidget {
   const ProductWidget({Key key, this.p, })
       : super(key: key);
-  final ProductItem p;
+  final ProductModel p;
   @override
   State<ProductWidget> createState() => _ProductWidgetState();
 }

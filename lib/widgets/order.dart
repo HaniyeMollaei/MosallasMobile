@@ -1,28 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mosallas/models/order_model.dart';
 import 'package:mosallas/pages/buyers/shops/shop_vitrine.dart';
 import 'package:mosallas/utils/my_style.dart';
 
-class OrderItem {
-  String orderCode;
-  String orderDate;
-  String orderStatus;
-  String productName;
-  int productCost;
-  String productCode;
-  String shopName;
-  String shopAddress;
-  String shopPhoneNumber;
-
-  OrderItem({this.orderCode , this.orderDate ,this.orderStatus
-    ,this.shopName , this.shopAddress , this.shopPhoneNumber ,
-    this.productCode , this.productCost , this.productName});
-}
-
 Widget orderItemWidget(
     {BuildContext context,
-      OrderItem orderItem}) {
+      OrderModel orderItem}) {
 
   Widget header = Align(
     alignment: Alignment.topCenter,

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mosallas/models/shop_vitrine_model.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
 import 'package:mosallas/widgets/appbar_light.dart';
@@ -15,8 +16,8 @@ class BuyerCityShops extends StatefulWidget {
 }
 
 class BuyerCityShopsState extends State<BuyerCityShops> {
-  List<ShopVitrineItem> shops = [
-    ShopVitrineItem(
+  List<ShopVitrineModel> shops = [
+    ShopVitrineModel(
       shopName: "فروشگاه لباس مجلسی ایلگا",
       address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
       shopCode: "mnb876gi99",
@@ -26,7 +27,7 @@ class BuyerCityShopsState extends State<BuyerCityShops> {
       shopImagePath: "assets/image/ilga.jpg",
       productsImagePath: ["assets/image/6.jpg","assets/image/12.jpg"]
     ),
-    ShopVitrineItem(
+    ShopVitrineModel(
         shopName: "فروشگاه لباس ورزشی یونیک",
         address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
         phoneNumber: "09123456789",
@@ -36,7 +37,7 @@ class BuyerCityShopsState extends State<BuyerCityShops> {
         shopImagePath: "assets/image/7.jpg",
         productsImagePath: ["assets/image/8.jpg","assets/image/9.jpg","assets/image/10.png"]
     ),
-    ShopVitrineItem(
+    ShopVitrineModel(
         shopName: "فروشگاه لباس مجلسی ایلگا",
         address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
         shopCode: "mnb876gi99",
@@ -46,7 +47,7 @@ class BuyerCityShopsState extends State<BuyerCityShops> {
         shopImagePath: "assets/image/ilga.jpg",
         productsImagePath: ["assets/image/5.jpg","assets/image/6.jpg","assets/image/12.jpg"]
     ),
-    ShopVitrineItem(
+    ShopVitrineModel(
         shopName: "فروشگاه لباس ورزشی یونیک",
         address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
         phoneNumber: "09123456789",

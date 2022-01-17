@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mosallas/models/shop_vitrine_model.dart';
 import 'package:mosallas/pages/buyers/shops/shop_vitrine.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/shop_vitrine.dart';
@@ -8,7 +9,7 @@ import 'package:mosallas/widgets/shop_vitrine.dart';
 
 Widget shopVitrine(
     {BuildContext context,
-      ShopVitrineItem shopVitrineItem}) {
+      ShopVitrineModel shopVitrineItem}) {
 
   Widget header = Align(
     alignment: Alignment.topCenter,

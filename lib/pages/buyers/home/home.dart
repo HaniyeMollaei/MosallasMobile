@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mosallas/models/product_model.dart';
 import 'package:mosallas/pages/buyers/home/tourism.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
@@ -117,7 +118,7 @@ class BuyerHomeState extends State<BuyerHome> {
                             scrollDirection: Axis.horizontal,
                             child: Row(
                               children: [
-                                ProductWidget(p: ProductItem(
+                                ProductWidget(p: ProductModel(
                                   name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
                                   cost: 123000,
@@ -129,7 +130,7 @@ class BuyerHomeState extends State<BuyerHome> {
                                   description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
                                   shopCode: "063487",
                                 ),),
-                                ProductWidget(p: ProductItem(name: "پیراهن آستین بلند مردانه",
+                                ProductWidget(p: ProductModel(name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
                                   cost: 123000,
                                   description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
@@ -140,7 +141,7 @@ class BuyerHomeState extends State<BuyerHome> {
                                   hasOnlineSell: true,
                                   category: "پوشاک",
                                 ),),
-                                ProductWidget(p: ProductItem(
+                                ProductWidget(p: ProductModel(
                                   hasOnlineSell: true,
                                   category: "پوشاک",
                                   description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",

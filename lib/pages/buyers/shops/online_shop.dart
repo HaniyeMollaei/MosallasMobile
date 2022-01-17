@@ -1,27 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mosallas/pages/comments.dart';
+import 'package:mosallas/models/product_model.dart';
+import 'package:mosallas/models/shop_vitrine_model.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
-import 'package:mosallas/widgets/call_and_chat.dart';
-import 'package:mosallas/widgets/comment_pink_box.dart';
-import 'package:mosallas/widgets/comment_slider_manually.dart';
-import 'package:mosallas/widgets/cursol_slider.dart';
 import 'package:mosallas/widgets/drawer.dart';
-import 'package:mosallas/widgets/favorite_vitrine.dart';
-import 'package:mosallas/widgets/image_slider_manually.dart';
-import 'package:mosallas/widgets/product.dart';
 import 'package:mosallas/widgets/radio_button.dart';
-import 'package:mosallas/widgets/shop_vitrine.dart';
-import 'package:mosallas/widgets/submit_button.dart';
 import 'package:mosallas/widgets/text_field.dart';
 
 class OnlineShopPage extends StatefulWidget {
 
-  final ProductItem product;
+  final ProductModel product;
   const OnlineShopPage({Key key, this.product, }) : super(key: key);
 
   @override
@@ -31,14 +22,14 @@ class OnlineShopPage extends StatefulWidget {
 class OnlineShopPageState extends State<OnlineShopPage> {
 
 
-  TextEditingController _txtReceiver = TextEditingController(text: '');
-  FocusNode _fndReceiver = new FocusNode();
+  final TextEditingController _txtReceiver = TextEditingController(text: '');
+  final FocusNode _fndReceiver = FocusNode();
 
-  TextEditingController _txtAddresse = TextEditingController(text: '');
-  FocusNode _fndAddresse = new FocusNode();
+  final TextEditingController _txtAddress = TextEditingController(text: '');
+  final FocusNode _fndAddress = FocusNode();
 
-  TextEditingController _txtPostalCode = TextEditingController(text: '');
-  FocusNode _fndPostalCode = new FocusNode();
+  final TextEditingController _txtPostalCode = TextEditingController(text: '');
+  final FocusNode _fndPostalCode = FocusNode();
 
   String shopName = "فروشگاه لباس مجلسی ایلگا";
   bool hasDifferentReceiver = false ;
@@ -46,10 +37,8 @@ class OnlineShopPageState extends State<OnlineShopPage> {
 
   @override
   Widget build(BuildContext c) {
-    print("Image Path :");
-  print(widget.product.imagePath[0]);
 
-    ShopVitrineItem shop =  ShopVitrineItem(
+    ShopVitrineModel shop =  ShopVitrineModel(
         shopName: "فروشگاه لباس مجلسی ایلگا",
         address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
         shippingCost: 12000,
@@ -284,7 +273,7 @@ class OnlineShopPageState extends State<OnlineShopPage> {
                                                   vertical: MyStyle.mediaQueryHeight(context, 0.01),
                                                   horizontal: MyStyle.mediaQueryWidth(context, 0.04)
                                               ),
-                                              child: Align(alignment: Alignment.centerRight,
+                                              child: const Align(alignment: Alignment.centerRight,
                                                   child: Text("زنجان، سلطانیه، خیابان پاسداران، نبش کوچه ی حکمت، پلاک 82 . کد پستی : 123456789" ,
                                                     style: MyStyle.darkTextStyleS13,textAlign: TextAlign.end,)),
                                             ),
@@ -341,8 +330,8 @@ class OnlineShopPageState extends State<OnlineShopPage> {
                                                   fontSize: MyStyle.S13,
                                                   minLine: 4,
                                                   maxLine: 4,
-                                                  focusNode: _fndAddresse,
-                                                  controller: _txtAddresse,
+                                                  focusNode: _fndAddress,
+                                                  controller: _txtAddress,
                                                   borderColor: MyStyle.backgroundColor,
                                                   isGray: true,
                                                 ),

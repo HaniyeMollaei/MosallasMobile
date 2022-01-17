@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mosallas/models/product_model.dart';
 import 'package:mosallas/pages/comments.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
@@ -160,7 +161,7 @@ class BuyerShopVitrineState extends State<BuyerShopVitrine> {
                             scrollDirection: Axis.horizontal,
                             child: Row(
                               children:  [
-                                ProductWidget(p: ProductItem(
+                                ProductWidget(p: ProductModel(
                                   name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
                                   cost: 123000,
@@ -172,7 +173,7 @@ class BuyerShopVitrineState extends State<BuyerShopVitrine> {
                                   category: "پوشاک",
                                   shopCode: widget.shopCode,
                                 ),),
-                                ProductWidget(p: ProductItem(name: "پیراهن آستین بلند مردانه",
+                                ProductWidget(p: ProductModel(name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
                                   cost: 123000,
                                   imagePath: ['assets/image/6.jpg'],
@@ -183,7 +184,7 @@ class BuyerShopVitrineState extends State<BuyerShopVitrine> {
                                   category: "پوشاک",
                                   shopCode: widget.shopCode,
                                 ),),
-                                ProductWidget(p: ProductItem(
+                                ProductWidget(p: ProductModel(
                                   name: "پیراهن آستین بلند مردانه",
                                   code: "hgd65435hj" ,
                                   description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mosallas/models/product_model.dart';
+import 'package:mosallas/models/shop_vitrine_model.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
@@ -16,8 +18,8 @@ class BuyerAllProducts extends StatefulWidget {
 }
 
 class BuyerAllProductsState extends State<BuyerAllProducts> {
-  List<ShopVitrineItem> shops = [
-    ShopVitrineItem(
+  List<ShopVitrineModel> shops = [
+    ShopVitrineModel(
         shopName: "فروشگاه لباس مجلسی ایلگا",
         address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
         shopCode: "mnb876gi99",
@@ -26,7 +28,7 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
         shippingCost: 12000,
         shopImagePath: "assets/image/ilga.jpg",
         productsImagePath: ["assets/image/6.jpg", "assets/image/12.jpg"]),
-    ShopVitrineItem(
+    ShopVitrineModel(
         shopName: "فروشگاه لباس ورزشی یونیک",
         address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
         shopCode: "mnb876gi90",
@@ -35,7 +37,7 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
         phoneNumber: "09123456789",
         shopImagePath: "assets/image/7.jpg",
         productsImagePath: ["assets/image/8.jpg", "assets/image/9.jpg", "assets/image/10.png"]),
-    ShopVitrineItem(
+    ShopVitrineModel(
         shopName: "فروشگاه لباس مجلسی ایلگا",
         address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
         shopCode: "mnb876gi99",
@@ -44,7 +46,7 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
         phoneNumber: "09123456789",
         shopImagePath: "assets/image/ilga.jpg",
         productsImagePath: ["assets/image/5.jpg", "assets/image/6.jpg", "assets/image/12.jpg"]),
-    ShopVitrineItem(
+    ShopVitrineModel(
         shopName: "فروشگاه لباس ورزشی یونیک",
         address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
         shippingCost: 12000,
@@ -56,12 +58,12 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
   ];
 
   String shopName = "فروشگاه لباس مجلسی ایلگا";
-  List<ProductItem> myProducts;
+  List<ProductModel> myProducts;
 
   @override
   Widget build(BuildContext c) {
     myProducts = [
-      ProductItem(
+      ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
           cost: 123000,
@@ -72,7 +74,7 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           hasOnlineSell: true,
           category: "پوشاک",
           shopCode: widget.shopCode),
-      ProductItem(
+      ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
           cost: 123000,
@@ -83,7 +85,7 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           isRemovable: false,
           star: 4.5,
           shopCode: widget.shopCode),
-      ProductItem(
+      ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
           cost: 123000,
@@ -94,7 +96,7 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           category: "پوشاک",
           star: 4.5,
           shopCode: widget.shopCode),
-      ProductItem(
+      ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
           cost: 123000,
@@ -105,7 +107,7 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           hasOnlineSell: true,
           category: "پوشاک",
           shopCode: widget.shopCode),
-      ProductItem(
+      ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
           cost: 123000,
@@ -116,7 +118,7 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           isRemovable: false,
           star: 4.5,
           shopCode: widget.shopCode),
-      ProductItem(
+      ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
           cost: 123000,
@@ -127,7 +129,7 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           hasOnlineSell: true,
           category: "پوشاک",
           shopCode: widget.shopCode),
-      ProductItem(
+      ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
           cost: 123000,
@@ -138,7 +140,7 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           hasOnlineSell: true,
           category: "پوشاک",
           shopCode: widget.shopCode),
-      ProductItem(
+      ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
           cost: 123000,
@@ -149,7 +151,7 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           hasOnlineSell: true,
           category: "پوشاک",
           shopCode: widget.shopCode),
-      ProductItem(
+      ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
           cost: 123000,

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mosallas/models/order_model.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
@@ -116,7 +117,7 @@ class BuyerProfileState extends State<BuyerProfile> {
                                 SizedBox(height: MyStyle.mediaQueryHeight(context, 0.02),),
                                 orderItemWidget(
                                   context: c,
-                                  orderItem: OrderItem(
+                                  orderItem: OrderModel(
                                     orderCode: "AC10004ON123456",
                                     orderDate: "1400/05/07",
                                     orderStatus: "WaitForShop",

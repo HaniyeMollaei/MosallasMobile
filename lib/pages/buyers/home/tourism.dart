@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mosallas/models/tourism_site_model.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
@@ -40,28 +41,34 @@ class TourismState extends State<Tourism> {
                       child: Column(
                         children: [
 
-                          const TourismSiteItem(
-                            index: 0,
-                            siteCode: "xvf431",
-                            siteName: "بازار سنتی زنجان",
-                            description: "بازار زنجان طولانی ترین بازار سرپوشیده ایران است.این بازار در دوران آغا محمد خان قاجار آغاز",
-                            imagePath: 'assets/image/zanjan_bazar2.jpg',
+                          TourismSiteWidget(
+                            tourismSite: TourismSiteModel(
+                              index: 0,
+                              siteCode: "xvf431",
+                              siteName: "بازار سنتی زنجان",
+                              description: "بازار زنجان طولانی ترین بازار سرپوشیده ایران است.این بازار در دوران آغا محمد خان قاجار آغاز",
+                              imagePath: 'assets/image/zanjan_bazar2.jpg',
+                            ),
+                            ),
+
+                          TourismSiteWidget(
+                            tourismSite: TourismSiteModel(
+                              index: 1,
+                              siteCode: "xvf532",
+                              siteName: "بازار سنتی زنجان",
+                              description: "بازار زنجان طولانی ترین بازار سرپوشیده ایران است.این بازار در دوران آغا محمد خان قاجار آغاز و در سال ۱۲۱۳ در زمان فتحعلی شاه قاجار خاتمه یافته",
+                              imagePath: 'assets/image/zanjan_bazar2.jpg',
+                            ),
                           ),
 
-                          const TourismSiteItem(
-                            index: 1,
-                            siteCode: "xvf532",
-                            siteName: "بازار سنتی زنجان",
-                            description: "بازار زنجان طولانی ترین بازار سرپوشیده ایران است.این بازار در دوران آغا محمد خان قاجار آغاز و در سال ۱۲۱۳ در زمان فتحعلی شاه قاجار خاتمه یافته",
-                            imagePath: 'assets/image/zanjan_bazar2.jpg',
-                          ),
-
-                          const TourismSiteItem(
-                            index: 2,
-                            siteCode: "xvf432",
-                            siteName: "بازار سنتی زنجان",
-                            description: "بازار زنجان طولانی ترین بازار سرپوشیده ایران است.این بازار در دوران آغا محمد خان قاجار آغاز و در سال ۱۲۱۳ در زمان فتحعلی شاه قاجار خاتمه یافته و مساجد و سراها،  گرمابه‌ها در سال ۱۳۲۴ به آن اضافه شده‌است...",
-                            imagePath: 'assets/image/zanjan_bazar2.jpg',
+                          TourismSiteWidget(
+                            tourismSite: TourismSiteModel(
+                              index: 2,
+                              siteCode: "xvf432",
+                              siteName: "بازار سنتی زنجان",
+                              description: "بازار زنجان طولانی ترین بازار سرپوشیده ایران است.این بازار در دوران آغا محمد خان قاجار آغاز و در سال ۱۲۱۳ در زمان فتحعلی شاه قاجار خاتمه یافته و مساجد و سراها،  گرمابه‌ها در سال ۱۳۲۴ به آن اضافه شده‌است...",
+                              imagePath: 'assets/image/zanjan_bazar2.jpg',
+                            ),
                           ),
 
 

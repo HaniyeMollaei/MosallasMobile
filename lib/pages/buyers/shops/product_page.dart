@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mosallas/models/product_model.dart';
+import 'package:mosallas/models/shop_vitrine_model.dart';
 import 'package:mosallas/pages/buyers/shops/online_shop.dart';
 import 'package:mosallas/pages/comments.dart';
 import 'package:mosallas/utils/my_style.dart';
@@ -11,15 +13,12 @@ import 'package:mosallas/widgets/call_and_chat.dart';
 import 'package:mosallas/widgets/comment_pink_box.dart';
 import 'package:mosallas/widgets/comment_slider_manually.dart';
 import 'package:mosallas/widgets/cursol_slider.dart';
-import 'package:mosallas/widgets/favorite_vitrine.dart';
 import 'package:mosallas/widgets/image_slider_manually.dart';
-import 'package:mosallas/widgets/product.dart';
-import 'package:mosallas/widgets/shop_vitrine.dart';
 import 'package:mosallas/widgets/submit_button.dart';
 
 class BuyerProductPage extends StatefulWidget {
 
-  final ProductItem product;
+  final ProductModel product;
   const BuyerProductPage({Key key, this.product, }) : super(key: key);
 
   @override
@@ -45,7 +44,7 @@ class BuyerProductPageState extends State<BuyerProductPage> {
       CommentItem(text: "به ما خیلی خوش گذشت اینجا ^^", author: "هما"),
     ];
 
-    ShopVitrineItem shop =  ShopVitrineItem(
+    ShopVitrineModel shop =  ShopVitrineModel(
         shopName: "فروشگاه لباس مجلسی ایلگا",
         address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
         shopCode: "mnb876gi99",
