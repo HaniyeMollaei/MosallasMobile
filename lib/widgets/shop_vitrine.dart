@@ -9,7 +9,7 @@ import 'package:mosallas/utils/my_style.dart';
 
 Widget shopVitrine(
     {BuildContext context,
-      ShopVitrineModel shopVitrineItem}) {
+      ShopVitrineModel shopVitrineItem , bool justHeader = false}) {
 
   Widget header = Align(
     alignment: Alignment.topCenter,
@@ -94,7 +94,7 @@ Widget shopVitrine(
     ),
   );
 
-  return InkWell(
+  return justHeader ? header : InkWell(
     onTap: () async {
       await Navigator.push(
           context, MaterialPageRoute(builder: (context) =>

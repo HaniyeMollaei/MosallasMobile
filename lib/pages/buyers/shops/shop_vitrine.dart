@@ -207,7 +207,7 @@ class BuyerShopVitrineState extends State<BuyerShopVitrine> {
                             textSize: MyStyle.S17,
                             onPressed: () async {
                               await Navigator.push(
-                                  context, MaterialPageRoute(builder: (context) => BuyerAllProducts(shopCode: widget.shopCode,)));
+                                  context, MaterialPageRoute(builder: (context) => AllProducts(shopCode: widget.shopCode,)));
 
                             },
                           ),

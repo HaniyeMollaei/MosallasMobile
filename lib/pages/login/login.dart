@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mosallas/pages/admin/admin_home.dart';
 import 'package:mosallas/pages/buyers/home/home.dart';
 import 'package:mosallas/pages/register/get_mobile_number.dart';
+import 'package:mosallas/pages/shop/shop_home.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/utils/storage_utils.dart';
@@ -22,10 +24,10 @@ class LoginPage extends StatefulWidget{
 
 class LoginPageState extends State<LoginPage>{
 
-  TextEditingController _txtMobileNumber = TextEditingController(text: '');
-  FocusNode _fndMobileNumber = new FocusNode();
-  TextEditingController _txtPassword = TextEditingController(text: '');
-  FocusNode _fndPassword = new FocusNode();
+  final TextEditingController _txtMobileNumber = TextEditingController(text: '');
+  final FocusNode _fndMobileNumber = FocusNode();
+  final TextEditingController _txtPassword = TextEditingController(text: '');
+  final FocusNode _fndPassword = FocusNode();
 
 
   @override
@@ -117,13 +119,28 @@ class LoginPageState extends State<LoginPage>{
                       ///Login Button 0.08
                       SubmitButton(text: "ورود",
                         onPressed: () async {
-                        AppConstants.USER_TYPE= "normal";
-                        AppConstants.BUYER_CITY ="سلطانیه";
-                        AppConstants.BUYER_PROVINCE= "زنجان";
+                          if(_txtMobileNumber.text =="1"){
+                            AppConstants.SHOP_CATEGORY="پوشاک";
+                            AppConstants.SHOP_CITY="زنجان";
+                            AppConstants.SHOP_PROVINCE="زنجان";
+                            AppConstants.SHOP_NAME="فروشگاه لباس مجلسی ایلگا";
+                            AppConstants.SHOP_CODE = "RELJ323";
+                            AppConstants.USER_TYPE = "shop";
+                            AppConstants.MOBILE_NUMBER = " 09124424805";
+                            AppConstants.BALANCE = 500000 ;
+                            AppConstants.getAllConstants();
+                          }else{
+                            AppConstants.USER_TYPE = "normal";
+                            AppConstants.BUYER_CITY = "زنجان";
+                            AppConstants.BUYER_PROVINCE = "زنجان";
+                            AppConstants.BUYER_NAME = "هانیه ملائی";
+                            AppConstants.MOBILE_NUMBER = " 09124424805";
+                            AppConstants.BALANCE = 500000 ;
+                            AppConstants.getAllConstants();
+                          }
 
-
-                        await Navigator.pushReplacement(
-                              context, MaterialPageRoute(builder: (context) => const BuyerHome()));
+                          await Navigator.pushReplacement(
+                              context, MaterialPageRoute(builder: (context) => (_txtMobileNumber.text =="1")? const ShopHome() :(_txtMobileNumber.text =="0")? const AdminHome() : const BuyerHome() ));
 
                         },
                         isDisable: false,

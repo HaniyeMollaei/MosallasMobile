@@ -41,7 +41,7 @@ Widget favoriteVitrine(
             InkWell(
               onTap: () async {
                 await Navigator.push(
-                    context, MaterialPageRoute(builder: (context) =>   const BuyerAllProducts(
+                    context, MaterialPageRoute(builder: (context) =>   const AllProducts(
                   isFavorite: true,
                 )));
               },

@@ -8,7 +8,7 @@ import 'comment_slider_manually.dart';
 
 //type : shop
 
-Widget callAndChat({BuildContext context, String phoneNumber, String shopCode }){
+Widget callAndChat({BuildContext context, String phoneNumber, String shopCode , String buyerCode , bool justChat = false }){
   return Container(
     height: MyStyle.mediaQueryHeight(context, 0.18),
     width: MyStyle.mediaQueryWidth(context, 0.16),
@@ -22,8 +22,9 @@ Widget callAndChat({BuildContext context, String phoneNumber, String shopCode })
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        
-        InkWell(
+
+        ///phone
+        justChat ? Container() :InkWell(
           onTap: (){
             UrlLauncher.launch("tel://$phoneNumber");
           },
@@ -32,10 +33,12 @@ Widget callAndChat({BuildContext context, String phoneNumber, String shopCode })
             fit: BoxFit.fitWidth,
           ),
         ),
-        
-        SizedBox(
+
+        justChat ? Container() :SizedBox(
           height: MyStyle.mediaQueryHeight(context, 0.03),
         ),
+
+        ///chat
         InkWell(
           onTap: (){
 
@@ -45,7 +48,6 @@ Widget callAndChat({BuildContext context, String phoneNumber, String shopCode })
             fit: BoxFit.fitWidth,
           ),
         ),
-
 
       ],
     ),

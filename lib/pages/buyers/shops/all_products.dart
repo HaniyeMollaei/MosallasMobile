@@ -5,20 +5,22 @@ import 'package:mosallas/models/product_model.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
+import 'package:mosallas/widgets/bottom_nav_bar_shop.dart';
 import 'package:mosallas/widgets/product.dart';
+import 'package:mosallas/widgets/submit_button.dart';
 
-class BuyerAllProducts extends StatefulWidget {
+class AllProducts extends StatefulWidget {
   final String shopCode;
   final bool isFavorite;
   final bool isBuyer;
   final bool isShop;
-  const BuyerAllProducts({Key key, this.shopCode, this.isFavorite = false, this.isBuyer = true, this.isShop = false}) : super(key: key);
+  const AllProducts({Key key, this.shopCode, this.isFavorite = false, this.isBuyer = true, this.isShop = false}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => BuyerAllProductsState();
+  State<StatefulWidget> createState() => AllProductsState();
 }
 
-class BuyerAllProductsState extends State<BuyerAllProducts> {
+class AllProductsState extends State<AllProducts> {
 
   String shopName = "فروشگاه لباس مجلسی ایلگا";
   List<ProductModel> myProducts;
@@ -212,10 +214,20 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
                     pageHeaderNameLarge: widget.isFavorite? "موارد مورد علاقه" :shopName,
                     pageHeaderNameSmall: widget.isFavorite? "":"تمامی محصولات موجود در",
                   ),
+                  widget.isShop ? SubmitButton(
+                    height: MyStyle.mediaQueryHeight(context, 0.06),
+                    width: MyStyle.mediaQueryWidth(context, 0.92),
+                    text: "افزودن محصول جدید",
+                    textSize: MyStyle.S15,
+                    onPressed: (){},
+                  ): Container(),
+                  widget.isShop ? SizedBox(
+                    height: MyStyle.mediaQueryHeight(context, 0.02),
+                  ):Container(),
 
                   SingleChildScrollView(
                     child: SizedBox(
-                      height: MyStyle.mediaQueryHeight(context, 0.72),
+                      height: MyStyle.mediaQueryHeight(context, widget.isShop ? 0.64:0.72),
                       child: GridView.builder(
                           padding: const EdgeInsets.only(top: 0),
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -243,7 +255,7 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
                   ),
                 ],
               ),
-              bottomNavigationBar: BuyerBottomNavBar(
+              bottomNavigationBar:widget.isShop ? ShopBottomNavBar(index: 2,): BuyerBottomNavBar(
                 index: widget.isFavorite? 3 : 2,
               ),
             )));

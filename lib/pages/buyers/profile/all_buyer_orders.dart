@@ -1,19 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mosallas/models/order_model.dart';
-import 'package:mosallas/models/tourism_site_model.dart';
-import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
-import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
+import 'package:mosallas/widgets/bottom_nav_bar_shop.dart';
 import 'package:mosallas/widgets/order.dart';
-import 'package:mosallas/widgets/product.dart';
-import 'package:mosallas/widgets/tourism_site_widget.dart';
 
 class AllBuyerOrders extends StatefulWidget {
-  const AllBuyerOrders({Key key}) : super(key: key);
+  final bool isForShop;
+  const AllBuyerOrders({Key key, this.isForShop}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => AllBuyerOrdersState();
@@ -87,8 +84,38 @@ class AllBuyerOrdersState extends State<AllBuyerOrders> {
                     pageHeaderNameSmall: "",
                     pageHeaderNameLarge: "سفارشات",
                   ),
+                  widget.isForShop ? InkWell(
+                    onTap: (){},
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius5)),
+                        color: MyStyle.headerDarkPink,
+                      ),
+                      height: MyStyle.mediaQueryHeight(context, 0.06),
+                      width: MyStyle.mediaQueryWidth(context, 0.92),
+                      child: Center(child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text( "افزودن محصول جدید" , style: TextStyle(
+                            fontSize: MyStyle.S15,
+                            fontFamily: MyStyle.textRegularFont,
+                            color: MyStyle.white
+                          ),),
+                          SizedBox(width: MyStyle.mediaQueryWidth(context, 0.02),),
+                          SvgPicture.asset("assets/svg/referesh.svg", color: MyStyle.white,),
+                        ],
+                      ), ),
+                    
+                    ),
+                  ): Container(),
+                  widget.isForShop ? SizedBox(
+                    height: MyStyle.mediaQueryHeight(context, 0.02),
+                  ):Container(),
+
                   SizedBox(
-                    height: MyStyle.mediaQueryHeight(context, 0.8),
+                    height: MyStyle.mediaQueryHeight(context,widget.isForShop ?0.64: 0.8),
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
@@ -98,7 +125,7 @@ class AllBuyerOrdersState extends State<AllBuyerOrders> {
                               padding: const EdgeInsets.only(top: 0, bottom: 0),
                               shrinkWrap: true,
                               itemExtent: null,
-                              physics: BouncingScrollPhysics(),
+                              physics: const BouncingScrollPhysics(),
                               itemCount: orders.length,
                               itemBuilder: (BuildContext c, int index) {
                                 return Padding(
@@ -113,6 +140,9 @@ class AllBuyerOrdersState extends State<AllBuyerOrders> {
                   ),
                 ],
               ),
-            )));
+              bottomNavigationBar: widget.isForShop ? const ShopBottomNavBar(index: 1,) : Container(),
+            )
+        )
+    );
   }
 }

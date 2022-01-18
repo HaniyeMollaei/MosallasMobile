@@ -21,8 +21,10 @@ myDialog({
     context: context,
     builder: (BuildContext context) {
       return Dialog(
+        insetPadding: EdgeInsets.all(MyStyle.mediaQueryWidth(context, 0.04)),
         backgroundColor: Colors.transparent,
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius3))),
+        shape: const RoundedRectangleBorder(borderRadius:
+        BorderRadius.all(Radius.circular(MyStyle.borderRadius3))),
         child: StatefulBuilder(
           builder: (BuildContext context, StateSetter setState) {
             return Stack(

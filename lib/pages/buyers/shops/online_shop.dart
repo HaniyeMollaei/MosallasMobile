@@ -128,6 +128,8 @@ class OnlineShopPageState extends State<OnlineShopPage> {
                                   ],),
                                   SizedBox(height: MyStyle.mediaQueryHeight(context, 0.02),),
 
+
+                                  ///product info
                                   Container(
                                     padding: EdgeInsets.all(MyStyle.mediaQueryWidth(context, 0.025)),
                                     decoration: BoxDecoration(
@@ -180,6 +182,8 @@ class OnlineShopPageState extends State<OnlineShopPage> {
 
                                   SizedBox(height: MyStyle.mediaQueryHeight(context, 0.03),),
 
+
+                                  ///receiver
                                   Container(
                                     padding: EdgeInsets.all(MyStyle.mediaQueryWidth(context, 0.025)),
                                     decoration: BoxDecoration(
@@ -251,6 +255,7 @@ class OnlineShopPageState extends State<OnlineShopPage> {
 
                                   SizedBox(height: MyStyle.mediaQueryHeight(context, 0.03),),
 
+                                  ///address
                                   Container(
                                     padding: EdgeInsets.all(MyStyle.mediaQueryWidth(context, 0.025)),
                                     decoration: BoxDecoration(

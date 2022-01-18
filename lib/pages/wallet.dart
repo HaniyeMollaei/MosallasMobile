@@ -6,14 +6,15 @@ import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
 import 'package:mosallas/widgets/appbar_light.dart';
+import 'package:mosallas/widgets/bottom_nav_bar_shop.dart';
 import 'package:mosallas/widgets/radio_button.dart';
 import 'package:mosallas/widgets/snackbar.dart';
 import 'package:mosallas/widgets/submit_button.dart';
 import 'package:mosallas/widgets/text_field.dart';
 
 class BuyerWallet extends StatefulWidget {
-  const BuyerWallet({Key key}) : super(key: key);
-
+  const BuyerWallet({Key key, this.isForShop = false}) : super(key: key);
+  final bool isForShop;
   @override
   State<StatefulWidget> createState() => BuyerWalletState();
 }
@@ -22,11 +23,11 @@ class BuyerWalletState extends State<BuyerWallet> {
   bool isDeposit = true;
   bool isWithdrawal = false;
 
-  TextEditingController _txtAmount = TextEditingController(text: '');
-  FocusNode _fndAmount = new FocusNode();
+  final TextEditingController _txtAmount = TextEditingController(text: '');
+  final FocusNode _fndAmount = FocusNode();
 
-  TextEditingController _txtCardNumber = TextEditingController(text: '');
-  FocusNode _fndCardNumber = new FocusNode();
+  final TextEditingController _txtCardNumber = TextEditingController(text: '');
+  final FocusNode _fndCardNumber = FocusNode();
 
   @override
   Widget build(BuildContext c) {
@@ -372,7 +373,11 @@ class BuyerWalletState extends State<BuyerWallet> {
                   ),
                 ]),
               ),
-              bottomNavigationBar: BuyerBottomNavBar(
+              bottomNavigationBar: widget.isForShop ?
+              const ShopBottomNavBar(
+                index: 3,
+              ):
+              BuyerBottomNavBar(
                 index: 1,
               ),
             )));
