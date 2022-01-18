@@ -2,63 +2,27 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mosallas/models/product_model.dart';
-import 'package:mosallas/models/shop_vitrine_model.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
 import 'package:mosallas/widgets/product.dart';
-import 'package:mosallas/widgets/shop_vitrine.dart';
 
 class BuyerAllProducts extends StatefulWidget {
   final String shopCode;
-  const BuyerAllProducts({Key key, this.shopCode}) : super(key: key);
+  final bool isFavorite;
+  final bool isBuyer;
+  final bool isShop;
+  const BuyerAllProducts({Key key, this.shopCode, this.isFavorite = false, this.isBuyer = true, this.isShop = false}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => BuyerAllProductsState();
 }
 
 class BuyerAllProductsState extends State<BuyerAllProducts> {
-  List<ShopVitrineModel> shops = [
-    ShopVitrineModel(
-        shopName: "فروشگاه لباس مجلسی ایلگا",
-        address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
-        shopCode: "mnb876gi99",
-        phoneNumber: "09123456789",
-        star: 4.3,
-        shippingCost: 12000,
-        shopImagePath: "assets/image/ilga.jpg",
-        productsImagePath: ["assets/image/6.jpg", "assets/image/12.jpg"]),
-    ShopVitrineModel(
-        shopName: "فروشگاه لباس ورزشی یونیک",
-        address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
-        shopCode: "mnb876gi90",
-        star: 3.8,
-        shippingCost: 12000,
-        phoneNumber: "09123456789",
-        shopImagePath: "assets/image/7.jpg",
-        productsImagePath: ["assets/image/8.jpg", "assets/image/9.jpg", "assets/image/10.png"]),
-    ShopVitrineModel(
-        shopName: "فروشگاه لباس مجلسی ایلگا",
-        address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
-        shopCode: "mnb876gi99",
-        star: 4.3,
-        shippingCost: 12000,
-        phoneNumber: "09123456789",
-        shopImagePath: "assets/image/ilga.jpg",
-        productsImagePath: ["assets/image/5.jpg", "assets/image/6.jpg", "assets/image/12.jpg"]),
-    ShopVitrineModel(
-        shopName: "فروشگاه لباس ورزشی یونیک",
-        address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
-        shippingCost: 12000,
-        phoneNumber: "09123456789",
-        shopCode: "mnb876gi90",
-        star: 3.8,
-        shopImagePath: "assets/image/7.jpg",
-        productsImagePath: ["assets/image/9.jpg"]),
-  ];
 
   String shopName = "فروشگاه لباس مجلسی ایلگا";
   List<ProductModel> myProducts;
+  List<ProductModel> favorites;
 
   @override
   Widget build(BuildContext c) {
@@ -73,7 +37,8 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           star: 4.5,
           hasOnlineSell: true,
           category: "پوشاک",
-          shopCode: widget.shopCode),
+          shopCode: "kghd13224"
+      ),
       ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
@@ -84,7 +49,8 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           imagePath: ['assets/image/6.jpg','assets/image/12.jpg'],
           isRemovable: false,
           star: 4.5,
-          shopCode: widget.shopCode),
+          shopCode: "kghd13224"
+      ),
       ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
@@ -95,7 +61,8 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           hasOnlineSell: true,
           category: "پوشاک",
           star: 4.5,
-          shopCode: widget.shopCode),
+          shopCode: "kghd13224"
+      ),
       ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
@@ -106,7 +73,8 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           star: 4.5,
           hasOnlineSell: true,
           category: "پوشاک",
-          shopCode: widget.shopCode),
+          shopCode: "kghd13224"
+      ),
       ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
@@ -117,7 +85,8 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
           isRemovable: false,
           star: 4.5,
-          shopCode: widget.shopCode),
+          shopCode: "kghd13224"
+      ),
       ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
@@ -128,7 +97,8 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           star: 4.5,
           hasOnlineSell: true,
           category: "پوشاک",
-          shopCode: widget.shopCode),
+          shopCode: "kghd13224"
+      ),
       ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
@@ -139,7 +109,8 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           star: 4.5,
           hasOnlineSell: true,
           category: "پوشاک",
-          shopCode: widget.shopCode),
+          shopCode: "kghd13224"
+      ),
       ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
@@ -150,7 +121,8 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           star: 4.5,
           hasOnlineSell: true,
           category: "پوشاک",
-          shopCode: widget.shopCode),
+          shopCode: "kghd13224"
+      ),
       ProductModel(
           name: "پیراهن آستین بلند مردانه",
           code: "hgd65435hj",
@@ -161,8 +133,69 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
           star: 4.5,
           hasOnlineSell: true,
           category: "پوشاک",
-          shopCode: widget.shopCode),
+          shopCode: "kghd13224"
+      ),
     ];
+
+
+    favorites = [
+      ProductModel(
+          name: "پیراهن آستین بلند مردانه",
+          code: "hgd65435hj",
+          cost: 123000,
+          description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
+          imagePath: ['assets/image/5.jpg','assets/image/6.jpg','assets/image/12.jpg'],
+          isRemovable: true,
+          star: 4.5,
+          hasOnlineSell: true,
+          category: "پوشاک",
+          shopCode: "hfgds43"),
+      ProductModel(
+          name: "پیراهن آستین بلند مردانه",
+          code: "hgd65435hj",
+          cost: 123000,
+          description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
+          hasOnlineSell: false,
+          category: "پوشاک",
+          imagePath: ['assets/image/6.jpg','assets/image/12.jpg'],
+          isRemovable: true,
+          star: 4.5,
+          shopCode: "hfgds43"),
+      ProductModel(
+          name: "پیراهن آستین بلند مردانه",
+          code: "hgd65435hj",
+          cost: 123000,
+          imagePath: ['assets/image/12.jpg'],
+          isRemovable: true,
+          description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
+          hasOnlineSell: true,
+          category: "پوشاک",
+          star: 4.5,
+          shopCode: "hfgds43"),
+      ProductModel(
+          name: "پیراهن آستین بلند مردانه",
+          code: "hgd65435hj",
+          cost: 123000,
+          description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
+          imagePath: ['assets/image/5.jpg'],
+          isRemovable: true,
+          star: 4.5,
+          hasOnlineSell: true,
+          category: "پوشاک",
+          shopCode: "hfgds43"),
+      ProductModel(
+          name: "پیراهن آستین بلند مردانه",
+          code: "hgd65435hj",
+          cost: 123000,
+          hasOnlineSell: true,
+          category: "پوشاک",
+          imagePath: ['assets/image/6.jpg','assets/image/12.jpg'],
+          description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
+          isRemovable: true,
+          star: 4.5,
+          shopCode: "hfgds43"),
+    ];
+
 
     return SafeArea(
         top: false,
@@ -176,8 +209,8 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
                 children: [
                   ///Logo --> 1.5
                   GrayAppBar(
-                    pageHeaderNameLarge: shopName,
-                    pageHeaderNameSmall: "تمامی محصولات موجود در",
+                    pageHeaderNameLarge: widget.isFavorite? "موارد مورد علاقه" :shopName,
+                    pageHeaderNameSmall: widget.isFavorite? "":"تمامی محصولات موجود در",
                   ),
 
                   SingleChildScrollView(
@@ -185,11 +218,11 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
                       height: MyStyle.mediaQueryHeight(context, 0.72),
                       child: GridView.builder(
                           padding: const EdgeInsets.only(top: 0),
-                          gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 3,
                             mainAxisExtent: MyStyle.mediaQueryHeight(context, 0.32),
                           ),
-                          itemCount: myProducts.length,
+                          itemCount: widget.isFavorite ? favorites.length : myProducts.length,
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
                           primary: true,
@@ -197,7 +230,13 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
                             return Padding(
                                 padding: EdgeInsets.symmetric(vertical: MyStyle.mediaQueryHeight(context, 0.01)),
                                 child: ProductWidget(
-                                  p: myProducts[index],
+                                  p:  widget.isFavorite ? favorites[index] : myProducts[index],
+                                  onRemove: widget.isFavorite ? (){
+                                    print("Removeeeeeee");
+                                    setState(() {
+                                      favorites.removeAt(index);
+                                    });
+                                } : (){},
                                 ));
                           }),
                     ),
@@ -205,7 +244,7 @@ class BuyerAllProductsState extends State<BuyerAllProducts> {
                 ],
               ),
               bottomNavigationBar: BuyerBottomNavBar(
-                index: 2,
+                index: widget.isFavorite? 3 : 2,
               ),
             )));
   }

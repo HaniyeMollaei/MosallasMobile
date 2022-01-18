@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mosallas/models/product_model.dart';
 import 'package:mosallas/models/shop_vitrine_model.dart';
+import 'package:mosallas/pages/buyers/shops/all_products.dart';
 import 'package:mosallas/pages/buyers/shops/shop_vitrine.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/shop_vitrine.dart';
@@ -38,13 +39,16 @@ Widget favoriteVitrine(
               height: MyStyle.mediaQueryHeight(context, 0.01),
             ),
             InkWell(
-              onTap: (){
-                ///TODO
+              onTap: () async {
+                await Navigator.push(
+                    context, MaterialPageRoute(builder: (context) =>   const BuyerAllProducts(
+                  isFavorite: true,
+                )));
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("مشاهده ی همه ی موارد",style: MyStyle.whiteLightTextStyle,),
+                  const Text("مشاهده ی همه ی موارد",style: MyStyle.whiteMediumTextStyle,),
                   SizedBox(width: MyStyle.mediaQueryWidth(context, 0.01),),
                   SvgPicture.asset("assets/svg/forward.svg" , color: MyStyle.white,),
 

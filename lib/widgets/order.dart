@@ -17,7 +17,7 @@ Widget orderItemWidget(
         horizontal: MyStyle.mediaQueryWidth(context, 0.04),
         vertical: MyStyle.mediaQueryHeight(context, 0.02)
       ),
-      //height: MyStyle.mediaQueryHeight(context, 0.23),
+      height: MyStyle.mediaQueryHeight(context, 0.235),
       width: MyStyle.mediaQueryWidth(context, 0.88),
       decoration: BoxDecoration(
         color: isGray ? MyStyle.backgroundColor : MyStyle.white,

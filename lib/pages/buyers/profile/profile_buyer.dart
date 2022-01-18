@@ -333,8 +333,6 @@ class BuyerProfileState extends State<BuyerProfile> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                     // SvgPicture.asset("assets/svg/backward.svg" , color: MyStyle.darkGrayText,),
-                                     // SizedBox(width: MyStyle.mediaQueryWidth(context, 0.01),),
                                       const Text("مشاهده ی همه ی سفارشات",style: MyStyle.darkTextStyleS13,),
                                       SizedBox(width: MyStyle.mediaQueryWidth(context, 0.01),),
                                       SvgPicture.asset("assets/svg/forward.svg" , color: MyStyle.darkGrayText,),
