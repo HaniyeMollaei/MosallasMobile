@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mosallas/models/address.dart';
 import 'package:mosallas/models/order_model.dart';
 import 'package:mosallas/models/product_model.dart';
 import 'package:mosallas/pages/login/login.dart';
@@ -334,7 +335,10 @@ class BuyerProfileState extends State<BuyerProfile> {
                                     productName: "کش موی ابریشمی",
                                     shopPhoneNumber: "09124424805",
                                     shopName: "فروشگاه لباس مجلسی ایلگا",
-                                    shopAddress: "زنجان، زنجان، خیابان سعدی وسط، نبش خیابان زینبیه، کوچه ی امید، پلاک 16"
+                                    shopAddress: AddressModel(province:  AppConstants.SHOP_PROVINCE ?? "_", city: AppConstants.SHOP_CITY ?? "_", address:AppConstants.SHOP_ADDRESS ?? "_"),
+                                    buyerName: AppConstants.BUYER_NAME ?? "بدون نام",
+                                    buyerPhoneNumber: AppConstants.BUYER_PROVINCE ?? "_",
+                                    buyerAddress: AddressModel(province: AppConstants.BUYER_PROVINCE ?? "_", city: AppConstants.BUYER_CITY ?? "_", address:AppConstants.BUYER_ADDRESS ?? "_"),
                                   )
                                 ),
                                 SizedBox(height: MyStyle.mediaQueryHeight(context, 0.02),),

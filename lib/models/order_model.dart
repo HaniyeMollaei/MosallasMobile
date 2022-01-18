@@ -1,4 +1,6 @@
 
+import 'address.dart';
+
 class OrderModel {
   String orderCode;
   String orderDate;
@@ -7,10 +9,15 @@ class OrderModel {
   int productCost;
   String productCode;
   String shopName;
-  String shopAddress;
+  AddressModel shopAddress;
   String shopPhoneNumber;
+  String buyerName;
+  AddressModel buyerAddress;
+  String buyerPhoneNumber;
 
   OrderModel({this.orderCode , this.orderDate ,this.orderStatus
     ,this.shopName , this.shopAddress , this.shopPhoneNumber ,
-    this.productCode , this.productCost , this.productName});
+    this.productCode , this.productCost , this.productName,
+    this.buyerAddress,this.buyerName,this.buyerPhoneNumber
+  });
 }

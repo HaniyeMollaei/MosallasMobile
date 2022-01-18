@@ -14,7 +14,8 @@ class AllProducts extends StatefulWidget {
   final bool isFavorite;
   final bool isBuyer;
   final bool isShop;
-  const AllProducts({Key key, this.shopCode, this.isFavorite = false, this.isBuyer = true, this.isShop = false}) : super(key: key);
+  final bool isShopVitrine;
+  const AllProducts({Key key, this.shopCode, this.isFavorite = false, this.isBuyer = true, this.isShop = false, this.isShopVitrine=false}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => AllProductsState();
@@ -255,7 +256,8 @@ class AllProductsState extends State<AllProducts> {
                   ),
                 ],
               ),
-              bottomNavigationBar:widget.isShop ? ShopBottomNavBar(index: 2,): BuyerBottomNavBar(
+              bottomNavigationBar:widget.isShopVitrine?const ShopBottomNavBar(index: 0,):
+              widget.isShop ? const ShopBottomNavBar(index: 2,): BuyerBottomNavBar(
                 index: widget.isFavorite? 3 : 2,
               ),
             )));

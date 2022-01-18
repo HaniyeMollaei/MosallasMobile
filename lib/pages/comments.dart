@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mosallas/models/comment_model.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
 import 'package:mosallas/widgets/appbar_light.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
 import 'package:mosallas/widgets/comment_page_item.dart';
-import 'package:mosallas/widgets/comment_slider_manually.dart';
 import 'package:mosallas/widgets/dialoug.dart';
 import 'package:mosallas/widgets/text_field.dart';
 

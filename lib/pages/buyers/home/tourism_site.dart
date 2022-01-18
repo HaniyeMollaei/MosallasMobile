@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mosallas/models/comment_model.dart';
 import 'package:mosallas/pages/comments.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';

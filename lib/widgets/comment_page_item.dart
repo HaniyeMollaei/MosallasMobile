@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mosallas/models/comment_model.dart';
 import 'package:mosallas/utils/my_style.dart';
-import 'package:mosallas/widgets/comment_slider_manually.dart';
 
 Widget commentPageItem(BuildContext context, CommentItem cm) {
   return ClipRRect(

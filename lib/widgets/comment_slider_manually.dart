@@ -3,14 +3,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mosallas/models/comment_model.dart';
 import 'package:mosallas/utils/my_style.dart';
 
-class CommentItem{
-  String text;
-  String author;
-  String date;
-  CommentItem({this.text, this.author , this.date});
-}
+
 
 class ManuallyControlledCommentSlider extends StatefulWidget {
   final List<CommentItem> items;
