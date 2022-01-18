@@ -6,13 +6,10 @@ import 'package:mosallas/models/comment_model.dart';
 import 'package:mosallas/models/product_model.dart';
 import 'package:mosallas/models/shop_vitrine_model.dart';
 import 'package:mosallas/pages/buyers/shops/all_products.dart';
-import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
-import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_shop.dart';
 import 'package:mosallas/widgets/call_and_chat.dart';
 import 'package:mosallas/widgets/comment_pink_box.dart';
-import 'package:mosallas/widgets/comment_slider_manually.dart';
 import 'package:mosallas/widgets/cursol_slider.dart';
 import 'package:mosallas/widgets/appbar_light.dart';
 import 'package:mosallas/widgets/image_slider_manually.dart';
@@ -196,6 +193,7 @@ class ShopHomeState extends State<ShopHome> {
                                             header: Container(),
                                             type: "shop",
                                             code: shop.shopCode,
+                                            isForShop: true,
                                           ),
                                           transitionDuration: Duration.zero,
                                         ),

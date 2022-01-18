@@ -7,6 +7,7 @@ import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
 import 'package:mosallas/widgets/appbar_light.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
+import 'package:mosallas/widgets/bottom_nav_bar_shop.dart';
 import 'package:mosallas/widgets/comment_page_item.dart';
 import 'package:mosallas/widgets/dialoug.dart';
 import 'package:mosallas/widgets/text_field.dart';
@@ -16,8 +17,9 @@ class Comments extends StatefulWidget {
   final Widget header;
   final String type;
   final String code;
+  final bool isForShop;
 
-  const Comments({Key key, this.header, this.type, this.code}) : super(key: key);
+  const Comments({Key key, this.header, this.type, this.code, this.isForShop=false}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => CommentsState();
@@ -96,7 +98,7 @@ class CommentsState extends State<Comments> {
                   ),
                 ],
               ),
-              floatingActionButton: FloatingActionButton(
+              floatingActionButton: widget.isForShop ? Container(): FloatingActionButton(
                 onPressed: () {
                   myDialog(
                     width: MyStyle.mediaQueryWidth(context, 0.96),
@@ -149,7 +151,7 @@ class CommentsState extends State<Comments> {
                   ),
                 ),
               ),
-              bottomNavigationBar: BuyerBottomNavBar(
+              bottomNavigationBar:widget.isForShop ? const ShopBottomNavBar(index: 0,): BuyerBottomNavBar(
                 index:widget.type =="shop"? 2 : 0,
               ),
             )));
