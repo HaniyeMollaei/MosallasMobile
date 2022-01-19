@@ -44,327 +44,345 @@ class BuyerWalletState extends State<BuyerWallet> {
                 height: MyStyle.mediaQueryHeight(c, 1),
                 child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                   ///0.15
-                  Column(
+                  Stack(
                     children: [
                       ///Logo --> 1.8
-                      const MediumLogo(
-                        finalType: "location",
-                      ),
-
-                      ///text
-                      Container(
-                        alignment: Alignment.centerRight,
-                        padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.06)),
-                        child: const Text(
-                          ".نوع تراکنش را انتخاب کنید",
-                          style: MyStyle.darkTextStyleS13,
-                        ),
-                      ),
-
                       SizedBox(
-                        height: MyStyle.mediaQueryHeight(context, 0.01),
-                      ),
-
-                      /// deposit - withdrawal
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.06)),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.end,
+                        height: MyStyle.mediaQueryHeight(context, 0.9),
+                        child: Column(
                           children: [
-                            SizedBox(
-                                width: MyStyle.mediaQueryWidth(context, 0.44),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    const Text(
-                                      "برداشت از کیف پول",
+                            const MediumLogo(
+                              finalType: "location",
+                            ),
+
+                            ///text
+                            SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Container(
+                                    alignment: Alignment.centerRight,
+                                    padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.06)),
+                                    child: const Text(
+                                      ".نوع تراکنش را انتخاب کنید",
                                       style: MyStyle.darkTextStyleS13,
                                     ),
-                                    SizedBox(width: MyStyle.mediaQueryWidth(context, 0.01)),
-                                    InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          isWithdrawal = !isWithdrawal;
-                                          isDeposit = !isDeposit;
-                                        });
-                                      },
-                                      child: myRadioButton(context, value: isWithdrawal),
-                                    )
-                                  ],
-                                )),
-                            SizedBox(
-                                width: MyStyle.mediaQueryWidth(context, 0.44),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    const Text(
-                                      "شارژ کیف پول",
+                                  ),
+
+                                  SizedBox(
+                                    height: MyStyle.mediaQueryHeight(context, 0.01),
+                                  ),
+
+                                  /// deposit - withdrawal
+                                  Container(
+                                    padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.06)),
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        SizedBox(
+                                            width: MyStyle.mediaQueryWidth(context, 0.44),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.end,
+                                              children: [
+                                                const Text(
+                                                  "برداشت از کیف پول",
+                                                  style: MyStyle.darkTextStyleS13,
+                                                ),
+                                                SizedBox(width: MyStyle.mediaQueryWidth(context, 0.01)),
+                                                InkWell(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      isWithdrawal = !isWithdrawal;
+                                                      isDeposit = !isDeposit;
+                                                    });
+                                                  },
+                                                  child: myRadioButton(context, value: isWithdrawal),
+                                                )
+                                              ],
+                                            )),
+                                        SizedBox(
+                                            width: MyStyle.mediaQueryWidth(context, 0.44),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.end,
+                                              children: [
+                                                const Text(
+                                                  "شارژ کیف پول",
+                                                  style: MyStyle.darkTextStyleS13,
+                                                ),
+                                                SizedBox(width: MyStyle.mediaQueryWidth(context, 0.01)),
+                                                InkWell(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      isWithdrawal = !isWithdrawal;
+                                                      isDeposit = !isDeposit;
+                                                    });
+                                                  },
+                                                  child: myRadioButton(context, value: isDeposit),
+                                                )
+                                              ],
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+
+                                  SizedBox(
+                                    height: MyStyle.mediaQueryHeight(context, 0.025),
+                                  ),
+
+                                  ///text
+                                  Container(
+                                    alignment: Alignment.centerRight,
+                                    padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.06)),
+                                    child: const Text(
+                                      ".مبلغ مورد نظر را وارد کنید",
                                       style: MyStyle.darkTextStyleS13,
                                     ),
-                                    SizedBox(width: MyStyle.mediaQueryWidth(context, 0.01)),
-                                    InkWell(
-                                      onTap: () {
+                                  ),
+
+                                  SizedBox(
+                                    height: MyStyle.mediaQueryHeight(context, 0.01),
+                                  ),
+
+                                  ///amount 0.08
+                                  MyTextField(
+                                    controller: _txtAmount,
+                                    focusNode: _fndAmount,
+                                    hint: "مبلغ (تومان)",
+                                    keyboardType: TextInputType.number,
+                                    textAlign: TextAlign.center,
+                                    inputFormatters: <TextInputFormatter>[
+                                      LengthLimitingTextInputFormatter(12),
+                                    ],
+                                  ),
+
+                                  SizedBox(
+                                    height: MyStyle.mediaQueryHeight(context, 0.025),
+                                  ),
+
+                                  ///text
+                                  Container(
+                                    alignment: Alignment.centerRight,
+                                    padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.06)),
+                                    child: const Text(
+                                      ".شماره ی کارت را وارد کنید",
+                                      style: MyStyle.darkTextStyleS13,
+                                    ),
+                                  ),
+
+                                  SizedBox(
+                                    height: MyStyle.mediaQueryHeight(context, 0.01),
+                                  ),
+
+                                  ///card 0.08
+                                  MyTextField(
+                                    controller: _txtCardNumber,
+                                    focusNode: _fndCardNumber,
+                                    hint: "_ _ _ _  _ _ _ _  _ _ _ _  _ _ _ _",
+                                    keyboardType: TextInputType.number,
+                                    textAlign: TextAlign.center,
+                                    inputFormatters: <TextInputFormatter>[
+                                      MyStyle.cardNumberFormatter,
+                                      LengthLimitingTextInputFormatter(19),
+                                    ],
+                                  ),
+
+                                  SizedBox(
+                                    height: MyStyle.mediaQueryHeight(context, 0.01),
+                                  ),
+
+                                  ///Login Button 0.08
+                                  SubmitButton(
+                                    text: "انجام عملیات",
+                                    textSize: MyStyle.S17,
+                                    onPressed: () async {
+                                      if(isDeposit){
                                         setState(() {
-                                          isWithdrawal = !isWithdrawal;
-                                          isDeposit = !isDeposit;
+                                          AppConstants.BALANCE = AppConstants.BALANCE + int.parse(_txtAmount.text);
                                         });
-                                      },
-                                      child: myRadioButton(context, value: isDeposit),
-                                    )
-                                  ],
-                                )),
+                                      }else if(isWithdrawal){
+                                        if(int.parse(_txtAmount.text)<= AppConstants.BALANCE){
+                                          setState(() {
+                                            AppConstants.BALANCE = AppConstants.BALANCE - int.parse(_txtAmount.text);
+                                          });
+                                        }else{
+                                          ScaffoldMessenger.of(context).showSnackBar(CustomSnackbar.snackBar(
+                                              ".مبلغ وارد شده از موجودی بیشتر می باشد",
+                                              0,
+                                              context));
+                                        }
+                                      }
+                                    },
+                                    isDisable: false,
+                                  ),
+
+                                  SizedBox(
+                                    height: MyStyle.mediaQueryHeight(context, 0.025),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ),
 
-                      SizedBox(
-                        height: MyStyle.mediaQueryHeight(context, 0.025),
-                      ),
-
-                      ///text
-                      Container(
-                        alignment: Alignment.centerRight,
-                        padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.06)),
-                        child: const Text(
-                          ".مبلغ مورد نظر را وارد کنید",
-                          style: MyStyle.darkTextStyleS13,
-                        ),
-                      ),
-
-                      SizedBox(
-                        height: MyStyle.mediaQueryHeight(context, 0.01),
-                      ),
-
-                      ///amount 0.08
-                      MyTextField(
-                        controller: _txtAmount,
-                        focusNode: _fndAmount,
-                        hint: "مبلغ (تومان)",
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.center,
-                        inputFormatters: <TextInputFormatter>[
-                          LengthLimitingTextInputFormatter(12),
-                        ],
-                      ),
-
-                      SizedBox(
-                        height: MyStyle.mediaQueryHeight(context, 0.025),
-                      ),
-
-                      ///text
-                      Container(
-                        alignment: Alignment.centerRight,
-                        padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.06)),
-                        child: const Text(
-                          ".شماره ی کارت را وارد کنید",
-                          style: MyStyle.darkTextStyleS13,
-                        ),
-                      ),
-
-                      SizedBox(
-                        height: MyStyle.mediaQueryHeight(context, 0.01),
-                      ),
-
-                      ///card 0.08
-                      MyTextField(
-                        controller: _txtCardNumber,
-                        focusNode: _fndCardNumber,
-                        hint: "_ _ _ _  _ _ _ _  _ _ _ _  _ _ _ _",
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.center,
-                        inputFormatters: <TextInputFormatter>[
-                          MyStyle.cardNumberFormatter,
-                          LengthLimitingTextInputFormatter(19),
-                        ],
-                      ),
-
-                      SizedBox(
-                        height: MyStyle.mediaQueryHeight(context, 0.01),
-                      ),
-
-                      ///Login Button 0.08
-                      SubmitButton(
-                        text: "انجام عملیات",
-                        textSize: MyStyle.S17,
-                        onPressed: () async {
-                          if(isDeposit){
-                            setState(() {
-                              AppConstants.BALANCE = AppConstants.BALANCE + int.parse(_txtAmount.text);
-                            });
-                          }else if(isWithdrawal){
-                            if(int.parse(_txtAmount.text)<= AppConstants.BALANCE){
-                              setState(() {
-                                AppConstants.BALANCE = AppConstants.BALANCE - int.parse(_txtAmount.text);
-                              });
-                            }else{
-                              ScaffoldMessenger.of(context).showSnackBar(CustomSnackbar.snackBar(
-                                  ".مبلغ وارد شده از موجودی بیشتر می باشد",
-                                  0,
-                                  context));
-                            }
-                          }
-                        },
-                        isDisable: false,
-                      ),
-
-                      SizedBox(
-                        height: MyStyle.mediaQueryHeight(context, 0.025),
-                      ),
-
-                      Container(
-                        height: MyStyle.mediaQueryHeight(context, 0.285),
-                        decoration: const BoxDecoration(
-                          color: MyStyle.lightGrayText,
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(MyStyle.borderRadius4),
-                            topLeft: Radius.circular(MyStyle.borderRadius4),
+                      ///wallet
+                      Positioned(
+                        bottom: 0,
+                        child: Container(
+                          width: MyStyle.mediaQueryWidth(context, 1),
+                          height: MyStyle.mediaQueryHeight(context, 0.285),
+                          decoration: const BoxDecoration(
+                            color: MyStyle.lightGrayText,
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(MyStyle.borderRadius4),
+                              topLeft: Radius.circular(MyStyle.borderRadius4),
+                            ),
                           ),
-                        ),
-                        padding: EdgeInsets.only(
-                            top:MyStyle.mediaQueryHeight(context, 0.015),
-                          bottom: MyStyle.mediaQueryHeight(context, 0.01),
-                          left:MyStyle.mediaQueryWidth(context, 0.06),
-                          right: MyStyle.mediaQueryWidth(context, 0.06)
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                const Text(
-                                  "تومان "  ,
-                                  style: MyStyle.whiteWalletAmountStyle,
-                                ),
-                                Text(
-                                  AppConstants.BALANCE.toString()  ,
-                                  style: MyStyle.whiteWalletAmountStyle,
-                                ),
-                                SizedBox(width: MyStyle.mediaQueryWidth(context, 0.02)),
-                                SvgPicture.asset('assets/svg/wallet.svg',
-                                    height: MyStyle.mediaQueryHeight(context, 0.04), color: MyStyle.white),
-                              ],
-                            ),
-                            SizedBox(
-                              height: MyStyle.mediaQueryHeight(context, 0.01),
-                            ),
-                            InkWell(
-                              onTap: (){},
-                              child: Container(
-                                  height: MyStyle.mediaQueryHeight(context, 0.07),
-                                  decoration: const BoxDecoration(
-                                    color: MyStyle.white,
-                                    borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2),),
+                          padding: EdgeInsets.only(
+                              top:MyStyle.mediaQueryHeight(context, 0.015),
+                            bottom: MyStyle.mediaQueryHeight(context, 0.01),
+                            left:MyStyle.mediaQueryWidth(context, 0.06),
+                            right: MyStyle.mediaQueryWidth(context, 0.06)
+                          ),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  const Text(
+                                    "تومان "  ,
+                                    style: MyStyle.whiteWalletAmountStyle,
                                   ),
-                                  padding: EdgeInsets.only(
-                                      top:MyStyle.mediaQueryHeight(context, 0.005),
-                                      bottom: MyStyle.mediaQueryHeight(context, 0.005),
-                                      left:MyStyle.mediaQueryWidth(context, 0.06),
-                                      right: MyStyle.mediaQueryWidth(context, 0.06)
+                                  Text(
+                                    AppConstants.BALANCE.toString()  ,
+                                    style: MyStyle.whiteWalletAmountStyle,
                                   ),
-                                  margin: EdgeInsets.only(
-                                    top:MyStyle.mediaQueryHeight(context, 0.005),
-                                    bottom: MyStyle.mediaQueryHeight(context, 0.005),
-                                  ),
-                                  child:Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Column(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: const [
-                                        Text("+2,000",
-                                            style:TextStyle(
-                                              fontFamily: MyStyle.textLightFont,
-                                              color: MyStyle.green,
-                                              fontSize: MyStyle.S13,
-                                            )
-                                        ),
-                                          Text("1400/10/19",
-                                              style:TextStyle(
-                                                fontFamily: MyStyle.textLightFont,
-                                                color: MyStyle.lightGrayText,
-                                                fontSize: MyStyle.S13,
-                                              )
-                                          ),
-                                      ],
-                                      ),
-                                      const Text("شارژ",
-                                        style:TextStyle(
-                                          fontFamily: MyStyle.textBoldFont,
-                                          color: MyStyle.darkGrayText,
-                                          fontSize: MyStyle.S17,
-                                        )
-                                      )
-                                    ],
-                                  )
+                                  SizedBox(width: MyStyle.mediaQueryWidth(context, 0.02)),
+                                  SvgPicture.asset('assets/svg/wallet.svg',
+                                      height: MyStyle.mediaQueryHeight(context, 0.04), color: MyStyle.white),
+                                ],
                               ),
-                            ),
-
-                            InkWell(
-                              onTap: (){},
-                              child: Container(
-                                  height: MyStyle.mediaQueryHeight(context, 0.07),
-                                  decoration: const BoxDecoration(
-                                    color: MyStyle.white,
-                                    borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2),),
-                                  ),
-                                  padding: EdgeInsets.only(
+                              SizedBox(
+                                height: MyStyle.mediaQueryHeight(context, 0.01),
+                              ),
+                              InkWell(
+                                onTap: (){},
+                                child: Container(
+                                    height: MyStyle.mediaQueryHeight(context, 0.07),
+                                    decoration: const BoxDecoration(
+                                      color: MyStyle.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2),),
+                                    ),
+                                    padding: EdgeInsets.only(
+                                        top:MyStyle.mediaQueryHeight(context, 0.005),
+                                        bottom: MyStyle.mediaQueryHeight(context, 0.005),
+                                        left:MyStyle.mediaQueryWidth(context, 0.06),
+                                        right: MyStyle.mediaQueryWidth(context, 0.06)
+                                    ),
+                                    margin: EdgeInsets.only(
                                       top:MyStyle.mediaQueryHeight(context, 0.005),
                                       bottom: MyStyle.mediaQueryHeight(context, 0.005),
-                                      left:MyStyle.mediaQueryWidth(context, 0.06),
-                                      right: MyStyle.mediaQueryWidth(context, 0.06)
-                                  ),
-                                  margin: EdgeInsets.only(
-                                    top:MyStyle.mediaQueryHeight(context, 0.005),
-                                    bottom: MyStyle.mediaQueryHeight(context, 0.005),
-                                  ),
-                                  child:Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Column(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: const [
-                                          Text("-1,000",
+                                    ),
+                                    child:Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: const [
+                                          Text("+2,000",
                                               style:TextStyle(
                                                 fontFamily: MyStyle.textLightFont,
-                                                color: MyStyle.red,
+                                                color: MyStyle.green,
                                                 fontSize: MyStyle.S13,
                                               )
                                           ),
-                                          Text("1400/10/19",
-                                              style:TextStyle(
-                                                fontFamily: MyStyle.textLightFont,
-                                                color: MyStyle.lightGrayText,
-                                                fontSize: MyStyle.S13,
-                                              )
-                                          ),
+                                            Text("1400/10/19",
+                                                style:TextStyle(
+                                                  fontFamily: MyStyle.textLightFont,
+                                                  color: MyStyle.lightGrayText,
+                                                  fontSize: MyStyle.S13,
+                                                )
+                                            ),
                                         ],
-                                      ),
-                                      const Text("برداشت",
+                                        ),
+                                        const Text("شارژ",
                                           style:TextStyle(
                                             fontFamily: MyStyle.textBoldFont,
                                             color: MyStyle.darkGrayText,
                                             fontSize: MyStyle.S17,
                                           )
-                                      )
-                                    ],
-                                  )
+                                        )
+                                      ],
+                                    )
+                                ),
                               ),
-                            ),
+
+                              InkWell(
+                                onTap: (){},
+                                child: Container(
+                                    height: MyStyle.mediaQueryHeight(context, 0.07),
+                                    decoration: const BoxDecoration(
+                                      color: MyStyle.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2),),
+                                    ),
+                                    padding: EdgeInsets.only(
+                                        top:MyStyle.mediaQueryHeight(context, 0.005),
+                                        bottom: MyStyle.mediaQueryHeight(context, 0.005),
+                                        left:MyStyle.mediaQueryWidth(context, 0.06),
+                                        right: MyStyle.mediaQueryWidth(context, 0.06)
+                                    ),
+                                    margin: EdgeInsets.only(
+                                      top:MyStyle.mediaQueryHeight(context, 0.005),
+                                      bottom: MyStyle.mediaQueryHeight(context, 0.005),
+                                    ),
+                                    child:Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: const [
+                                            Text("-1,000",
+                                                style:TextStyle(
+                                                  fontFamily: MyStyle.textLightFont,
+                                                  color: MyStyle.red,
+                                                  fontSize: MyStyle.S13,
+                                                )
+                                            ),
+                                            Text("1400/10/19",
+                                                style:TextStyle(
+                                                  fontFamily: MyStyle.textLightFont,
+                                                  color: MyStyle.lightGrayText,
+                                                  fontSize: MyStyle.S13,
+                                                )
+                                            ),
+                                          ],
+                                        ),
+                                        const Text("برداشت",
+                                            style:TextStyle(
+                                              fontFamily: MyStyle.textBoldFont,
+                                              color: MyStyle.darkGrayText,
+                                              fontSize: MyStyle.S17,
+                                            )
+                                        )
+                                      ],
+                                    )
+                                ),
+                              ),
 
 
-                            SizedBox(
-                              height: MyStyle.mediaQueryHeight(context, 0.01),
-                            ),
+                              SizedBox(
+                                height: MyStyle.mediaQueryHeight(context, 0.01),
+                              ),
 
-                            const InkWell(
-                                child:Text("مشاهده ی کامل گردش حساب" , style:MyStyle.lightTextStyle)
-                            )
-                          ],
+                              const InkWell(
+                                  child:Text("مشاهده ی کامل گردش حساب" , style:MyStyle.lightTextStyle)
+                              )
+                            ],
+                          ),
                         ),
                       ),
 
