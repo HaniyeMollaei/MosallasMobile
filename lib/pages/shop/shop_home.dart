@@ -15,6 +15,7 @@ import 'package:mosallas/widgets/cursol_slider.dart';
 import 'package:mosallas/widgets/appbar_light.dart';
 import 'package:mosallas/widgets/dialoug.dart';
 import 'package:mosallas/widgets/drawer.dart';
+import 'package:mosallas/widgets/empty_photo.dart';
 import 'package:mosallas/widgets/image_slider_manually.dart';
 import 'package:mosallas/widgets/product.dart';
 import 'package:mosallas/widgets/shop_vitrine.dart';
@@ -80,23 +81,80 @@ class ShopHomeState extends State<ShopHome> {
   Widget addBanner(){
     return myDialog(
       width: MyStyle.mediaQueryWidth(context, 0.92),
-      height: MyStyle.mediaQueryHeight(context, 0.8),
+      height: MyStyle.mediaQueryHeight(context, 0.5),
       hasCancel: true,
       hasButton: true,
-      buttonText: "تایید",
+      buttonText: "ثبت تغییرات",
       hasHeader: true,
       headerText: "افزودن بنر به ویترین فروشگاه",
       context: context,
       onButtonPressed: (){print("Comment saved");},
-      content: Container()
+      content: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              shop.shopImagePath != null ? emptyPhoto(context: context ,
+                h: MyStyle.mediaQueryHeight(context, 0.13),
+                w: MyStyle.mediaQueryWidth(context, 0.5),
+              ) :
+              ClipRRect(
+                  borderRadius: BorderRadius.circular(MyStyle.borderRadius4),
+                  child: Image.asset(shop.shopImagePath , height: MyStyle.mediaQueryHeight(context, 0.13),)),
+              InkWell(
+                onTap: (){},
+                child: Container(
+                  height: MyStyle.mediaQueryHeight(context, 0.13),
+                  width: MyStyle.mediaQueryWidth(context, 0.16),
+                  decoration: BoxDecoration(
+                    color: MyStyle.headerDarkPink,
+                    borderRadius: BorderRadius.circular(MyStyle.borderRadius2),
+                  ),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: MyStyle.mediaQueryWidth(context, 0.01),
+                      vertical: MyStyle.mediaQueryHeight(context, 0.007)),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      ///chat
+                      children:[ SvgPicture.asset("assets/svg/plus.svg",
+                        width: MyStyle.mediaQueryWidth(context, 0.04),
+                        fit: BoxFit.fitWidth,
+                      ),
+
+                        Padding(
+                          padding:  EdgeInsets.only(top:MyStyle.mediaQueryHeight(context, 0.01), ),
+                          child: const Text("تغییر یا افزودن عکس فروشگاه" ,textAlign: TextAlign.center,
+                            maxLines: 3, style: MyStyle.whiteLightTextStyle,),
+                        ) ,
+                      ]
+
+
+                  ),
+                ),
+              )
+            ],
+          ),
+          SizedBox(
+            height: MyStyle.mediaQueryHeight(context, 0.01),
+          ),
+        ],
+      )
     );
   }
-   Widget editDialog(){
+
+  Widget editDialog(){
     //_txtName.text = AppConstants.BUYER_NAME;
+
+    setState(() {
+      _txtName.text = AppConstants.SHOP_NAME;
+      _txtAddress.text = AppConstants.SHOP_ADDRESS;
+      _txtPostalCode.text = AppConstants.SHOP_POSTAL_CODE;
+      _txtPhoneNumber.text = AppConstants.MOBILE_NUMBER;
+    });
     ///TODO
     return myDialog(
       width: MyStyle.mediaQueryWidth(context, 0.92),
-      height: MyStyle.mediaQueryHeight(context, 0.9),
+      height: MyStyle.mediaQueryHeight(context, 0.91),
       hasCancel: true,
       hasButton: true,
       buttonText: "ویرایش",
@@ -122,8 +180,8 @@ class ShopHomeState extends State<ShopHome> {
                     borderRadius: BorderRadius.circular(MyStyle.borderRadius2),
                   ),
                   padding: EdgeInsets.symmetric(
-                      horizontal: MyStyle.mediaQueryWidth(context, 0.015),
-                      vertical: MyStyle.mediaQueryHeight(context, 0.015)),
+                      horizontal: MyStyle.mediaQueryWidth(context, 0.01),
+                      vertical: MyStyle.mediaQueryHeight(context, 0.007)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     ///chat
@@ -247,6 +305,8 @@ class ShopHomeState extends State<ShopHome> {
       ),
     );
   }
+
+
   @override
   Widget build(BuildContext c) {
 
@@ -306,10 +366,10 @@ class ShopHomeState extends State<ShopHome> {
                                           const Text(
                                             "افزودن بنر به ویترین",
                                             maxLines: 2,
-                                            style: TextStyle(fontSize: MyStyle.S15 ,fontFamily: MyStyle.textRegularFont, color: MyStyle.white),
+                                            style: TextStyle(fontSize: MyStyle.S13 ,fontFamily: MyStyle.textRegularFont, color: MyStyle.white),
                                           ),
                                           SizedBox(
-                                            width: MyStyle.mediaQueryWidth(context, 0.02),
+                                            width: MyStyle.mediaQueryWidth(context, 0.01),
                                           ),
                                           SvgPicture.asset(
                                             "assets/svg/plus.svg",
@@ -337,7 +397,7 @@ class ShopHomeState extends State<ShopHome> {
                                         children: [
                                           const Text(
                                             "ویرایش اطلاعات",
-                                            style: TextStyle(fontSize: MyStyle.S15, fontFamily: MyStyle.textRegularFont, color: MyStyle.white),
+                                            style: TextStyle(fontSize: MyStyle.S13, fontFamily: MyStyle.textRegularFont, color: MyStyle.white),
                                           ),
 
                                           Padding(

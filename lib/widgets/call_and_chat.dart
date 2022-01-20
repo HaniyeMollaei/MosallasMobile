@@ -51,7 +51,7 @@ Widget callAndChat({BuildContext context, String phoneNumber, String shopCode , 
 
         justChat ? Padding(
           padding:  EdgeInsets.only(top:MyStyle.mediaQueryHeight(context, 0.02), ),
-          child: const Text("گفت و گو با مشتریان" , maxLines: 2, style: MyStyle.whiteLightTextStyle,),
+          child: const Text("گفت و گو با مشتریان" , maxLines: 3,textAlign: TextAlign.center, style: MyStyle.whiteLightTextStyle,),
         ): Container() ,
 
       ],

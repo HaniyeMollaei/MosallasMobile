@@ -125,6 +125,8 @@ class LoginPageState extends State<LoginPage>{
                             AppConstants.SHOP_PROVINCE="زنجان";
                             AppConstants.SHOP_NAME="فروشگاه لباس مجلسی ایلگا";
                             AppConstants.SHOP_CODE = "RELJ323";
+                            AppConstants.SHOP_POSTAL_CODE = "12345466";
+                            AppConstants.SHOP_ADDRESS = "خیابان سعدی وسط، نبش خیابان زینبیه، کوچه ی امید، پلاک 16" ;
                             AppConstants.USER_TYPE = "shop";
                             AppConstants.MOBILE_NUMBER = " 09124424805";
                             AppConstants.BALANCE = 500000 ;

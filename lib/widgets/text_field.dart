@@ -77,7 +77,7 @@ class MyTextField extends StatelessWidget {
             textAlign: textAlign,
             obscureText: obscureText ,
             focusNode: focusNode,
-            autofocus: true,
+            autofocus: false,
             keyboardType: keyboardType ?? TextInputType.text,
             controller: controller,
             maxLines: maxLine ?? 1,

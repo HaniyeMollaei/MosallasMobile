@@ -18,7 +18,7 @@ Widget orderItemWidget(
         horizontal: MyStyle.mediaQueryWidth(context, 0.04),
         vertical: MyStyle.mediaQueryHeight(context, 0.02)
       ),
-      height: MyStyle.mediaQueryHeight(context, 0.255),
+      height: MyStyle.mediaQueryHeight(context, 0.3),
       width: MyStyle.mediaQueryWidth(context, 0.88),
       decoration: BoxDecoration(
         color: isGray ? MyStyle.backgroundColor : MyStyle.white,
@@ -130,7 +130,7 @@ Widget orderItemWidget(
         ///products
         Center(
           child: Container(
-            height: MyStyle.mediaQueryHeight(context, 0.3),
+            height: MyStyle.mediaQueryHeight(context, 0.34),
             width: MyStyle.mediaQueryWidth(context, 0.88),
             decoration: BoxDecoration(
               color: orderItem.orderStatus == "Sent" ? MyStyle.green : MyStyle.headerDarkPink,

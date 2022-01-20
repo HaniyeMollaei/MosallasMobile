@@ -7,6 +7,7 @@ class AppConstants {
   static String SHOP_PROVINCE;
   static String SHOP_CITY;
   static String SHOP_ADDRESS;
+  static String SHOP_POSTAL_CODE;
   static String SHOP_CATEGORY;
   static String SHOP_CODE;
   static String MOBILE_NUMBER;
@@ -23,6 +24,7 @@ class AppConstants {
     SHOP_NAME = null;
     SHOP_CATEGORY = null;
     SHOP_CODE = null;
+    SHOP_POSTAL_CODE = null;
     SHOP_ADDRESS = null;
     BUYER_PROVINCE = null;
     BUYER_CITY = null;
@@ -38,6 +40,7 @@ class AppConstants {
     print("SHOP_PROVINCE:   $SHOP_PROVINCE ");
     print("SHOP_CITY:       $SHOP_CITY ");
     print("SHOP_ADDRESS:    $SHOP_ADDRESS ");
+    print("SHOP_POSTAL_CODE:$SHOP_POSTAL_CODE ");
     print("SHOP_CATEGORY:   $SHOP_CATEGORY ");
     print("SHOP_CODE:       $SHOP_CODE ");
     print("BUYER_NAME:      $BUYER_NAME ");
@@ -46,6 +49,7 @@ class AppConstants {
     print("BUYER_ADDRESS:   $BUYER_ADDRESS ");
     print("MOBILE_NUMBER:   $MOBILE_NUMBER ");
     print("BALANCE:         ${BALANCE.toString()} ");
+
   }
 
   static setConstant({String attribute, String choosedValue}) {
