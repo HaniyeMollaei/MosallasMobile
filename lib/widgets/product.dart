@@ -8,9 +8,10 @@ import 'package:mosallas/utils/my_style.dart';
 class ProductWidget extends StatefulWidget {
   final ProductModel p;
   final Function onRemove;
+  final Function onClickFunction;
   const ProductWidget({
     Key key,
-    this.p, this.onRemove,
+    this.p, this.onRemove, this.onClickFunction,
   }) : super(key: key);
   @override
   State<ProductWidget> createState() => _ProductWidgetState();
@@ -29,7 +30,7 @@ class _ProductWidgetState extends State<ProductWidget> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             InkWell(
-              onTap: () async {
+              onTap: widget.onClickFunction ?? () async {
                 await Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -106,15 +107,15 @@ class _ProductWidgetState extends State<ProductWidget> {
                       widget.p.isRemovable? InkWell(onTap: widget.onRemove,
                           child: SvgPicture.asset("assets/svg/waste_basket.svg")):Container(),
                       widget.p.isRemovable? SizedBox(width: MyStyle.mediaQueryWidth(context, 0.01),):Container(),
-                      const Text(
+                       Text(
                         "تومان ",
-                        style: MyStyle.lightPinkTextStyleS13,
+                        style: MyStyle.mediaQueryWidth(context, 1) > 330 ? MyStyle.lightPinkTextStyleS13 : MyStyle.lightPinkTextStyleS11,
                         maxLines: 2,
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         widget.p.cost.toString(),
-                        style: MyStyle.lightPinkTextStyleS13,
+                        style: MyStyle.mediaQueryWidth(context, 1) > 330 ? MyStyle.lightPinkTextStyleS13 : MyStyle.lightPinkTextStyleS11,
                         maxLines: 2,
                         textAlign: TextAlign.center,
                       ),

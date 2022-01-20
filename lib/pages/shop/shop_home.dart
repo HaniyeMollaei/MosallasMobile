@@ -6,6 +6,7 @@ import 'package:mosallas/models/comment_model.dart';
 import 'package:mosallas/models/product_model.dart';
 import 'package:mosallas/models/shop_vitrine_model.dart';
 import 'package:mosallas/pages/buyers/shops/all_products.dart';
+import 'package:mosallas/pages/shop/shop_vitrine_page.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_shop.dart';
@@ -517,10 +518,15 @@ class ShopHomeState extends State<ShopHome> {
                               text: "ویرایش محصولات ویترین",
                               textSize: MyStyle.S17,
                               onPressed: () async {
-                                await Navigator.push(
-                                    context, MaterialPageRoute(builder: (context) => AllProducts(shopCode: shop.shopCode,isBuyer:false,isShopVitrine: true,)));
-
-                              },
+                                Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                    pageBuilder: (context, animation1, animation2) => ShopVitrinePage(
+                                      shop: shop,
+                                    ),
+                                    transitionDuration: Duration.zero,
+                                  ),
+                                );},
                             ),
                             SizedBox(height: MyStyle.mediaQueryHeight(context, 0.03),),
                           ],
