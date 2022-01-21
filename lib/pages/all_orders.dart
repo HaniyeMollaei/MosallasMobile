@@ -8,7 +8,9 @@ import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_shop.dart';
+import 'package:mosallas/widgets/dialoug.dart';
 import 'package:mosallas/widgets/order.dart';
+import 'package:mosallas/widgets/submit_button.dart';
 
 class AllBuyerOrders extends StatefulWidget {
   final bool isForShop;
@@ -20,6 +22,41 @@ class AllBuyerOrders extends StatefulWidget {
 
 class AllBuyerOrdersState extends State<AllBuyerOrders> {
   List<OrderModel> orders;
+
+
+  Widget onOrderTap(){
+    return myDialog(
+        width: MyStyle.mediaQueryWidth(context, 0.92),
+        height: MyStyle.mediaQueryHeight(context, 0.4),
+        hasCancel: true,
+        hasButton: false,
+        hasHeader: false,
+        //headerText: "وضعیت سفارش",
+        context: context,
+        content: Column(
+          children: [
+            SubmitButton(
+              text: "گفت و گو با خریدار",
+            ),
+            SizedBox(
+              height: MyStyle.mediaQueryHeight(context, 0.01),
+            ),
+            SubmitButton(
+              text: "لغو سفارش و بازگرداندن پول",
+            ),
+            SizedBox(
+              height: MyStyle.mediaQueryHeight(context, 0.01),
+            ),SubmitButton(
+              text: "سفارش ارسال شد",
+              buttonColor: MyStyle.green,
+            ),
+            SizedBox(
+              height: MyStyle.mediaQueryHeight(context, 0.01),
+            ),          ],
+        )
+    );
+  }
+
 
   @override
   Widget build(BuildContext c) {
@@ -81,6 +118,8 @@ class AllBuyerOrdersState extends State<AllBuyerOrders> {
         buyerAddress: AddressModel(city: "زنجان", province: "زنجان", address: "  خیابان فاتح، کوچه ی نبوی، پلاک 87 "),
       ),
     ];
+
+
     return SafeArea(
         top: false,
         bottom: false,
@@ -148,10 +187,7 @@ class AllBuyerOrdersState extends State<AllBuyerOrders> {
                               physics: const BouncingScrollPhysics(),
                               itemCount: orders.length,
                               itemBuilder: (BuildContext c, int index) {
-                                return Padding(
-                                  padding: EdgeInsets.symmetric(vertical: MyStyle.mediaQueryHeight(context, 0.01)),
-                                  child: orderItemWidget(context: c, orderItem: orders[index], isGray: false),
-                                );
+                                return orderItemWidget(context: c, orderItem: orders[index], isGray: false , onTap: onOrderTap );
                               }),
                         ],
                       ),

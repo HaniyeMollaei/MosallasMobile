@@ -16,7 +16,7 @@ import 'package:mosallas/widgets/favorite_vitrine.dart';
 import 'package:mosallas/widgets/order.dart';
 import 'package:mosallas/widgets/text_field.dart';
 
-import 'all_buyer_orders.dart';
+import '../../all_orders.dart';
 
 class BuyerProfile extends StatefulWidget {
   const BuyerProfile({Key key}) : super(key: key);

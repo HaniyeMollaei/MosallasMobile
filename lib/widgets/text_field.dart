@@ -56,7 +56,7 @@ class MyTextField extends StatelessWidget {
         this.isErrorName = false,
         this.isEnable,
         this.bgColor = MyStyle.white,
-        this.borderColor = Colors.transparent,
+        this.borderColor ,
         this.maxLine = 1,
         this.minLine = 1,
         this.hint, this.height, this.width, this.isGray= false});

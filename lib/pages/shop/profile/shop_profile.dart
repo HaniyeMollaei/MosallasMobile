@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mosallas/models/product_model.dart';
+import 'package:mosallas/models/shop_vitrine_model.dart';
 import 'package:mosallas/pages/login/login.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
@@ -9,6 +10,8 @@ import 'package:mosallas/widgets/appbar_light.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_shop.dart';
 import 'package:mosallas/widgets/dialoug.dart';
 import 'package:mosallas/widgets/drawer.dart';
+import 'package:mosallas/widgets/shop_profile_item.dart';
+import 'package:mosallas/widgets/shop_vitrine.dart';
 import 'package:mosallas/widgets/text_field.dart';
 
 
@@ -154,66 +157,20 @@ class ShopProfileState extends State<ShopProfile> {
     );
   }
 
+
+  ShopVitrineModel shop = ShopVitrineModel(
+      shopName: "فروشگاه لباس مجلسی ایلگا",
+      address: "خیابان سعدی وسط، خیابان زینبیه، کوچه ی امید، پلاک 143",
+      shopCode: "mnb876gi99",
+      phoneNumber: "09123456789",
+      shippingCost: 12000,
+      star: 4.3,
+      shopImagePath: "assets/image/ilga.jpg",
+      productsImagePath: ["assets/image/6.jpg", "assets/image/12.jpg"]);
+
+
   @override
   Widget build(BuildContext c) {
-
-    favorites = [
-      ProductModel(
-          name: "پیراهن آستین بلند مردانه",
-          code: "hgd65435hj",
-          cost: 123000,
-          description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
-          imagePath: ['assets/image/5.jpg','assets/image/6.jpg','assets/image/12.jpg'],
-          isRemovable: true,
-          star: 4.5,
-          hasOnlineSell: true,
-          category: "پوشاک",
-          shopCode: "hfgds43"),
-      ProductModel(
-          name: "پیراهن آستین بلند مردانه",
-          code: "hgd65435hj",
-          cost: 123000,
-          description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
-          hasOnlineSell: false,
-          category: "پوشاک",
-          imagePath: ['assets/image/6.jpg','assets/image/12.jpg'],
-          isRemovable: true,
-          star: 4.5,
-          shopCode: "hfgds43"),
-      ProductModel(
-          name: "پیراهن آستین بلند مردانه",
-          code: "hgd65435hj",
-          cost: 123000,
-          imagePath: ['assets/image/12.jpg'],
-          isRemovable: true,
-          description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
-          hasOnlineSell: true,
-          category: "پوشاک",
-          star: 4.5,
-          shopCode: "hfgds43"),
-      ProductModel(
-          name: "پیراهن آستین بلند مردانه",
-          code: "hgd65435hj",
-          cost: 123000,
-          description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
-          imagePath: ['assets/image/5.jpg'],
-          isRemovable: true,
-          star: 4.5,
-          hasOnlineSell: true,
-          category: "پوشاک",
-          shopCode: "hfgds43"),
-      ProductModel(
-          name: "پیراهن آستین بلند مردانه",
-          code: "hgd65435hj",
-          cost: 123000,
-          hasOnlineSell: true,
-          category: "پوشاک",
-          imagePath: ['assets/image/6.jpg','assets/image/12.jpg'],
-          description:"طرح: طرح‌دار، ساده\nقد: زیر زانو\nیقه: هفت\nآستین: سه ربع\nنوع پایین تنه: دامن",
-          isRemovable: true,
-          star: 4.5,
-          shopCode: "hfgds43"),
-    ];
 
     return SafeArea(
         top: false,
@@ -230,15 +187,48 @@ class ShopProfileState extends State<ShopProfile> {
                     finalType: "location",
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.06)),
+                    //padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.06)),
                     height: MyStyle.mediaQueryHeight(context, 0.75),
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-
-                          Text("پروفایل"),
-
+                          shopVitrine(context: c,shopVitrineItem: shop,justHeader: true),
                           SizedBox(height: MyStyle.mediaQueryHeight(context, 0.03),),
+                          shopProfileItem(
+                            onTap: (){},
+                            text: "گردش مالی فروشگاه در ماه اخیر",
+                            context: c
+                          ),
+                          shopProfileItem(
+                              onTap: (){},
+                              text: "تبلیغات فروشگاه در شهرستان",
+                              context: c
+                          ),
+                          shopProfileItem(
+                              onTap: (){},
+                              text: "Admin ارتباط با",
+                              context: c
+                          ),
+                          shopProfileItem(
+                              onTap: (){},
+                              text: "هزینه ی ارسال محصولات",
+                              context: c
+                          ),
+                          shopProfileItem(
+                              onTap: (){},
+                              text: "گزارشات",
+                              context: c
+                          ),
+                          shopProfileItem(
+                              onTap: (){},
+                              text: "حذف حساب فروشگاه",
+                              context: c
+                          ),
+                          shopProfileItem(
+                              onTap: onExitDialog,
+                              text: "خروج از حساب کاربری",
+                              context: c
+                          ),
 
                         ],
                       ),

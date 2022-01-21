@@ -15,7 +15,9 @@ class ChatPage extends StatefulWidget {
 
   final ChatModel chat;
   final bool isForShop;
-  const ChatPage({Key key, this.chat, this.isForShop, }) : super(key: key);
+  final bool isFromOrders;
+  final String shopCode;
+  const ChatPage({Key key, this.chat, this.isForShop, this.isFromOrders, this.shopCode, }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => ChatPageState();
@@ -51,29 +53,26 @@ class ChatPageState extends State<ChatPage> {
                         ),
                         SizedBox(
                           height: MyStyle.mediaQueryHeight(context, 0.72),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: MyStyle.mediaQueryHeight(context, 0.62),
-                                child: Padding(
-                                  padding:  EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.04)),
-                                  child: ScrollablePositionedList.builder(
-                                    itemPositionsListener: itemPositionsListener,
-                                      padding: const EdgeInsets.only(top: 0, bottom: 0),
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      reverse: false,
-                                      physics: BouncingScrollPhysics(),
-                                      itemCount: widget.chat.messages.length,
-                                      itemScrollController: _scrollController,
-                                      itemBuilder: (BuildContext c, int index) {
-                                        return chatMessageItem(c, widget.chat.messages[index],);
-                                      }),
-                                ),
-                              ),
-                              SizedBox(height: MyStyle.mediaQueryHeight(context, 0.1),)
-                            ],
-
+                          child: Padding(
+                            padding:  EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.04)),
+                            child: ScrollablePositionedList.builder(
+                              itemPositionsListener: itemPositionsListener,
+                                padding: const EdgeInsets.only(top: 0, bottom: 0),
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                reverse: false,
+                                physics: BouncingScrollPhysics(),
+                                itemCount: widget.chat.messages.length,
+                                itemScrollController: _scrollController,
+                                itemBuilder: (BuildContext c, int index) {
+                                print("--------------------------------------------------------");
+                                print("Length :");
+                                print(widget.chat.messages.length);
+                                print("Index :");
+                                print(index);
+                                  return widget.chat.messages.length >0 ?
+                                  chatMessageItem(c, widget.chat.messages[index <0 ? 0 : index],):Container();
+                                }),
                           ),
                         ),
 
@@ -91,12 +90,13 @@ class ChatPageState extends State<ChatPage> {
                             prefixIcon: InkWell(
                               onTap: (){
                                 if(_txtMessage.text !=""){
+                                  widget.chat.messages
+                                      .add(MessageModel(sender: "shop", text: _txtMessage.text, date: "1400/11/3"));
+                                  _txtMessage.text = "";
+                                  if(widget.chat.messages.length -1 >= 0 ){_scrollController.jumpTo(index: widget.chat.messages.length-1);}
+
                                   setState(() {
-                                    widget.chat.messages
-                                        .add(MessageModel(sender: "shop", text: _txtMessage.text, date: "1400/11/3"));
-                                    _txtMessage.text = "";
-                                    _scrollController.jumpTo(index: widget.chat.messages.length-1);
-                                  });
+                                   });
                                 }
                               },
                               child: Padding(

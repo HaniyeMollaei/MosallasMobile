@@ -30,6 +30,7 @@ class ChatListState extends State<ChatList> {
   final FocusNode _fndMobileNumber = FocusNode();
 
 
+  ///from service
   List<ChatModel> chats = [
     ChatModel(
       buyer: BuyerModelForChat(

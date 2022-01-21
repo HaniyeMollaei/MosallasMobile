@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mosallas/pages/buyers/home/home.dart';
-import 'package:mosallas/pages/buyers/profile/all_buyer_orders.dart';
+import 'package:mosallas/pages/all_orders.dart';
 import 'package:mosallas/pages/buyers/profile/profile_buyer.dart';
 import 'package:mosallas/pages/buyers/shops/all_products.dart';
 import 'package:mosallas/pages/buyers/shops/city_shops.dart';
