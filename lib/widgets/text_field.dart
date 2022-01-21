@@ -71,109 +71,112 @@ class MyTextField extends StatelessWidget {
     return SizedBox(
       height: height ?? MyStyle.mediaQueryHeight(context, 0.075),
         width: width ?? MyStyle.mediaQueryWidth(context, 0.8),
-        child: TextFormField(
-            enabled: isEnable,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            textAlign: textAlign,
-            obscureText: obscureText ,
-            focusNode: focusNode,
-            autofocus: false,
-            keyboardType: keyboardType ?? TextInputType.text,
-            controller: controller,
-            maxLines: maxLine ?? 1,
-            minLines: minLine ?? 1,
-            style: TextStyle(
-              color: MyStyle.darkGrayText,
-              fontSize: fontSize ?? MyStyle.S17,
-              letterSpacing: 1,
-              fontFamily: MyStyle.textMediumFont ,
-            ),
-            inputFormatters: inputFormatters,
-            validator: validator,
-            onSaved: onSave,
-            onChanged: onChange,
-            onTap: onTap,
-            onFieldSubmitted: onSubmit,
-            decoration: !isGray? InputDecoration(
-                suffixIcon: suffixIcon,
-                prefixIcon: prefixIcon,
-                hintText: hint ?? "",
-                hintStyle: const TextStyle(fontSize:  MyStyle.S17, fontFamily:
-                MyStyle.textMediumFont, color: MyStyle.lightGrayText),
-                disabledBorder: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius5)),
-                  borderSide: BorderSide(
-                    width: 1.5,
-                    style: BorderStyle.solid,
-                    color: MyStyle.darkPink
-                  ),
-                ),
-                enabledBorder:const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius5)),
-                  borderSide: BorderSide(
+        child: Align(
+          alignment: Alignment.center,
+          child: TextFormField(
+              enabled: isEnable,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              textAlign: textAlign,
+              obscureText: obscureText ,
+              focusNode: focusNode,
+              autofocus: false,
+              keyboardType: keyboardType ?? TextInputType.text,
+              controller: controller,
+              maxLines: maxLine ?? 1,
+              minLines: minLine ?? 1,
+              style: TextStyle(
+                color: MyStyle.darkGrayText,
+                fontSize: fontSize ?? MyStyle.S17,
+                letterSpacing: 1,
+                fontFamily: MyStyle.textMediumFont ,
+              ),
+              inputFormatters: inputFormatters,
+              validator: validator,
+              onSaved: onSave,
+              onChanged: onChange,
+              onTap: onTap,
+              onFieldSubmitted: onSubmit,
+              decoration: !isGray? InputDecoration(
+                  suffixIcon: suffixIcon,
+                  prefixIcon: prefixIcon,
+                  hintText: hint ?? "",
+                  hintStyle: const TextStyle(fontSize:  MyStyle.S17, fontFamily:
+                  MyStyle.textMediumFont, color: MyStyle.lightGrayText),
+                  disabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius5)),
+                    borderSide: BorderSide(
                       width: 1.5,
                       style: BorderStyle.solid,
-                      color: MyStyle.darkPink
+                      color: borderColor?? MyStyle.darkPink
+                    ),
                   ),
-                ) ,
-                focusedBorder: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius5)),
-                  borderSide: BorderSide(
-                      width: 1.5,
-                      style: BorderStyle.solid,
-                      color: MyStyle.darkPink
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius5)),
+                    borderSide: BorderSide(
+                        width: 1.5,
+                        style: BorderStyle.solid,
+                        color: borderColor?? MyStyle.darkPink
+                    ),
+                  ) ,
+                  focusedBorder:  OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius5)),
+                    borderSide: BorderSide(
+                        width: 1.5,
+                        style: BorderStyle.solid,
+                        color: borderColor?? MyStyle.darkPink
+                    ),
                   ),
-                ),
-                border:const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius5)),
-                  borderSide: BorderSide(
-                      width: 1.5,
-                      style: BorderStyle.solid,
-                      color: MyStyle.darkPink
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius5)),
+                    borderSide: BorderSide(
+                        width: 1.5,
+                        style: BorderStyle.solid,
+                        color: borderColor?? MyStyle.darkPink
+                    ),
                   ),
-                ),
-                fillColor: bgColor,
-                filled: true):
-            InputDecoration(
+                  fillColor: bgColor,
+                  filled: true):
+              InputDecoration(
 
-                suffixIcon: suffixIcon,
-                prefixIcon: prefixIcon,
-                hintText: hint ?? "",
-                hintStyle: TextStyle(fontSize: isGray?MyStyle.S13:MyStyle.S17, fontFamily:
-                MyStyle.textMediumFont, color: MyStyle.darkGrayText ,),
-                disabledBorder: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2)),
-                  borderSide: BorderSide(
-                      width: 1.5,
-                      style: BorderStyle.solid,
-                      color: MyStyle.backgroundColor
+                  suffixIcon: suffixIcon,
+                  prefixIcon: prefixIcon,
+                  hintText: hint ?? "",
+                  hintStyle: TextStyle(fontSize: isGray?MyStyle.S13:MyStyle.S17, fontFamily:
+                  MyStyle.textMediumFont, color: MyStyle.darkGrayText ,),
+                  disabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2)),
+                    borderSide: BorderSide(
+                        width: 1.5,
+                        style: BorderStyle.solid,
+                        color: borderColor?? MyStyle.backgroundColor
+                    ),
                   ),
-                ),
-                enabledBorder: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2)),
-                  borderSide: BorderSide(
-                      width: 1.5,
-                      style: BorderStyle.solid,
-                      color: MyStyle.backgroundColor
+                  enabledBorder: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2)),
+                    borderSide: BorderSide(
+                        width: 1.5,
+                        style: BorderStyle.solid,
+                        color: MyStyle.backgroundColor
+                    ),
                   ),
-                ),
-                focusedBorder:  const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2)),
-                  borderSide: BorderSide(
-                      width: 1.5,
-                      style: BorderStyle.solid,
-                      color: MyStyle.backgroundColor
+                  focusedBorder:   OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2)),
+                    borderSide: BorderSide(
+                        width: 1.5,
+                        style: BorderStyle.solid,
+                        color: borderColor?? MyStyle.backgroundColor
+                    ),
                   ),
-                ),
-                border: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2)),
-                  borderSide: BorderSide(
-                      width: 1.5,
-                      style: BorderStyle.solid,
-                      color: MyStyle.backgroundColor
+                  border:  OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2)),
+                    borderSide: BorderSide(
+                        width: 1.5,
+                        style: BorderStyle.solid,
+                        color: borderColor?? MyStyle.backgroundColor
+                    ),
                   ),
-                ),
-                fillColor: isGray? MyStyle.backgroundColor : bgColor,
-                filled: true)));
+                  fillColor: isGray? MyStyle.backgroundColor : bgColor,
+                  filled: true)),
+        ));
   }
 }

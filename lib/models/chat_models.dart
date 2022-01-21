@@ -30,16 +30,21 @@ class ShopModelForChat{
       this.lastMessageSeen});
 }
 
-class Message{
+class MessageModel{
   String text;
   String date;
-  BuyerModelForChat buyer;
-  ShopModelForChat shop;
-  Message({this.text, this.date, this.buyer, this.shop});
+  String sender;//shop or buyer
+  // BuyerModelForChat buyer;
+  // ShopModelForChat shop;
+  MessageModel({this.text, this.date,this.sender
+   // this.buyer, this.shop
+  });
 }
 
 class ChatModel{
   BuyerModelForChat buyer;
-  ShopVitrineModel shop;
+  ShopModelForChat shop;
   String chatCode;
+  List<MessageModel> messages;
+  ChatModel({this.buyer, this.shop, this.chatCode, this.messages});
 }

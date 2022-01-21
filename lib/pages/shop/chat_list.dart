@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mosallas/models/buyer_model.dart';
 import 'package:mosallas/models/chat_models.dart';
 import 'package:mosallas/models/shop_vitrine_model.dart';
 import 'package:mosallas/utils/my_style.dart';
@@ -30,31 +29,87 @@ class ChatListState extends State<ChatList> {
   final TextEditingController _txtMobileNumber = TextEditingController();
   final FocusNode _fndMobileNumber = FocusNode();
 
-  final List<BuyerModelForChat> buyers = [
-    BuyerModelForChat(
+
+  List<ChatModel> chats = [
+    ChatModel(
+      buyer: BuyerModelForChat(
         buyerName: "فاطمه بابائی",
         buyerProvince: "زنجان",
         buyerCity: "سلطانیه",
         mobileNo: "09908733108" ,
         userType: "normal",
-      lastMessageSeen: false,
+        lastMessageSeen: false,
+      ),
+      shop: ShopModelForChat(
+        userType: "shop",
+        mobileNo: "09371544159",
+        shopCode: "mbb5322",
+        shopName: "فروشگاه لباس مجاسی ایلگا",
+        lastMessageSeen: false,
+        shopCity: "زنجان",
+        shopProvince: "زنجان",
+      ),
+      chatCode: "cta12345",
+      messages: [
+        MessageModel(date: "1400/11/1",text: "سلام",sender: "normal"),
+        MessageModel(date: "1400/11/1",text: "سلام.وقت به خیر",sender: "Shop"),
+        MessageModel(date: "1400/11/1",text: "میخواستم سفارشمو پیگیری کنم",sender: "normal"),
+        MessageModel(date: "1400/11/1",text: "کی ارسال میشه؟",sender: "normal"),
+        MessageModel(date: "1400/11/1",text: "سفارشتون دیروز ارسال شده. احتمالا تا سه روز دیگه برسه دستتون.",sender: "shop"),
+        MessageModel(date: "1400/11/1",text: "ممنون از اطلاعتون.",sender: "normal"),
+        MessageModel(date: "1400/11/1",text: "میتونم کد پیگیری پست رو داشته باشم؟",sender: "normal"),
+        MessageModel(date: "1400/11/1",text: "بله حتما",sender: "shop"),
+        MessageModel(date: "1400/11/1",text: "123456789123456789123456",sender: "shop"),
+        MessageModel(date: "1400/11/1",text: "متشکرم",sender: "normal"),
+      ]
     ),
-    BuyerModelForChat(
-        buyerName: "مهسا فراهانی",
-        buyerProvince: "تهران",
-        buyerCity: "تهران",
-        mobileNo: "09908733108" ,
-        userType: "normal",
-      lastMessageSeen: true,
+    ChatModel(
+        buyer: BuyerModelForChat(
+          buyerName: "مهسا فراهانی",
+          buyerProvince: "تهران",
+          buyerCity: "تهران",
+          mobileNo: "09908733108" ,
+          userType: "normal",
+          lastMessageSeen: true,
+        ),
+        shop: ShopModelForChat(
+          userType: "shop",
+          mobileNo: "09371544159",
+          shopCode: "mbb5322",
+          shopName: "فروشگاه لباس مجاسی ایلگا",
+          lastMessageSeen: false,
+          shopCity: "زنجان",
+          shopProvince: "زنجان",
+        ),
+        chatCode: "cta12345",
+        messages: [
+          MessageModel(date: "1400/11/1",text: "سلام",sender: "normal"),
+          MessageModel(date: "1400/11/1",text: "سلام.روزتون به خیر",sender: "shop"),
+          MessageModel(date: "1400/11/1",text: "از پیراهن برجیس سایز 38 موجود دارید ؟",sender: "normal"),
+          MessageModel(date: "1400/11/1",text: "ارسالش به چه نحویه؟",sender: "normal"),
+        ]
     ),
-    BuyerModelForChat(
-        buyerName: "مسعود ملائی",
-        buyerProvince: "تهران",
-        buyerCity: "تهران",
-        mobileNo: "09128410296" ,
-        userType: "normal",
-      lastMessageSeen: true,
-    )
+    ChatModel(
+        buyer: BuyerModelForChat(
+  buyerName: "مسعود ملائی",
+  buyerProvince: "تهران",
+  buyerCity: "تهران",
+  mobileNo: "09128410296" ,
+  userType: "normal",
+  lastMessageSeen: true,
+  ),
+        shop: ShopModelForChat(
+          userType: "shop",
+          mobileNo: "09371544159",
+          shopCode: "mbb5322",
+          shopName: "فروشگاه لباس مجاسی ایلگا",
+          lastMessageSeen: false,
+          shopCity: "زنجان",
+          shopProvince: "زنجان",
+        ),
+        chatCode: "cta12345",
+        messages: []
+    ),
   ];
 
   @override
@@ -87,9 +142,9 @@ class ChatListState extends State<ChatList> {
                                 shrinkWrap: true,
                                 itemExtent: null,
                                 physics: BouncingScrollPhysics(),
-                                itemCount: buyers.length,
+                                itemCount: chats.length,
                                 itemBuilder: (BuildContext c, int index) {
-                                  return chatListItem(c, buyers[index],);
+                                  return chatListItemForShop(c, chats[index],);
                                 }),
 
                             SizedBox(
