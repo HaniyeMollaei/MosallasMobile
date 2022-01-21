@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mosallas/pages/login/splash.dart';
+import 'package:mosallas/state_management/add_new_product_provider.dart';
 import 'package:mosallas/state_management/bottom_sheet_listview_provider.dart';
 import 'package:mosallas/state_management/timer_provider.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<BottomSheetListviewProvider>(create: (_) => BottomSheetListviewProvider()),
         ChangeNotifierProvider<TimerProvider>(create: (_) => TimerProvider()),
+        ChangeNotifierProvider<AddNewProductProvider>(create: (_) => AddNewProductProvider()),
       ],
       child: MaterialApp(
         title: 'Mosallas',

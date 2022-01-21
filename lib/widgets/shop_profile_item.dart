@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mosallas/utils/my_style.dart';
 
-Widget shopProfileItem({BuildContext context, String text, Function onTap}) {
+Widget shopProfileItem({BuildContext context, String text, Function onTap , bool isEnable = true}) {
   return InkWell(
     onTap: onTap ?? () {},
     child: Container(
       width: MyStyle.mediaQueryWidth(context, 1),
       height: MyStyle.mediaQueryHeight(context, 0.07),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2)),
-        color: MyStyle.white,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(MyStyle.borderRadius2)),
+        color: isEnable ? MyStyle.white : MyStyle.lightLightGrayText,
       ),
       padding: EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.06) ,
           vertical: MyStyle.mediaQueryHeight(context, 0.01)

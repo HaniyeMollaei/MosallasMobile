@@ -1,7 +1,12 @@
+
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mosallas/models/comment_model.dart';
 import 'package:mosallas/models/product_model.dart';
 import 'package:mosallas/models/shop_vitrine_model.dart';
@@ -80,8 +85,10 @@ class ShopHomeState extends State<ShopHome> {
   final TextEditingController _txtPhoneNumber = TextEditingController();
   final FocusNode _fndPhoneNumber = FocusNode();
 
+  final ImagePicker _picker = ImagePicker();
 
   Widget addBanner(){
+    XFile image;
     return myDialog(
       width: MyStyle.mediaQueryWidth(context, 0.92),
       height: MyStyle.mediaQueryHeight(context, 0.5),
@@ -91,7 +98,8 @@ class ShopHomeState extends State<ShopHome> {
       hasHeader: true,
       headerText: "افزودن بنر به ویترین فروشگاه",
       context: context,
-      onButtonPressed: (){print("Comment saved");},
+      onButtonPressed: () async {
+        print("Banner saved");},
       content: Column(
         children: [
           Row(
@@ -103,9 +111,24 @@ class ShopHomeState extends State<ShopHome> {
               ) :
               ClipRRect(
                   borderRadius: BorderRadius.circular(MyStyle.borderRadius4),
-                  child: Image.asset(shop.shopImagePath , height: MyStyle.mediaQueryHeight(context, 0.13),)),
+                  child: image.path == null ?
+                  Image.asset( shop.shopImagePath ,
+                    height: MyStyle.mediaQueryHeight(context, 0.13),):
+                  kIsWeb
+                      ? Image.network(image.path,height: MyStyle.mediaQueryHeight(context, 0.13))
+                      : Image.file(File(image.path),height: MyStyle.mediaQueryHeight(context, 0.13)),
+              ),
               InkWell(
-                onTap: (){},
+                onTap: () async {
+
+                  //WidgetsBinding.instance.addPostFrameCallback((_) async {
+                    image = await _picker.pickImage(source: ImageSource.gallery);
+
+                    setState(() {
+                    });
+                  //});
+                  print(image.path);
+                },
                 child: Container(
                   height: MyStyle.mediaQueryHeight(context, 0.13),
                   width: MyStyle.mediaQueryWidth(context, 0.16),
@@ -130,8 +153,6 @@ class ShopHomeState extends State<ShopHome> {
                             maxLines: 3, style: MyStyle.whiteLightTextStyle,),
                         ) ,
                       ]
-
-
                   ),
                 ),
               )

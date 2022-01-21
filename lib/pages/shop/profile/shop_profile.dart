@@ -217,18 +217,21 @@ class ShopProfileState extends State<ShopProfile> {
                           shopProfileItem(
                               onTap: (){},
                               text: "گزارشات",
-                              context: c
+                              context: c,
+                            isEnable: false,
                           ),
                           shopProfileItem(
                               onTap: (){},
                               text: "حذف حساب فروشگاه",
-                              context: c
+                              context: c,
+                            isEnable: false,
                           ),
                           shopProfileItem(
                               onTap: onExitDialog,
                               text: "خروج از حساب کاربری",
                               context: c
                           ),
+                          SizedBox(height: MyStyle.mediaQueryHeight(context, 0.1),),
 
                         ],
                       ),

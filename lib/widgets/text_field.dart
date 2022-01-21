@@ -100,8 +100,9 @@ class MyTextField extends StatelessWidget {
                   suffixIcon: suffixIcon,
                   prefixIcon: prefixIcon,
                   hintText: hint ?? "",
+                  contentPadding: EdgeInsets.symmetric(vertical: MyStyle.mediaQueryHeight(context, 0.01)),
                   hintStyle: const TextStyle(fontSize:  MyStyle.S17, fontFamily:
-                  MyStyle.textMediumFont, color: MyStyle.lightGrayText),
+                  MyStyle.textMediumFont, color: MyStyle.lightGrayText ),
                   disabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius5)),
                     borderSide: BorderSide(
@@ -137,12 +138,13 @@ class MyTextField extends StatelessWidget {
                   fillColor: bgColor,
                   filled: true):
               InputDecoration(
-
+                  contentPadding: EdgeInsets.symmetric(vertical: MyStyle.mediaQueryHeight(context, 0.015),
+                  horizontal: MyStyle.mediaQueryWidth(context, 0.04)),
                   suffixIcon: suffixIcon,
                   prefixIcon: prefixIcon,
                   hintText: hint ?? "",
                   hintStyle: TextStyle(fontSize: isGray?MyStyle.S13:MyStyle.S17, fontFamily:
-                  MyStyle.textMediumFont, color: MyStyle.darkGrayText ,),
+                  MyStyle.textMediumFont, color: MyStyle.lightGrayText ,),
                   disabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(MyStyle.borderRadius2)),
                     borderSide: BorderSide(

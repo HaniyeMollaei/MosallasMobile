@@ -30,6 +30,7 @@ class MyStyle {
   static const Color black = Color(0xff000000);
   static const Color darkGrayText = Color(0xff484848);
   static const Color lightGrayText = Color(0xff868686);
+  static const Color lightLightGrayText = Color(0xffEAEAEA);
   static const Color backgroundColor = Color(0xffF6F4F4);
   static const Color white = Color(0xffFFFFFF);
   static const Color darkText = Color(0xff363853);
