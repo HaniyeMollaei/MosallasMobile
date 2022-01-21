@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mosallas/models/comment_model.dart';
 import 'package:mosallas/models/product_model.dart';
 import 'package:mosallas/models/shop_vitrine_model.dart';
-import 'package:mosallas/pages/buyers/shops/all_products.dart';
 import 'package:mosallas/pages/shop/shop_vitrine_page.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
@@ -24,6 +23,7 @@ import 'package:mosallas/widgets/submit_button.dart';
 import 'package:mosallas/widgets/text_field.dart';
 
 import '../comments.dart';
+import 'chat_list.dart';
 
 class ShopHome extends StatefulWidget {
   const ShopHome({Key key}) : super(key: key);
@@ -65,6 +65,8 @@ class ShopHomeState extends State<ShopHome> {
       productsImagePath: ["assets/image/6.jpg", "assets/image/12.jpg"]);
 
   Widget slider;
+  Widget vitrine;
+
   final TextEditingController _txtName = TextEditingController();
   final FocusNode _fndName = FocusNode();
 
@@ -210,7 +212,7 @@ class ShopHomeState extends State<ShopHome> {
           MyTextField(
             width: MyStyle.mediaQueryWidth(context, 0.84),
             //height: MyStyle.mediaQueryHeight(context, 0.18),
-            textAlign: TextAlign.end,
+            textAlign: TextAlign.center,
             hint: "نام فروشگاه",
             keyboardType: TextInputType.text,
             maxLine: 1,
@@ -244,7 +246,7 @@ class ShopHomeState extends State<ShopHome> {
           MyTextField(
             width: MyStyle.mediaQueryWidth(context, 0.84),
             height: MyStyle.mediaQueryHeight(context, 0.16),
-            textAlign: TextAlign.end,
+            textAlign: TextAlign.center,
             hint: "آدرس",
             keyboardType: TextInputType.text,
             maxLine: 4,
@@ -265,7 +267,7 @@ class ShopHomeState extends State<ShopHome> {
           MyTextField(
             width: MyStyle.mediaQueryWidth(context, 0.84),
             //height: MyStyle.mediaQueryHeight(context, 0.18),
-            textAlign: TextAlign.end,
+            textAlign: TextAlign.center,
             hint: "کد پستی",
             keyboardType: TextInputType.text,
             maxLine: 1,
@@ -286,7 +288,7 @@ class ShopHomeState extends State<ShopHome> {
           MyTextField(
             width: MyStyle.mediaQueryWidth(context, 0.84),
             //height: MyStyle.mediaQueryHeight(context, 0.18),
-            textAlign: TextAlign.end,
+            textAlign: TextAlign.center,
             hint: "شماره موبایل",
             keyboardType: TextInputType.text,
             maxLine: 1,
@@ -316,6 +318,7 @@ class ShopHomeState extends State<ShopHome> {
       isCommercial: true,
     );
 
+    vitrine = shopVitrine(context: c,shopVitrineItem: shop,justHeader: true);
     return SafeArea(
         top: false,
         bottom: false,
@@ -338,7 +341,7 @@ class ShopHomeState extends State<ShopHome> {
                           children: [
 
                             ///vitrine
-                            shopVitrine(context: c,shopVitrineItem: shop,justHeader: true),
+                            vitrine,
                             SizedBox(
                               height: MyStyle.mediaQueryHeight(context, 0.02),
                             ),
@@ -429,7 +432,20 @@ class ShopHomeState extends State<ShopHome> {
                                   callAndChat(
                                     context: c,
                                     shopCode: shop.shopCode,
-                                    justChat: true
+                                    justChat: true,
+                                    chatOnTap: (){
+                                      Navigator.push(
+                                        context,
+                                        PageRouteBuilder(
+                                          pageBuilder: (context, animation1, animation2) => ChatList(
+                                            isForShop: true,
+                                            shop: shop,
+                                          ),
+                                          transitionDuration: Duration.zero,
+                                        ),
+                                      );
+
+                                    }
                                   ),
                                   commentPinkBox(
                                       context: c,
@@ -441,7 +457,7 @@ class ShopHomeState extends State<ShopHome> {
                                           context,
                                           PageRouteBuilder(
                                             pageBuilder: (context, animation1, animation2) => Comments(
-                                              header: Container(),
+                                              header: vitrine,
                                               type: "shop",
                                               code: shop.shopCode,
                                               isForShop: true,

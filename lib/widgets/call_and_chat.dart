@@ -8,7 +8,7 @@ import 'comment_slider_manually.dart';
 
 //type : shop
 
-Widget callAndChat({BuildContext context, String phoneNumber, String shopCode , String buyerCode , bool justChat = false }){
+Widget callAndChat({BuildContext context, String phoneNumber, Function chatOnTap ,String shopCode , String buyerCode , bool justChat = false }){
   return Container(
     height: MyStyle.mediaQueryHeight(context, 0.18),
     width: MyStyle.mediaQueryWidth(context, 0.16),
@@ -40,20 +40,22 @@ Widget callAndChat({BuildContext context, String phoneNumber, String shopCode , 
 
         ///chat
         InkWell(
-          onTap: (){
-
+          onTap: chatOnTap ?? (){
           },
-          child: SvgPicture.asset("assets/svg/chat.svg",
-            width: MyStyle.mediaQueryWidth(context, 0.1),
-            fit: BoxFit.fitWidth,
+          child: Column(
+            children: [
+              SvgPicture.asset("assets/svg/chat.svg",
+                width: MyStyle.mediaQueryWidth(context, 0.1),
+                fit: BoxFit.fitWidth,
+              ),
+              justChat ? Padding(
+                padding:  EdgeInsets.only(top:MyStyle.mediaQueryHeight(context, 0.02), ),
+                child: const Text("گفت و گو با مشتریان" , maxLines: 3,textAlign: TextAlign.center, style: MyStyle.whiteLightTextStyle,),
+              ): Container() ,
+
+            ],
           ),
         ),
-
-        justChat ? Padding(
-          padding:  EdgeInsets.only(top:MyStyle.mediaQueryHeight(context, 0.02), ),
-          child: const Text("گفت و گو با مشتریان" , maxLines: 3,textAlign: TextAlign.center, style: MyStyle.whiteLightTextStyle,),
-        ): Container() ,
-
       ],
     ),
   );
