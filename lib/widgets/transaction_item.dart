@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mosallas/models/chat_models.dart';
 import 'package:mosallas/models/transaction_model.dart';
 import 'package:mosallas/utils/my_style.dart';
 

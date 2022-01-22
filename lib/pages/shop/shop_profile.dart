@@ -30,14 +30,8 @@ class ShopProfileState extends State<ShopProfile> {
 
   List<ProductModel> favorites;
 
-  final TextEditingController _txtName = TextEditingController();
-  final FocusNode _fndName = FocusNode();
-
-  final TextEditingController _txtAddress = TextEditingController();
-  final FocusNode _fndAddress = FocusNode();
-
-  final TextEditingController _txtPostalCode = TextEditingController();
-  final FocusNode _fndPostalCode = FocusNode();
+  final TextEditingController _txtShippingCost = TextEditingController();
+  final FocusNode _fndShippingCost = FocusNode();
 
   Widget onExitDialog(){
     return myDialog(
@@ -66,100 +60,6 @@ class ShopProfileState extends State<ShopProfile> {
     );
   }
 
-  Widget onEditDialog(){
-    _txtName.text = AppConstants.BUYER_NAME;
-    ///TODO
-    return myDialog(
-      width: MyStyle.mediaQueryWidth(context, 0.96),
-      height: MyStyle.mediaQueryHeight(context, 0.7),
-      hasCancel: true,
-      hasButton: true,
-      buttonText: "ویرایش",
-      hasHeader: true,
-      headerText: "ویرایش اطلاعات",
-      context: context,
-      onButtonPressed: (){print("Comment saved");},
-      content: Column(
-        children: [
-          MyTextField(
-            width: MyStyle.mediaQueryWidth(context, 0.84),
-            //height: MyStyle.mediaQueryHeight(context, 0.18),
-            textAlign: TextAlign.end,
-            hint: "نام و نام خانوادگی",
-            keyboardType: TextInputType.text,
-            maxLine: 1,
-            fontSize: MyStyle.S13,
-            minLine: 1,
-            inputFormatters: <TextInputFormatter>[
-              LengthLimitingTextInputFormatter(30),
-            ],
-            onSubmit: (String v) {
-              FocusScope.of(context).unfocus();
-            },
-            controller: _txtName,
-            focusNode: _fndName,
-          ),
-          SizedBox(
-            height: MyStyle.mediaQueryHeight(context, 0.02),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              MyDrawer(text: "شهرستان",attribute:"BUYER_CITY", isGray: true,
-                content: const ["زنجان" , "سلطانیه" ,  "ابهر" ,  "خرمدره" , " ماهنشان" , "ایجرود","قیدار" , " هیدج" , "صائین قلعه"],),
-              SizedBox(width: MyStyle.mediaQueryWidth(context, 0.03),),
-              MyDrawer(text: "استان",attribute:"BUYER_PROVINCE", isGray: true,
-                content: const ["زنجان" , "تهران" ,  "مشهد" ,  "قزوین" , " اردبیل" , "اصفهان"],),
-            ],
-          ),
-          SizedBox(
-            height: MyStyle.mediaQueryHeight(context, 0.02),
-          ),
-          MyTextField(
-            width: MyStyle.mediaQueryWidth(context, 0.84),
-            height: MyStyle.mediaQueryHeight(context, 0.18),
-            textAlign: TextAlign.end,
-            hint: "آدرس",
-            keyboardType: TextInputType.text,
-            maxLine: 4,
-            fontSize: MyStyle.S13,
-            minLine: 4,
-            inputFormatters: <TextInputFormatter>[
-              LengthLimitingTextInputFormatter(120),
-            ],
-            onSubmit: (String v) {
-              FocusScope.of(context).unfocus();
-            },
-            controller: _txtAddress,
-            focusNode: _fndAddress,
-          ),
-          SizedBox(
-            height: MyStyle.mediaQueryHeight(context, 0.02),
-          ),
-          MyTextField(
-            width: MyStyle.mediaQueryWidth(context, 0.84),
-            //height: MyStyle.mediaQueryHeight(context, 0.18),
-            textAlign: TextAlign.end,
-            hint: "کد پستی",
-            keyboardType: TextInputType.text,
-            maxLine: 1,
-            fontSize: MyStyle.S13,
-            minLine: 1,
-            inputFormatters: <TextInputFormatter>[
-              LengthLimitingTextInputFormatter(30),
-            ],
-            onSubmit: (String v) {
-              FocusScope.of(context).unfocus();
-            },
-            controller: _txtPostalCode,
-            focusNode: _fndPostalCode,
-          )
-        ],
-      ),
-
-
-    );
-  }
 
 
   ShopVitrineModel shop = ShopVitrineModel(
@@ -267,7 +167,51 @@ class ShopProfileState extends State<ShopProfile> {
                               context: c
                           ),
                           shopProfileItem(
-                              onTap: (){},
+                              onTap: (){
+                                myDialog(
+                                  width: MyStyle.mediaQueryWidth(context, 0.96),
+                                  height: MyStyle.mediaQueryHeight(context, 0.51),
+                                  hasCancel: true,
+                                  hasButton: true,
+                                  buttonText: "ثبت",
+                                  hasHeader: true,
+                                  headerText: "هزینه ی ارسال محصولات",
+                                  context: context,
+                                  onButtonPressed: (){
+                                    print("Comment saved");
+                                    Navigator.of(context).pop();
+                                  },
+                                  content: Column(
+                                    children: [
+                                      const Text(".مسئولیت ارسال تمامی محصولات که به صورت آنلاین توسط مشتریان خریداری شده اند به عهده ی خود فروشگاه میباشد. این مبلغ در هنگام سفارش روی مبلغ محصولات اضافه خواهد شد",
+                                        style: MyStyle.lightGrayTextStyleS11,
+                                        textAlign: TextAlign.right,
+                                      ),
+                                      SizedBox(
+                                        height: MyStyle.mediaQueryHeight(context, 0.03),
+                                      ),
+                                      MyTextField(
+                                        width: MyStyle.mediaQueryWidth(context, 0.84),
+                                        height: MyStyle.mediaQueryHeight(context, 0.07),
+                                        textAlign: TextAlign.center,
+                                        hint: "",
+                                        keyboardType: TextInputType.text,
+                                        maxLine: 1,
+                                        fontSize: MyStyle.S13,
+                                        minLine: 1,
+                                        inputFormatters: <TextInputFormatter>[
+                                          LengthLimitingTextInputFormatter(120),
+                                        ],
+                                        onSubmit: (String v) {
+                                          FocusScope.of(context).unfocus();
+                                        },
+                                        controller: _txtShippingCost,
+                                        focusNode: _fndShippingCost,
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
                               text: "هزینه ی ارسال محصولات",
                               context: c
                           ),
