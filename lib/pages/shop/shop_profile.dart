@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mosallas/models/chat_models.dart';
 import 'package:mosallas/models/product_model.dart';
 import 'package:mosallas/models/shop_vitrine_model.dart';
 import 'package:mosallas/pages/login/login.dart';
-import 'package:mosallas/pages/shop/shop_transactions_page.dart';
+import 'package:mosallas/pages/transactions_page.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_light.dart';
@@ -14,6 +15,8 @@ import 'package:mosallas/widgets/drawer.dart';
 import 'package:mosallas/widgets/shop_profile_item.dart';
 import 'package:mosallas/widgets/shop_vitrine.dart';
 import 'package:mosallas/widgets/text_field.dart';
+
+import '../chat.dart';
 
 
 class ShopProfile extends StatefulWidget {
@@ -217,7 +220,49 @@ class ShopProfileState extends State<ShopProfile> {
                               context: c
                           ),
                           shopProfileItem(
-                              onTap: (){},
+                              onTap: () async {
+
+                                await Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                    pageBuilder: (context, animation1, animation2) =>
+                                        ChatPage(chat: ChatModel(
+                                          //admin
+                                            buyer: BuyerModelForChat(
+                                              buyerName: "Admin",
+                                              buyerProvince: "_",
+                                              buyerCity: "_",
+                                              mobileNo: "09908733108" ,
+                                              userType: "admin",
+                                              lastMessageSeen: false,
+                                            ),
+                                            shop: ShopModelForChat(
+                                              userType: "shop",
+                                              mobileNo: "09371544159",
+                                              shopCode: "mbb5322",
+                                              shopName: "فروشگاه لباس مجاسی ایلگا",
+                                              lastMessageSeen: false,
+                                              shopCity: "زنجان",
+                                              shopProvince: "زنجان",
+                                            ),
+                                            chatCode: "cta12345",
+                                            messages: [
+                                              MessageModel(date: "1400/11/1",text: "سلام",sender: "normal"),
+                                              MessageModel(date: "1400/11/1",text: "سلام.وقت به خیر",sender: "Shop"),
+                                              MessageModel(date: "1400/11/1",text: "میخواستم سفارشمو پیگیری کنم",sender: "normal"),
+                                              MessageModel(date: "1400/11/1",text: "کی ارسال میشه؟",sender: "normal"),
+                                              MessageModel(date: "1400/11/1",text: "سفارشتون دیروز ارسال شده. احتمالا تا سه روز دیگه برسه دستتون.",sender: "shop"),
+                                              MessageModel(date: "1400/11/1",text: "ممنون از اطلاعتون.",sender: "normal"),
+                                              MessageModel(date: "1400/11/1",text: "میتونم کد پیگیری پست رو داشته باشم؟",sender: "normal"),
+                                              MessageModel(date: "1400/11/1",text: "بله حتما",sender: "shop"),
+                                              MessageModel(date: "1400/11/1",text: "123456789123456789123456",sender: "shop"),
+                                              MessageModel(date: "1400/11/1",text: "متشکرم",sender: "normal"),
+                                            ]
+                                        ),isForShop: true,),
+                                    transitionDuration: Duration.zero,
+                                  ),
+                                );
+                              },
                               text: "Admin ارتباط با",
                               context: c
                           ),

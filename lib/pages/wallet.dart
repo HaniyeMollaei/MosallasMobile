@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mosallas/pages/transactions_page.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
@@ -378,8 +379,19 @@ class BuyerWalletState extends State<BuyerWallet> {
                                 height: MyStyle.mediaQueryHeight(context, 0.01),
                               ),
 
-                              const InkWell(
-                                  child:Text("مشاهده ی کامل گردش حساب" , style:MyStyle.lightTextStyle)
+                              InkWell(
+                                onTap: (){
+                                  Navigator.push(
+                                    context,
+                                    PageRouteBuilder(
+                                      pageBuilder: (context, animation1, animation2) =>
+                                          ShopTransactionsPage(isForShop: widget.isForShop,code: widget.isForShop ?
+                                          AppConstants.SHOP_CODE : AppConstants.BUYER_CODE,),
+                                      transitionDuration: Duration.zero,
+                                    ),
+                                  );
+                                },
+                                  child:const Text("مشاهده ی کامل گردش حساب" , style:MyStyle.lightTextStyle)
                               )
                             ],
                           ),

@@ -76,7 +76,7 @@ class ShopTransactionsPageState extends State<ShopTransactionsPage> {
                     pageHeaderNameLarge: shopName,
                   ),
                   SizedBox(
-                    height: MyStyle.mediaQueryHeight(context, 0.72),
+                    height: MyStyle.mediaQueryHeight(context, 0.82),
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
@@ -103,9 +103,7 @@ class ShopTransactionsPageState extends State<ShopTransactionsPage> {
                   ),
                 ],
               ),
-              bottomNavigationBar:widget.isForShop ? const ShopBottomNavBar(index: 4,): BuyerBottomNavBar(
-                index: 1,
-              ),
+
             )));
   }
 }

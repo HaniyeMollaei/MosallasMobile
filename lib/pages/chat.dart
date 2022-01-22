@@ -52,7 +52,7 @@ class ChatPageState extends State<ChatPage> {
                           pageHeaderNameLarge: widget.chat.buyer.buyerName,
                         ),
                         SizedBox(
-                          height: MyStyle.mediaQueryHeight(context, 0.72),
+                          height: MyStyle.mediaQueryHeight(context, 0.82),
                           child: Padding(
                             padding:  EdgeInsets.symmetric(horizontal: MyStyle.mediaQueryWidth(context, 0.04)),
                             child: ScrollablePositionedList.builder(
@@ -122,7 +122,7 @@ class ChatPageState extends State<ChatPage> {
                             controller: _txtMessage,
                             focusNode: _fndMobileNumber,
                           ),
-                          SizedBox(height: MyStyle.mediaQueryHeight(context, 0.01),),
+                          SizedBox(height: MyStyle.mediaQueryHeight(context, 0.02),),
 
                         ],
                       ),
@@ -130,8 +130,8 @@ class ChatPageState extends State<ChatPage> {
                   )
                 ]
               ),
-              bottomNavigationBar: widget.isForShop ?
-              const ShopBottomNavBar(index: 0,): BuyerBottomNavBar(index:0),
+              // bottomNavigationBar: widget.isForShop ?
+              // const ShopBottomNavBar(index: 0,): BuyerBottomNavBar(index:0),
             )));
   }
 }

@@ -136,6 +136,7 @@ class LoginPageState extends State<LoginPage>{
                             AppConstants.BUYER_CITY = "زنجان";
                             AppConstants.BUYER_PROVINCE = "زنجان";
                             AppConstants.BUYER_NAME = "هانیه ملائی";
+                            AppConstants.BUYER_CODE = "9365936";
                             AppConstants.MOBILE_NUMBER = " 09124424805";
                             AppConstants.BALANCE = 500000 ;
                             AppConstants.getAllConstants();

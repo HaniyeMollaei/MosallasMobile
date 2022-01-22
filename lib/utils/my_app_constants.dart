@@ -12,6 +12,7 @@ class AppConstants {
   static String SHOP_CODE;
   static String MOBILE_NUMBER;
   static String BUYER_NAME;
+  static String BUYER_CODE;
   static String BUYER_PROVINCE;
   static String BUYER_CITY;
   static String BUYER_ADDRESS;
@@ -30,6 +31,7 @@ class AppConstants {
     BUYER_CITY = null;
     MOBILE_NUMBER = null;
     BUYER_NAME = null;
+    BUYER_CODE = null;
     BUYER_ADDRESS = null;
     BALANCE = 0;
   }
@@ -44,6 +46,7 @@ class AppConstants {
     print("SHOP_CATEGORY:   $SHOP_CATEGORY ");
     print("SHOP_CODE:       $SHOP_CODE ");
     print("BUYER_NAME:      $BUYER_NAME ");
+    print("BUYER_CODE:      $BUYER_CODE ");
     print("BUYER_PROVINCE:  $BUYER_PROVINCE ");
     print("BUYER_CITY:      $BUYER_CITY ");
     print("BUYER_ADDRESS:   $BUYER_ADDRESS ");
