@@ -17,6 +17,7 @@ import 'package:mosallas/widgets/shop_vitrine.dart';
 import 'package:mosallas/widgets/text_field.dart';
 
 import '../chat.dart';
+import 'banners.dart';
 
 
 class ShopProfile extends StatefulWidget {
@@ -114,6 +115,14 @@ class ShopProfileState extends State<ShopProfile> {
                           ),
                           shopProfileItem(
                               onTap: (){
+                                Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                    pageBuilder: (context, animation1, animation2) =>
+                                        const BannersPage(isForShop: true,),
+                                    transitionDuration: Duration.zero,
+                                  ),
+                                );
 
                               },
                               text: "تبلیغات فروشگاه در شهرستان",
@@ -195,7 +204,7 @@ class ShopProfileState extends State<ShopProfile> {
                                         height: MyStyle.mediaQueryHeight(context, 0.07),
                                         textAlign: TextAlign.center,
                                         hint: "",
-                                        keyboardType: TextInputType.text,
+                                        keyboardType: TextInputType.number,
                                         maxLine: 1,
                                         fontSize: MyStyle.S13,
                                         minLine: 1,

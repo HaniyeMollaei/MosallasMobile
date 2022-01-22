@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mosallas/models/address.dart';
 import 'package:mosallas/models/order_model.dart';
-import 'package:mosallas/pages/buyers/shops/shop_vitrine.dart';
 import 'package:mosallas/utils/my_style.dart';
 
 Widget orderItemWidget({
