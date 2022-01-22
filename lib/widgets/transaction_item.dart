@@ -4,9 +4,87 @@ import 'package:mosallas/models/chat_models.dart';
 import 'package:mosallas/models/transaction_model.dart';
 import 'package:mosallas/utils/my_style.dart';
 
+import 'dialoug.dart';
+
 Widget transactionItem(BuildContext context, TransactionModel transaction ) {
   return  InkWell(
-    onTap: (){},
+    onTap: (){
+      myDialog(
+        width: MyStyle.mediaQueryWidth(context, 0.96),
+        height: MyStyle.mediaQueryHeight(context, 0.4),
+        hasCancel: true,
+        hasButton: false,
+        cancelText: "بستن",
+        hasHeader: false,
+        context: context,
+        content: Container(
+          padding: EdgeInsets.all(MyStyle.mediaQueryWidth(context, 0.025)),
+          decoration: BoxDecoration(
+            color: MyStyle.white,
+            borderRadius: BorderRadius.circular(MyStyle.borderRadius2),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                width:MyStyle.mediaQueryWidth(context, 0.8),
+                child: Text(transaction.type == "DEPOSIT"? "شارژ":
+                transaction.type == "WITHDRAWAL"? "برداشت" :
+                transaction.type == "TRANSFER_TO"? "انتقال به" :
+                transaction.type == "TRANSFER_FROM"? "انتقال از" :
+                "_" ,
+                  textAlign: TextAlign.center, style: TextStyle(
+                      fontFamily: MyStyle.textMediumFont,
+                      color: transaction.type == "DEPOSIT"? MyStyle.green:
+                      transaction.type == "WITHDRAWAL"? MyStyle.red :
+                      transaction.type == "TRANSFER_TO"? MyStyle.red :
+                      transaction.type == "TRANSFER_FROM"? MyStyle.green :
+                      MyStyle.lightGrayText,
+                      fontSize: MyStyle.S17,
+                    )),
+              ),
+              SizedBox(height: MyStyle.mediaQueryHeight(context, 0.01),),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+                children: [
+                  Text( transaction.amount.toString() ?? "_", style: MyStyle.lightGrayTextStyleS13,),
+
+                  const Text( "مبلغ", style: MyStyle.lightGrayTextStyleS13,)
+                ],),
+              SizedBox(height: MyStyle.mediaQueryHeight(context, 0.01),),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+                children: [
+                  Text( transaction.source ?? "_", style: MyStyle.lightGrayTextStyleS13,),
+
+                  const Text( "مبدا", style: MyStyle.lightGrayTextStyleS13,)
+                ],),
+              SizedBox(height: MyStyle.mediaQueryHeight(context, 0.01),),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+                children: [
+                  Text( transaction.destination ?? "_", style: MyStyle.lightGrayTextStyleS13,),
+
+                  const Text( "مقصد", style: MyStyle.lightGrayTextStyleS13,)
+                ],),
+              SizedBox(height: MyStyle.mediaQueryHeight(context, 0.01),),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+                children: [
+                  Text( transaction.code ?? "_", style: MyStyle.lightGrayTextStyleS13,),
+                  const Text( "شناسه ی تراکنش", style: MyStyle.lightGrayTextStyleS13,)
+                ],),
+              SizedBox(height: MyStyle.mediaQueryHeight(context, 0.01),),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+                children: [
+                  Text( transaction.date ?? "_", style: MyStyle.lightGrayTextStyleS13,),
+
+                  const Text( "زمان", style: MyStyle.lightGrayTextStyleS13,)
+                ],),
+
+            ],
+          ),
+        ),
+
+
+      );
+      },
     child: Container(
         height: MyStyle.mediaQueryHeight(context, 0.07),
         decoration: const BoxDecoration(
