@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +9,9 @@ import 'package:mosallas/utils/my_style.dart';
 class ImageSliderItem {
   Function onTap;
   String path;
-  ImageSliderItem(this.path, this.onTap);
+  bool isUint;
+  Uint8List img;
+  ImageSliderItem({this.path, this.onTap , this.img , this.isUint = false});
 }
 
 

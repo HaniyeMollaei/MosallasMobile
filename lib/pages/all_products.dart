@@ -8,7 +8,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mosallas/models/product_model.dart';
+import 'package:mosallas/pages/product_page.dart';
 import 'package:mosallas/state_management/add_new_product_provider.dart';
+import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
@@ -43,7 +45,6 @@ class AllProducts extends StatefulWidget {
 
 class AllProductsState extends State<AllProducts> {
   String shopName = "فروشگاه لباس مجلسی ایلگا";
-  Uint8List uploadedImage;
   final ImagePicker _picker = ImagePicker();
 
   AddNewProductProvider _addNewProductProvider = new AddNewProductProvider();
@@ -122,6 +123,16 @@ class AllProductsState extends State<AllProducts> {
                             return Padding(
                                 padding: EdgeInsets.symmetric(vertical: MyStyle.mediaQueryHeight(context, 0.01)),
                                 child: ProductWidget(
+                                  onClickFunction:  widget.isShop ? () async {
+                                    await Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => ProductPage(
+                                              product: shopProducts[index],
+                                             // img: shopProducts[index],
+                                              isForShop: true,
+                                            )));
+                                  } : null,
                                   p: widget.isFavorite
                                       ? favorites[index]
                                       : widget.isShop
@@ -162,7 +173,7 @@ class AllProductsState extends State<AllProducts> {
 
   Widget onShopProductDelete(int index) {
     print("what happenssss");
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       return myDialog(
         width: MyStyle.mediaQueryWidth(context, 0.96),
         height: MyStyle.mediaQueryHeight(context, 0.3),
@@ -227,19 +238,28 @@ class AllProductsState extends State<AllProducts> {
                                   height: MyStyle.mediaQueryWidth(context, 0.5),
                                   width: MyStyle.mediaQueryWidth(context, 0.5),
                                   fit: BoxFit.fitWidth)
-                              : Image.file(
-                                  File(_addNewProductProvider.image.path),
-                                  height: MyStyle.mediaQueryWidth(context, 0.5),
-                                  width: MyStyle.mediaQueryWidth(context, 0.5),
-                                  fit: BoxFit.fitWidth,
-                                ),
+                              : Image.memory(
+                           _addNewProductProvider.uploadedImage,
+                            height: MyStyle.mediaQueryWidth(context, 0.5),
+                            width: MyStyle.mediaQueryWidth(context, 0.5),
+                            fit: BoxFit.fitWidth,
+                          ),
+                              // : Image.file(
+                              //     File(_addNewProductProvider.image.path),
+                              //     height: MyStyle.mediaQueryWidth(context, 0.5),
+                              //     width: MyStyle.mediaQueryWidth(context, 0.5),
+                              //     fit: BoxFit.fitWidth,
+                              //   ),
                         ),
                   InkWell(
                     onTap: () async {
                       final i = await _picker.pickImage(source: ImageSource.gallery);
+                      final v = await i.readAsBytes();
+                      _addNewProductProvider.setUploadedImage(v);
                       _addNewProductProvider.setImage(i);
+                      //final dir = await getExternalStorageDirectory();
                       setState(() {});
-                      print(i.path);
+                      print(v);
                     },
                     child: Container(
                       height: MyStyle.mediaQueryHeight(context, 0.13),
@@ -409,8 +429,25 @@ class AllProductsState extends State<AllProducts> {
         hasHeader: true,
         headerText: "ثبت اطلاعات محصول",
         context: context,
-        onButtonPressed: () {
-          print("New Product added to list");
+        onButtonPressed: () async {
+          await Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => ProductPage(
+            img: _addNewProductProvider.uploadedImage,
+            isForShop: true,
+            product: ProductModel(
+              inventory: int.parse(_txtNumber.text),
+              shopCode: AppConstants.SHOP_CODE,
+              isRemovable: true,
+              imagePath: [_addNewProductProvider.image.path],
+              hasOnlineSell: _addNewProductProvider.hasOnlineSell,
+              description: _txtDescription.text,
+              code: "blabla",
+              category: AppConstants.SHOP_CATEGORY,
+              name: _txtName.text,
+              cost: int.parse( _txtCost.text),
+              star: 0
+            ),
+          )));
         },
         content: Consumer<AddNewProductProvider>(builder: (_, __, ___) {
           return Column(
@@ -483,6 +520,7 @@ class AllProductsState extends State<AllProducts> {
 
   List<ProductModel> myProducts = [
     ProductModel(
+      inventory: 10,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -494,6 +532,7 @@ class AllProductsState extends State<AllProducts> {
         category: "پوشاک",
         shopCode: "kghd13224"),
     ProductModel(
+        inventory: 10,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -505,6 +544,7 @@ class AllProductsState extends State<AllProducts> {
         star: 4.5,
         shopCode: "kghd13224"),
     ProductModel(
+        inventory: 1,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -516,6 +556,7 @@ class AllProductsState extends State<AllProducts> {
         star: 4.5,
         shopCode: "kghd13224"),
     ProductModel(
+        inventory: 4,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -527,6 +568,7 @@ class AllProductsState extends State<AllProducts> {
         category: "پوشاک",
         shopCode: "kghd13224"),
     ProductModel(
+        inventory: 5,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -538,6 +580,7 @@ class AllProductsState extends State<AllProducts> {
         star: 4.5,
         shopCode: "kghd13224"),
     ProductModel(
+        inventory: 8,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -549,6 +592,7 @@ class AllProductsState extends State<AllProducts> {
         category: "پوشاک",
         shopCode: "kghd13224"),
     ProductModel(
+        inventory: 20,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -560,6 +604,7 @@ class AllProductsState extends State<AllProducts> {
         category: "پوشاک",
         shopCode: "kghd13224"),
     ProductModel(
+        inventory: 10,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -571,6 +616,7 @@ class AllProductsState extends State<AllProducts> {
         category: "پوشاک",
         shopCode: "kghd13224"),
     ProductModel(
+        inventory: 10,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -585,6 +631,7 @@ class AllProductsState extends State<AllProducts> {
 
   List<ProductModel> favorites = [
     ProductModel(
+        inventory: 10,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -596,6 +643,7 @@ class AllProductsState extends State<AllProducts> {
         category: "پوشاک",
         shopCode: "hfgds43"),
     ProductModel(
+        inventory: 10,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -607,6 +655,7 @@ class AllProductsState extends State<AllProducts> {
         star: 4.5,
         shopCode: "hfgds43"),
     ProductModel(
+        inventory: 10,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -618,6 +667,7 @@ class AllProductsState extends State<AllProducts> {
         star: 4.5,
         shopCode: "hfgds43"),
     ProductModel(
+        inventory: 10,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -629,6 +679,7 @@ class AllProductsState extends State<AllProducts> {
         category: "پوشاک",
         shopCode: "hfgds43"),
     ProductModel(
+        inventory: 10,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -643,6 +694,7 @@ class AllProductsState extends State<AllProducts> {
 
   List<ProductModel> shopProducts = [
     ProductModel(
+        inventory: 10,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -654,6 +706,7 @@ class AllProductsState extends State<AllProducts> {
         category: "پوشاک",
         shopCode: "hfgds43"),
     ProductModel(
+        inventory: 10,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -665,6 +718,7 @@ class AllProductsState extends State<AllProducts> {
         star: 4.5,
         shopCode: "hfgds43"),
     ProductModel(
+        inventory: 10,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -676,6 +730,7 @@ class AllProductsState extends State<AllProducts> {
         star: 4.5,
         shopCode: "hfgds43"),
     ProductModel(
+        inventory: 10,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,
@@ -687,6 +742,7 @@ class AllProductsState extends State<AllProducts> {
         category: "پوشاک",
         shopCode: "hfgds43"),
     ProductModel(
+        inventory: 10,
         name: "پیراهن آستین بلند مردانه",
         code: "hgd65435hj",
         cost: 123000,

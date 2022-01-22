@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:mosallas/models/product_model.dart';
 import 'package:mosallas/models/shop_vitrine_model.dart';
 import 'package:mosallas/pages/login/login.dart';
+import 'package:mosallas/pages/shop/shop_transactions_page.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_light.dart';
@@ -195,12 +196,23 @@ class ShopProfileState extends State<ShopProfile> {
                           shopVitrine(context: c,shopVitrineItem: shop,justHeader: true),
                           SizedBox(height: MyStyle.mediaQueryHeight(context, 0.03),),
                           shopProfileItem(
-                            onTap: (){},
+                            onTap: (){
+                              Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                  pageBuilder: (context, animation1, animation2) =>
+                                  ShopTransactionsPage(isForShop: true,code: AppConstants.SHOP_CODE,),
+                                  transitionDuration: Duration.zero,
+                                ),
+                              );
+                            },
                             text: "گردش مالی فروشگاه در ماه اخیر",
                             context: c
                           ),
                           shopProfileItem(
-                              onTap: (){},
+                              onTap: (){
+
+                              },
                               text: "تبلیغات فروشگاه در شهرستان",
                               context: c
                           ),

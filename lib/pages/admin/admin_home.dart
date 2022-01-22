@@ -20,13 +20,13 @@ class AdminHome extends StatefulWidget {
 
 class AdminHomeState extends State<AdminHome> {
   List<ImageSliderItem> imageList =  [
-    ImageSliderItem('assets/image/off50.jpg', () {
+    ImageSliderItem(path: 'assets/image/off50.jpg', onTap: () {
       print("Image taaaaaaap 11111");
     }),
-    ImageSliderItem('assets/image/man_off.jpg', () {
+    ImageSliderItem(path: 'assets/image/man_off.jpg', onTap: () {
       print("Image taaaaaaap 22222");
     }),
-    ImageSliderItem('assets/image/off50.jpg', () {
+    ImageSliderItem(path: 'assets/image/off50.jpg', onTap: () {
       print("Image taaaaaaap 33333");
     }),
   ];

@@ -15,7 +15,7 @@ import 'package:mosallas/widgets/image_slider_manually.dart';
 import 'package:mosallas/widgets/product.dart';
 import 'package:mosallas/widgets/submit_button.dart';
 
-import 'all_products.dart';
+import '../../all_products.dart';
 
 class BuyerShopVitrine extends StatefulWidget {
   final String shopCode;
@@ -39,13 +39,13 @@ class BuyerShopVitrineState extends State<BuyerShopVitrine> {
   }
 
   List<ImageSliderItem> imageList = [
-    ImageSliderItem('assets/image/off50.jpg', () {
+    ImageSliderItem(path: 'assets/image/off50.jpg', onTap: () {
       print("Image taaaaaaap 11111");
     }),
-    ImageSliderItem('assets/image/man_off.jpg', () {
+    ImageSliderItem(path: 'assets/image/man_off.jpg',onTap:  () {
       print("Image taaaaaaap 22222");
     }),
-    ImageSliderItem('assets/image/off50.jpg', () {
+    ImageSliderItem(path: 'assets/image/off50.jpg',onTap:  () {
       print("Image taaaaaaap 33333");
     }),
   ];

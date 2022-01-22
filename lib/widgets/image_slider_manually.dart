@@ -53,7 +53,9 @@ class _ManuallyControlledImageSliderState extends State<ManuallyControlledImageS
                         onTap: i.onTap,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(MyStyle.borderRadius4),
-                          child: Image.asset(
+                          child: i.isUint ?
+                              Image.memory(i.img)
+                              :Image.asset(
                             i.path,
                             //fit:BoxFit.fitHeight,
                             //width: MyStyle.mediaQueryWidth(context, 0.75),

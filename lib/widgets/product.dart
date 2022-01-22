@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mosallas/models/product_model.dart';
-import 'package:mosallas/pages/buyers/shops/product_page.dart';
+import 'package:mosallas/pages/product_page.dart';
 import 'package:mosallas/utils/my_style.dart';
 
 class ProductWidget extends StatefulWidget {
@@ -34,7 +34,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                 await Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => BuyerProductPage(
+                        builder: (context) => ProductPage(
                           product: widget.p,
                         )));
               },

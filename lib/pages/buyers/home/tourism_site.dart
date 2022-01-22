@@ -38,16 +38,16 @@ class TourismSiteState extends State<TourismSite> {
   Widget build(BuildContext c) {
 
     Widget slider =CarouselWithIndicatorDemo(isCommercial: false, items: [
-      ImageSliderItem('assets/image/zanjan_bazar.jpg', () {
+      ImageSliderItem(path: 'assets/image/zanjan_bazar.jpg',onTap:  () {
         print("Image taaaaaaap 11111");
       }),
-      ImageSliderItem('assets/image/zanjan_bazar3.jpg', () {
+      ImageSliderItem(path: 'assets/image/zanjan_bazar3.jpg',onTap:  () {
         print("Image taaaaaaap 33333");
       }),
-      ImageSliderItem('assets/image/zanjan_bazar4.jpg', () {
+      ImageSliderItem(path: 'assets/image/zanjan_bazar4.jpg', onTap: () {
         print("Image taaaaaaap 33333");
       }),
-      ImageSliderItem('assets/image/zanjan_bazar5.jpg', () {
+      ImageSliderItem(path: 'assets/image/zanjan_bazar5.jpg', onTap: () {
         print("Image taaaaaaap 33333");
       }),
     ]);
