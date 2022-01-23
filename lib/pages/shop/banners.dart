@@ -36,8 +36,17 @@ class BannersPageState extends State<BannersPage> {
       showDate: "1400/10/15",
       descriptionForAdmin: "لطفا در صورتی که مشکل داشت بهم پیام بدین",
       image: "assets/image/off50.jpg",
-      status: "WAIT"
-  )];
+      status: "SHOW"
+  ),
+    BannerModel(
+        bannerCost: 500000,
+        createDate: "1400/10/03",
+        showDate: "",
+        descriptionForAdmin: "لطفا در صورتی که مشکل داشت بهم پیام بدین",
+        image: "assets/image/man_off.jpg",
+        status: "WAIT"
+    )
+  ];
   final ImagePicker _picker = ImagePicker();
   BannerProvider _bannerProvider = new BannerProvider();
 

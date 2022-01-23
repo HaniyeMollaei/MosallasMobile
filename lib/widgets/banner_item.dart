@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mosallas/models/banner_model.dart';
+import 'package:mosallas/utils/my_general_utils.dart';
 import 'package:mosallas/utils/my_style.dart';
 
 Widget bannerItemWidget({
@@ -29,7 +30,7 @@ Widget bannerItemWidget({
           ///products
           Center(
             child: Container(
-              height: MyStyle.mediaQueryHeight(context, 0.4),
+              height: MyStyle.mediaQueryHeight(context, 0.38),
               width: MyStyle.mediaQueryWidth(context, 0.88),
               decoration: BoxDecoration(
                 color:MyStyle.white,
@@ -107,7 +108,7 @@ Widget bannerItemWidget({
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            bannerItem.showDate.toString()??"هنوز نمایش داده نشده است",
+                            Utils.isTextEmpty(bannerItem.showDate.toString()) ?"هنوز نمایش داده نشده است":bannerItem.showDate,
                             style: MyStyle.darkTextStyleS13,
                             textAlign: TextAlign.start,
                           ),
