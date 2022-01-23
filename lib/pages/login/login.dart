@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:mosallas/pages/admin/admin_home.dart';
 import 'package:mosallas/pages/buyers/home/home.dart';
+import 'package:mosallas/pages/chat_list.dart';
 import 'package:mosallas/pages/register/get_mobile_number.dart';
 import 'package:mosallas/pages/shop/shop_home.dart';
 import 'package:mosallas/utils/my_app_constants.dart';
@@ -143,7 +142,7 @@ class LoginPageState extends State<LoginPage>{
                           }
 
                           await Navigator.pushReplacement(
-                              context, MaterialPageRoute(builder: (context) => (_txtMobileNumber.text =="1")? const ShopHome() :(_txtMobileNumber.text =="0")? const AdminHome() : const BuyerHome() ));
+                              context, MaterialPageRoute(builder: (context) => (_txtMobileNumber.text =="1")? const ShopHome() :(_txtMobileNumber.text =="0")? const ChatList(isForAdmin: true,) : const BuyerHome() ));
 
                         },
                         isDisable: false,

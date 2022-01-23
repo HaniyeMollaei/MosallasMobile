@@ -6,6 +6,7 @@ import 'package:mosallas/models/chat_models.dart';
 import 'package:mosallas/models/shop_vitrine_model.dart';
 import 'package:mosallas/utils/my_style.dart';
 import 'package:mosallas/widgets/appbar_gray.dart';
+import 'package:mosallas/widgets/bottom_nav_bar_admin.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_buyer.dart';
 import 'package:mosallas/widgets/bottom_nav_bar_shop.dart';
 import 'package:mosallas/widgets/chat_list_item.dart';
@@ -15,10 +16,11 @@ import 'package:mosallas/widgets/text_field.dart';
 class ChatList extends StatefulWidget {
 
   final bool isForShop;
+  final bool isForAdmin;
   final BuyerModelForChat buyer;//use if isForsShop=false
   final ShopVitrineModel shop;
 
-  const ChatList({Key key, this.shop, this.isForShop, this.buyer}) : super(key: key);
+  const ChatList({Key key, this.shop, this.isForShop=false, this.buyer, this.isForAdmin = false}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => ChatListState();
@@ -213,7 +215,9 @@ class ChatListState extends State<ChatList> {
                 ),
               ),
               bottomNavigationBar: widget.isForShop ?
-               const ShopBottomNavBar(index: 0,): BuyerBottomNavBar(index:0),
+               const ShopBottomNavBar(index: 0,):
+              widget.isForAdmin? const AdminBottomNavBar(index: 0,):
+              BuyerBottomNavBar(index:0),
             )));
   }
 }

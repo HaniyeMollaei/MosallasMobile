@@ -28,7 +28,7 @@ import 'package:mosallas/widgets/submit_button.dart';
 import 'package:mosallas/widgets/text_field.dart';
 
 import '../comments.dart';
-import 'chat_list.dart';
+import '../chat_list.dart';
 
 class ShopHome extends StatefulWidget {
   const ShopHome({Key key}) : super(key: key);

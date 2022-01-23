@@ -4,7 +4,7 @@ class ShopVitrineModel {
   String phoneNumber;
   double star;
   int shippingCost;
-  String shopImagePath;
+  String shopImagePath;//**
   String shopCode;
   List<String> productsImagePath;
   ShopVitrineModel({this.shopName , this.address , this.star , this.shopCode ,

@@ -5,9 +5,9 @@ class ProductModel{
   String shopCode;
   int cost;
   int inventory;
-  List<String> imagePath;
+  List<String> imagePath;//**
   double star;
-  bool isRemovable;
+  bool isRemovable;//**
   bool hasOnlineSell;
   String category;
   String description;

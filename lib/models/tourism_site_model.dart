@@ -1,7 +1,7 @@
 class TourismSiteModel{
   final String siteName;
   final String description;
-  final String imagePath;
+  final String imagePath;//**
   final int index ;
   final String siteCode;
 

@@ -15,9 +15,10 @@ class ChatPage extends StatefulWidget {
 
   final ChatModel chat;
   final bool isForShop;
+  final bool isForAdmin;
   final bool isFromOrders;
   final String shopCode;
-  const ChatPage({Key key, this.chat, this.isForShop, this.isFromOrders, this.shopCode, }) : super(key: key);
+  const ChatPage({Key key, this.chat, this.isForShop = false, this.isFromOrders, this.shopCode, this.isForAdmin = false }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => ChatPageState();

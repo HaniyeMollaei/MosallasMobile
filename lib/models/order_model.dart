@@ -5,12 +5,14 @@ class OrderModel {
   String orderCode;
   String orderDate;
   String orderStatus;
-  String productName;
-  int productCost;
+  String productName;//**
+  int productCost;//**
   String productCode;
-  String shopName;
-  AddressModel shopAddress;
-  String shopPhoneNumber;
+  //String shopCode;
+  String shopName;//**
+  AddressModel shopAddress;//**
+  String shopPhoneNumber;//**
+  //String buyerCode;
   String buyerName;
   AddressModel buyerAddress;
   String buyerPhoneNumber;
